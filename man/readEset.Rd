@@ -4,8 +4,15 @@
 \alias{readEset}
 \title{Read eSet object from plain files}
 \usage{
-readEset(exprs.file, fData.file, pData.file, exprs.file.format = c("gct",
-  "tsv"), sep = "\\t", header = TRUE, ...)
+readEset(
+  exprs.file,
+  fData.file,
+  pData.file,
+  exprs.file.format = c("gct", "tsv"),
+  sep = "\\t",
+  header = TRUE,
+  ...
+)
 }
 \arguments{
 \item{exprs.file}{Character, file name where \code{exprs} data is written to}

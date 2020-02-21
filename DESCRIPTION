@@ -17,11 +17,13 @@ Imports:
     ribiosUtils (>= 1.0-5),
     ribiosPlot,
     limma,
+    edgeR,
     rrcov,
     graph,
-    ribiosArg
+    ribiosArg,
+    magrittr
 Suggests:
     ribiosAnnotation (>= 1.0-8),
     testthat
 License: GPL-3
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

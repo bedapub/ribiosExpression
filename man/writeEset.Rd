@@ -4,9 +4,15 @@
 \alias{writeEset}
 \title{Export an ExpressionSet object as tab-delimited (or gct) files}
 \usage{
-writeEset(eset, exprs.file, fData.file, pData.file,
-  exprs.file.format = c("gct", "tsv"), feat.name = NULL,
-  feat.desc = NULL)
+writeEset(
+  eset,
+  exprs.file,
+  fData.file,
+  pData.file,
+  exprs.file.format = c("gct", "tsv"),
+  feat.name = NULL,
+  feat.desc = NULL
+)
 }
 \arguments{
 \item{eset}{The \code{eSet} object to be exported}

@@ -4,9 +4,15 @@
 \alias{parseDesignContrast}
 \title{Parse study design and asked questions encoded in design and contrast matrices or in one-way ANOVA designs}
 \usage{
-parseDesignContrast(designFile = NULL, contrastFile = NULL,
-  sampleGroups = NULL, groupLevels = NULL, dispLevels = NULL,
-  contrasts = NULL, expSampleNames = NULL)
+parseDesignContrast(
+  designFile = NULL,
+  contrastFile = NULL,
+  sampleGroups = NULL,
+  groupLevels = NULL,
+  dispLevels = NULL,
+  contrasts = NULL,
+  expSampleNames = NULL
+)
 }
 \arguments{
 \item{designFile:}{A plain tab-delimited file with headers encoding the design matrix, or NULL}

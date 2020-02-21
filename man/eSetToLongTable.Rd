@@ -4,8 +4,11 @@
 \alias{eSetToLongTable}
 \title{Transform eSet to long data.frame}
 \usage{
-eSetToLongTable(x, exprsFun = function(eset) Biobase::exprs(eset),
-  includeOtherAssayData = FALSE)
+eSetToLongTable(
+  x,
+  exprsFun = function(eset) Biobase::exprs(eset),
+  includeOtherAssayData = FALSE
+)
 }
 \arguments{
 \item{x}{An \code{eSet} object}
