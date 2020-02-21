@@ -10,7 +10,9 @@ importFrom("Biobase", "featureNames", "exprs", "fData", "pData",
            "fData<-", "pData<-", "exprs<-", 
            "assayData", "featureData", "phenoData")
 importFrom("graph", "connComp")
-importFrom("limma", "makeContrasts")
+importFrom("limma", "makeContrasts", "lmFit", "eBayes",
+           "topTable")
+importFrom("magrittr", "%>%")
 importFrom("methods", "as", "new")
 importFrom("stats", "cor", "median", "model.matrix",
            "prcomp", "qt", "reshape", "sd")
@@ -91,3 +93,6 @@ export(DesignContrast,
        parseDesignContrast)
 
 export(splitPCA)
+
+export(assertFullRank, removeColRank)
+export(voomLimma, limmaDgeTables)
