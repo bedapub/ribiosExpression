@@ -21,9 +21,10 @@ Imports:
     rrcov,
     graph,
     ribiosArg,
-    magrittr
+    magrittr,
+    dplyr
 Suggests:
     ribiosAnnotation (>= 1.0-8),
     testthat
 License: GPL-3
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0

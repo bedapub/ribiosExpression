@@ -17,6 +17,7 @@ importFrom("methods", "as", "new")
 importFrom("stats", "cor", "median", "model.matrix",
            "prcomp", "qt", "reshape", "sd")
 importFrom("utils", "read.csv", "read.table", "write.table")
+importFrom("dplyr", "mutate", "rename")
 importClassesFrom("limma", "MArrayLM")
 
 
