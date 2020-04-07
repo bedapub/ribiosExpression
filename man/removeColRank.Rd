@@ -15,3 +15,7 @@ A \code{data.frame} with \code{n+1} rows, where \code{n} is the column count of 
 \description{
 Return rank of the matrix and the ranks of resulting matrices when each column is removed
 }
+\examples{
+myMat <- matrix(c(1,1,1, 0,1,1, 0,0,1, 1,0,0), ncol=4, byrow=FALSE)
+removeColRank(myMat)
+}

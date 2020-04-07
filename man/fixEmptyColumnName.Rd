@@ -7,7 +7,9 @@
 fixEmptyColumnName(df, prefix = "X")
 }
 \arguments{
-\item{df}{If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1}
+\item{df}{A \code{data.frame}
+
+If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1}
 }
 \description{
 Detect if any column has an empty string as name and fix

@@ -25,4 +25,5 @@ contrasts <- limma::makeContrasts("Group", levels=design)
 fit <- limma::contrasts.fit(fit, contrasts)
 fit <- limma::eBayes(fit)
 limmaDgeTables(fit)
+
 }

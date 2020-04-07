@@ -56,34 +56,34 @@ DesignContrast <- function(designMatrix, contrastMatrix=NULL, groups=NULL, dispL
   return(res)
 }
 
-#' @export groups,DesignContrast-method
+#' @export
 setMethod("groups", "DesignContrast", function(object) {
   return(object@groups)
 })
 
-#' @export dispGroups,DesignContrast-method
+#' @export
 setMethod("dispGroups", "DesignContrast", function(object) {
   groups <- object@groups
   levels(groups) <- object@dispLevels
   return(groups)
 })
 
-#' @export designMatrix,DesignContrast-method
+#' @export
 setMethod("designMatrix", "DesignContrast", function(object) {
   return(object@design)
 })
 
-#' @export contrastMatrix,DesignContrast-method
+#' @export
 setMethod("contrastMatrix", "DesignContrast", function(object) {
   return(object@contrasts)
 })
 
-#' @export nContrast,DesignContrast-method
+#' @export
 setMethod("nContrast", "DesignContrast", function(object) {
               return(ncol(object@contrasts))
           })
 
-#' @export designVariables,DesignContrast-method
+#' @export 
 setMethod("designVariables", "DesignContrast", function(object) {
   return(colnames(designMatrix(object)))
 })
@@ -296,6 +296,7 @@ parseDesignContrast <- function(designFile=NULL, contrastFile=NULL,
 }
 
 #' Return indices of samples involved in the given contrast of two or more coefficients
+#'
 #' @param object: A \code{DesignContrast} object
 #' @param contrast: Either a contrast name or a integer indicating the index of the contrast
 #' @return An integer vector, indices of samples that are involved, sorted by the ascending order of the coefficients of the contrast

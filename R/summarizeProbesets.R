@@ -49,8 +49,7 @@
 #' index.name="GeneID", fun=mean, keep.nonindex=TRUE)
 #' 
 #' ## the underlying method
-#' library(ribiosUtils)
-#' ribios.meanMat <- summarizeRows(exprs(ribios.ExpressionSet),
+#' ribios.meanMat <- ribiosUtils::summarizeRows(exprs(ribios.ExpressionSet),
 #' fData(ribios.ExpressionSet)$GeneID, mean)
 #' stopifnot(identical(exprs(ribios.mean), ribios.meanMat))
 #' 

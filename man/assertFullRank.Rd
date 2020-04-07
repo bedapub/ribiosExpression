@@ -16,7 +16,6 @@ If not full rank, the function stops. Otherwise, an invisible \code{TRUE} is ret
 Assert whether a matrix is of full rank numerically
 }
 \examples{
-
 myMat <- matrix(c(1,1,1,0,1,1), ncol=2, byrow=FALSE)
 assertFullRank(myMat)
 }

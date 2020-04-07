@@ -28,9 +28,8 @@ Imports:
     magrittr,
     dplyr,
     Matrix,
-    ribiosAnnotation
+    ribiosAnnotation (>= 1.0-8)
 Suggests:
-    ribiosAnnotation (>= 1.0-8),
     testthat
 License: GPL-3
 Encoding: UTF-8

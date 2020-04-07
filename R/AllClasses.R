@@ -9,7 +9,6 @@
 #' function \code{DesignContrast}. However, the users should not directly call this
 #' function. Instead, \code{\link{parseDesignContrast}} should be called.
 #' @keywords classes
-#' @examples
 #' @exportClass DesignContrast
 setClass("DesignContrast",
          representation=list(design="matrix",
@@ -32,6 +31,8 @@ setClass("DesignContrast",
          })
 
 #' @rdname DesignContrast
+#' @importMethodsFrom methods show
+#' @importFrom ribiosUtils headtail
 #' @export
 setMethod("show", "DesignContrast", function(object) {
   cat("DesignContrast object:\n")

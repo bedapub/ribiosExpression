@@ -1,7 +1,22 @@
+#' Data structures and functions for gene expression analysis
+#' @docType package
+#' @description Provides data structures and functions for gene expression analysis
+#' @name ribiosExpression-package
+NULL
 
+#' @importFrom methods as 
+#' @importFrom stats cor median prcomp qt sd
+#' @importFrom utils write.table
+#' @importFrom ribiosUtils haltifnot assertFile sortByCol removeInvarCol summarizeRows dfFactor
+#' @importFrom Biobase `annotation<-` assayData `fData<-` fData `pData<-` pData exprs `exprs<-`
+#' @importFrom Biobase featureData phenoData featureNames sampleNames  `featureNames<-` storageMode
+#' @importFrom graph connComp
+#' @importFrom ribiosAnnotation gtiChiptypes bioc2gti
+#' @importFrom ribiosIO readMatrix read_gct_matrix write_gct writeMatrix
+#' @importFrom ribiosArg parseStrings parseFactor
+NULL
 
-#' Annotate an object.
-#' 
+#' Annotate an object
 #' 
 #' @name annotate-methods
 #' @aliases annotate-methods annotate,ExpressionSet,character,logical-method
@@ -12,11 +27,11 @@
 #' @section Methods: \describe{
 #' 
 #' \item{list("signature(object = \"ExpressionSet\", target =
-#' \"character\",\n", " check.target = \"logical\")")}{ Annotate an
+#' \"character\",", " check.target = \"logical\")")}{ Annotate an
 #' \code{ExpressionSet} with the chip type defined by the value of
 #' \code{target}. \code{check.target} determines whether the chip type should
 #' be first checked. } \item{list("signature(object = \"ExpressionSet\", target
-#' = \"character\",\n", " check.target = \"missing\")")}{ \code{check.target}
+#' = \"character\",", " check.target = \"missing\")")}{ \code{check.target}
 #' is set to FALSE when missing. }
 #' 
 #' \item{list("signature(object = \"character\", target = \"character\",
@@ -31,9 +46,6 @@
 #' }
 #' @keywords methods
 NULL
-
-
-
 
 
 #' Annotate ExpressionSet or probesets
@@ -80,11 +92,6 @@ NULL
 NULL
 
 
-
-
-
-#' Make GMT format strings
-#' 
 #' Make GMT format strings with titles, comments and genes
 #' 
 #' 
@@ -108,19 +115,15 @@ NULL
 #' will be replicated into each line of the GMT strings. }
 #' 
 #' \item{list("signature(title = \"character\", comment = \"missing\", genes
-#' =\n", " \"character\")")}{ When comment is missing, it is set to empty
+#' =\"character\")")}{ When comment is missing, it is set to empty
 #' string
 #' 
 #' }
 #' 
 #' \item{list("signature(title = \"character\", comment = \"missing\", genes
-#' =\n", " \"list\")")}{ When comment is missing, it is set to empty string } }
+#' ="\"list\")")}{ When comment is missing, it is set to empty string } }
 #' @keywords methods
 NULL
-
-
-
-
 
 #' Make GMT format strings
 #' 
@@ -193,7 +196,6 @@ NULL
 #' \sQuote{reannotating} defined in \code{ribiosExpression} is to transform an
 #' ExpressionSet object of Bioconductor-annotation to GTI-annotation.
 #' 
-#' 
 #' @name reannotate-methods
 #' @aliases reannotate-methods reannotate,ExpressionSet,logical-method
 #' reannotate,ExpressionSet,missing-method
@@ -205,7 +207,7 @@ NULL
 #' with a valid Bioconductor annotation set (for example \dQuote{hgu95av2}) in
 #' the \code{annotation} slot. See \code{\link{reannotate}} for details and
 #' examples.  } \item{list("signature(object = \"ExpressionSet\", check.target
-#' =\n", " \"missing\")")}{ \code{check.target} is set to FALSE when missing.
+#' =" \"missing\")")}{ \code{check.target} is set to FALSE when missing.
 #' } }
 #' @keywords methods
 NULL
@@ -257,16 +259,12 @@ NULL
 
 
 
-
-
 #' An ExpressionSet for case demonstrations
 #' 
 #' This object is adapted from the \code{sample.ExpressionSet} object, with
 #' feature annotations from GTI (Data stand: December 2011). It is used in case
 #' studies where functionalities of the \code{ribiosExpression} package are
 #' demonstrated.
-#' 
-#' 
 #' @name ribios.ExpressionSet
 #' @docType data
 #' @format An \code{ExpressionSet} object.
@@ -280,8 +278,6 @@ NULL
 NULL
 
 
-#' writeGct methods
-#' 
 #' Write matrix or ExpressionSet in GCT file format
 #' 
 #' 

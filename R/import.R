@@ -54,7 +54,7 @@ readExprsMatrix <- function(x) {
 #' @importFrom utils read.csv read.table
 #' @importFrom ribiosAnnotation annotateProbesets
 #' @importFrom methods new
-#' @importClassesFrom Biobase ExpressionSet-class AnnotatedDataFrame-class
+#' @importClassesFrom Biobase ExpressionSet AnnotatedDataFrame
 #' @export ChipFetcher2ExpressionSet
 ChipFetcher2ExpressionSet <- function(filename,
                                       chip,
@@ -87,11 +87,8 @@ ChipFetcher2ExpressionSet <- function(filename,
   exprs.matrix <- data.matrix(exprs.matrix)
   feature.names <- rownames(exprs.matrix)
 
-  if(require(ribiosAnnotation)) {
-    feature.data.frame <- annotateProbesets(feature.names, chip, orthologue=orthologue)
-  } else {
-    warning("ribiosAnnotation is not available. Features are not annotated")
-  }
+  feature.data.frame <- ribiosAnnotation::annotateProbesets(feature.names, chip, orthologue=orthologue)
+
   colnames(exprs.matrix) <- rownames(pheno.data.frame)
   
   expSet <- new("ExpressionSet",

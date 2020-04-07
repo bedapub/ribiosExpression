@@ -134,8 +134,11 @@ writeGctCls <- function(eset,
   }
 }
 
-## Import ExpressionSet into gct/cls files
-## the C version, about 5x faster than the R implementation for the ALL dataset
+#' Import ExpressionSet into gct/cls files
+#' the C version, about 5x faster than the R implementation for the ALL dataset
+#' @param gct.file Character string, the path to a GCT file
+#' @return A \code{ExpressionSet} object
+#' @export
 readGct <- function(gct.file) {
   mat <- read_gct_matrix(gct.file, keep.desc=TRUE)
   desc <- attr(mat, "desc")
@@ -156,9 +159,6 @@ readGct <- function(gct.file) {
   res
 }
 
-#' @rdname readGct
-#' @export
-readCls <- read_cls
 
 
 
@@ -169,9 +169,9 @@ readCls <- read_cls
 #' \code{ExpressionSet} object.
 #' 
 #' The \code{readGctCls} function calls internally the \code{readGct} and
-#' \code{readCls} functions to read in two formats respeectively.
+#' \code{read_cls} functions to read in two formats respeectively.
 #' \code{readGct} returns a barely annotated \code{ExpressionSet} object, and
-#' \code{readCls} returns a vector of levels encoding sample groups.
+#' \code{read_cls} returns a vector of levels encoding sample groups.
 #' 
 #' Since gct/cls contains only one property of features and samples each
 #' (Description in the gct file as well as sample groups/levels in the cls
@@ -183,7 +183,7 @@ readCls <- read_cls
 #' 
 #' See example below.
 #' 
-#' @aliases readGct readCls readGctCls
+#' @aliases readGct read_cls readGctCls
 #' @param file.base The full file name of gct/cls files without suffixe, if not
 #' in the current diretory, must contain the path (dirname) as well . For
 #' instance if it is set as \code{~/my/dir/input}, then the function seeks the
@@ -222,6 +222,7 @@ readCls <- read_cls
 #' ## try to compare pData(sample.eset) with pData(ext.eset), and similarly
 #' ## fData(sample.eset) with fData(ext.eset)
 #' 
+#' @importFrom ribiosIO read_cls
 #' @export readGctCls
 readGctCls <- function(file.base,
                        gct.file,
@@ -243,7 +244,7 @@ readGctCls <- function(file.base,
   stopifnot(file.exists(gct.file) && file.exists(cls.file))
 
   eset <- readGct(gct.file)
-  cls <- readCls(cls.file)
+  cls <- read_cls(cls.file)
   pData(eset)$cls <- cls
 
   if(!missing(add.fData.file)) {

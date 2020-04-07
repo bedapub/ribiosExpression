@@ -5,6 +5,7 @@
 #' @examples
 #' myMat <- matrix(c(1,1,1,0,1,1), ncol=2, byrow=FALSE)
 #' assertFullRank(myMat)
+#' @export
 assertFullRank <- function(matrix) {
   rank <- Matrix::rankMatrix(matrix)
   nc <- ncol(matrix)
@@ -20,9 +21,10 @@ assertFullRank <- function(matrix) {
 #' @param matrix A numeric matrix
 #' @return A \code{data.frame} with \code{n+1} rows, where \code{n} is the column count of the input matrix
 #' 
-#' @example 
+#' @examples
 #' myMat <- matrix(c(1,1,1, 0,1,1, 0,0,1, 1,0,0), ncol=4, byrow=FALSE)
 #' removeColRank(myMat)
+#' @export
 removeColRank <- function(matrix) {
   colind <- 1:ncol(matrix)
   nc <- ncol(matrix)
