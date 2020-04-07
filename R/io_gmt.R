@@ -64,6 +64,8 @@ grp2gmt <- function(txt, chiptype, name) {
   return(gmt)
 }
 
+#' @rdname grp2gmt
+#' @export
 grpFiles2gmt <- function(..., chiptype, n=-1L) {
   files <- unlist(list(...), use.names=FALSE)
   if(missing(chiptype))
