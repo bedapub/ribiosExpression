@@ -1,6 +1,3 @@
-## read table with foreign key
-
-
 #' Read table with Foreign Keys
 #' 
 #' The concept \code{Foreign Keys} comes from relational databse systems. These

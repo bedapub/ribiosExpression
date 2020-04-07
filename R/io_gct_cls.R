@@ -3,7 +3,10 @@
 ##------------------------------##
 
 ## Export ExpressionSet into gct/cls files
+#' @exportMethod writeGct
 setGeneric("writeGct", function(obj, file, feat.name, feat.desc) standardGeneric("writeGct"))
+
+#' @export 
 setMethod("writeGct",
           c("matrix", "ANY", "ANY", "ANY"),
           function(obj, file, feat.name, feat.desc) {
@@ -15,6 +18,7 @@ getDfCol <- function(df, name) {
   if(nameInF) return(df[, name])
   return(name)
 }
+#' @export 
 setMethod("writeGct",
           c("ExpressionSet", "ANY", "ANY", "ANY"),
           function(obj, file, feat.name, feat.desc) {
@@ -26,7 +30,12 @@ setMethod("writeGct",
             writeGct(exprs(obj), file=file, feat.name=feat.name, feat.desc)
           })
 
-writeCls <- function(eset, file=stdout(), sample.group.col) {
+#' Write CLS (class file) from Eset
+#' @param eset An ExpressionSet object
+#' @param file A file, by default the standard output
+#' @param sample.group.col Column name in the sample annotation (\code{pData}) to be used as groups
+#' @export 
+writeCls <- function(eset, file=stdout(), sample.group.col="group") {
   if(missing(sample.group.col)) {
     stop("Sample groups must be given by the sample.group.col\n")
   }
@@ -147,6 +156,8 @@ readGct <- function(gct.file) {
   res
 }
 
+#' @rdname readGct
+#' @export
 readCls <- read_cls
 
 

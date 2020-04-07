@@ -8,6 +8,7 @@
 #' data(ribios.ExpressionSet, package="ribiosExpression")
 #' fac1 <- gl(2,13)
 #' pcaScore1 <- splitPCA(ribios.ExpressionSet, fac1)
+#' @export
 splitPCA <- function(eset, factor, func=function(e) exprs(e), ...) {
   resList <- tapply(1:ncol(eset), factor, function(i) {
     if(length(i)==0)

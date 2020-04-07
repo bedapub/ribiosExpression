@@ -1,4 +1,14 @@
 ## transformations
+#' Transform a matrix to long table
+#' @param x A matrix
+#' @param valueLabel Character string, the label of the value
+#' @param rowLabel Character string, the name of the column holding the row names
+#' @param colLabel Character string, the name of the column holding the column names
+#' @return A \code{data.frame}
+#' @examples 
+#' myMatrix <- matrix(rnorm(24), nrow=4, dimnames=list(LETTERS[1:4], letters[1:6]))
+#' matrixToLongTable(myMatrix)
+#' @export
 matrixToLongTable <- function(x, valueLabel="value", rowLabel="row", colLabel="col") {
   val <- as.vector(x)
   rowLabels <- rep(rownames(x), ncol(x))
@@ -11,7 +21,7 @@ matrixToLongTable <- function(x, valueLabel="value", rowLabel="row", colLabel="c
 }
 
 #' Detect if any column has an empty string as name and fix
-#' @param df
+#' @param df A \code{data.frame}
 #' 
 #' If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1
 #' @examples 
@@ -20,6 +30,7 @@ matrixToLongTable <- function(x, valueLabel="value", rowLabel="row", colLabel="c
 #' testDf
 #' fixEmptyColumnName(testDf)
 #' fixEmptyColumnName(testDf, prefix="fData")
+#' @export
 fixEmptyColumnName <- function(df, prefix="X") {
   isEmptyColName <- colnames(df)==""
   if(any(isEmptyColName)) {
@@ -52,6 +63,7 @@ vectorizeExprs <- function(exp) {
 #' data(ribios.ExpressionSet, package="ribiosExpression")
 #' exprsLongTbl <- eSetToLongTable(ribios.ExpressionSet)
 #' seLongTbl <- eSetToLongTable(ribios.ExpressionSet, exprsFun=function(eset) Biobase::assayData(eset)$se.exprs)
+#' @export
 eSetToLongTable <- function(x, 
                             exprsFun=function(eset) Biobase::exprs(eset),
                             includeOtherAssayData=FALSE) {

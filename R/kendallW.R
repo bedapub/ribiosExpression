@@ -274,15 +274,24 @@ kendallWmat <- function(mat,
   return(res.mat)
 }
 
-
+#' @exportMethod kendallW
 setGeneric("kendallW",
            function(object,...) standardGeneric("kendallW"))
+
+#' @exportMethod kendallWinfo
 setGeneric("kendallWinfo",
            function(object) standardGeneric("kendallWinfo"))
+#' @exportMethod `kendallWinfo<-`
 setGeneric("kendallWinfo<-",
            function(object, value) standardGeneric("kendallWinfo<-"))
+
+#' @export 
 setMethod("kendallWinfo", "matrix", function(object) {attr(object, "info")})
+
+#' @export 
 setReplaceMethod("kendallWinfo", c("matrix","ANY"), function(object, value) {attr(object, "info") <- value; return(object)})
+
+#' @export 
 setMethod("kendallW", "matrix", function(object,
                                          row.factor,
                                          summary=c("none", "mean", "median",
@@ -291,6 +300,8 @@ setMethod("kendallW", "matrix", function(object,
   kendallWmat(mat=object, row.factor=row.factor,
               summary=summary, na.rm=na.rm, alpha=alpha)
 })
+
+#' @export 
 setMethod("kendallW", "ExpressionSet", function(object,
                                                 row.factor,
                                                 summary=c("none", "mean", "median",

@@ -1,8 +1,8 @@
 #' Assert whether a matrix is of full rank numerically
 #' @param matrix Numeric matrix
 #' @return If not full rank, the function stops. Otherwise, an invisible \code{TRUE} is returned
-#' @examples 
-#' 
+#' @importFrom Matrix rankMatrix
+#' @examples
 #' myMat <- matrix(c(1,1,1,0,1,1), ncol=2, byrow=FALSE)
 #' assertFullRank(myMat)
 assertFullRank <- function(matrix) {

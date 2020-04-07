@@ -1,7 +1,5 @@
 
 
-#' Annotate an object
-#' 
 #' Annotate an object.
 #' 
 #' 
@@ -280,9 +278,6 @@ NULL
 #' tbl <- eSetToLongTable(ribios.ExpressionSet)
 #' 
 NULL
-
-
-
 
 
 #' writeGct methods

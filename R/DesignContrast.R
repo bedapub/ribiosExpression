@@ -1,3 +1,17 @@
+#' Infer groups from a design matrix
+#' @param designMatrix A design matrix
+#' @return A factor vector giving the groups inferred from the design matrix
+#' 
+#' A naive logic is used: samples of the same design vectors are of the same group.
+#' 
+#' The inference is known to fail when control variables, such as age or RIN numbers, 
+#' vary between samples of the same group.
+#' 
+#' @importFrom stats model.matrix
+#' @examples
+#' myDesign <- model.matrix(~gl(3,3))
+#' design2group(myDesign)
+#' @export
 design2group <- function(designMatrix) {
   clevels <- apply(designMatrix, 2, ribiosUtils::ulen)
   useCol <- clevels < nrow(designMatrix)
@@ -7,6 +21,26 @@ design2group <- function(designMatrix) {
   levels(res) <- sprintf("AutoGroup_%02d", 1:nlevels(res))
   return(res)
 }
+
+#' Contrast a DesignContrast object
+#' 
+#' @param designMatrix A design matrix
+#' @param contrastMatrix A contrast matrix. If null, no comparison can be done.
+#' @param group A factor vector of the same length as the number of columns of the design matrix. 
+#'   If missing, \code{design2group} is used to infer groups.
+#' @param dispLevels A character vector of the same length as the number of levels encoded by \code{group},
+#'   indicating how different groups should be labelled. If missing, levels of \code{group} are used.
+#' 
+#' @importFrom limma makeContrasts
+#' @return A DesignContrast object
+#' @examples 
+#' myFac <- gl(3,3, labels=c("baseline", "treat1", "treat2"))
+#' myDesign <- model.matrix(~myFac)
+#' colnames(myDesign) <- c("baseline", "treat1", "treat2")
+#' myContrast <- limma::makeContrasts(contrasts=c("treat1", "treat2"), levels=myDesign)
+#' DesignContrast(myDesign, myContrast, groups=myFac)
+#' DesignContrast(myDesign, myContrast, groups=myFac, dispLevels=c("C", "T1", "T2"))
+#' @export
 DesignContrast <- function(designMatrix, contrastMatrix=NULL, groups=NULL, dispLevels=NULL) {
   if(is.null(groups))
     groups <- design2group(designMatrix)
@@ -22,27 +56,42 @@ DesignContrast <- function(designMatrix, contrastMatrix=NULL, groups=NULL, dispL
   return(res)
 }
 
+#' @export groups,DesignContrast-method
 setMethod("groups", "DesignContrast", function(object) {
   return(object@groups)
 })
+
+#' @export dispGroups,DesignContrast-method
 setMethod("dispGroups", "DesignContrast", function(object) {
   groups <- object@groups
   levels(groups) <- object@dispLevels
   return(groups)
 })
+
+#' @export designMatrix,DesignContrast-method
 setMethod("designMatrix", "DesignContrast", function(object) {
   return(object@design)
 })
+
+#' @export contrastMatrix,DesignContrast-method
 setMethod("contrastMatrix", "DesignContrast", function(object) {
   return(object@contrasts)
 })
+
+#' @export nContrast,DesignContrast-method
 setMethod("nContrast", "DesignContrast", function(object) {
               return(ncol(object@contrasts))
           })
+
+#' @export designVariables,DesignContrast-method
 setMethod("designVariables", "DesignContrast", function(object) {
   return(colnames(designMatrix(object)))
 })
-## functions to parse designs and contrasts from files or command-line inputs
+
+#' Parse contrast from strings
+#' @param contrastStr A vector of character strings
+#' @return A contrast matrix
+#' @export
 parseContrastStr <- function(contrastStr) {
   contrasts <- parseStrings(contrastStr)
   csplit <- strsplit(contrasts, "=")
@@ -56,6 +105,14 @@ parseContrastStr <- function(contrastStr) {
   }
   return(contrasts)
 }
+
+#' Parse design and contrast from strings
+#' @param groupStr A factor vector indicating sample groups
+#' @param levelStr Level strings
+#' @param dispLevelStr Display level strings
+#' @param contrastStr A vector of character strings indicating contrasts
+#' @return A DesignContrast object
+#' @export
 parseDesignContrastStr <- function(groupsStr, levelStr, dispLevelStr, contrastStr) {
   groups <- parseFactor(groupsStr, rlevels=levelStr, make.names=TRUE)
   levels <- levels(groups)
@@ -75,6 +132,14 @@ parseDesignContrastStr <- function(groupsStr, levelStr, dispLevelStr, contrastSt
   return(res)
 }
 
+#' Parse design and contrast from files
+#' @param designFile A tab-delimited file encoding the design matrix
+#' @param contrastFile A tab-delimited file encoding the contrast matrix
+#' @param groupsStr A vector of character strings, giving sample groups
+#' @param levelStr A vector of level strings
+#' @param dispLevelStr A vector of strings to be used as display labels, if exist
+#' @return A DesignContrast object
+#' @export
 parseDesignContrastFile <- function(designFile, contrastFile,
                                     groupsStr=NULL, levelStr=NULL,
                                     dispLevelStr) {
@@ -102,6 +167,7 @@ parseDesignContrastFile <- function(designFile, contrastFile,
                         dispLevels=dispLevels)
   return(res)
 }
+
 plainFile2ConcString <- function(str) {
     if(!is.null(str) && file.exists(str)) {
         str <- paste(readLines(str), collapse=",")
@@ -109,8 +175,17 @@ plainFile2ConcString <- function(str) {
     return(str)
 }
 
-## check consistency between signal matrix and design matrix
-## TODO: writing test
+#' Build a data.frame from two vectors of potential different lengths
+#' @param vec1 A vector
+#' @param vec2 Another vector
+#' @param col.names A character vector of length 2 giving column names of the output \code{data.frame}.
+#' 
+#' The shorter vector of the two are extended to the same length by appending empty strings.
+#' @return A \code{data.frame} of two columns. The row count matches the longer vector
+#' 
+#' @examples 
+#' dataFrameTwoVecs(LETTERS[1:5], letters[2:9])
+#' @export
 dataFrameTwoVecs <- function(vec1, vec2, col.names=c("Vec1", "Vec2")) {
   len <- pmax(length(vec1), length(vec2))
   res <- data.frame(vec1 = c(as.character(vec1), rep("", len-length(vec1))),
@@ -119,6 +194,19 @@ dataFrameTwoVecs <- function(vec1, vec2, col.names=c("Vec1", "Vec2")) {
   return(res)
 }
 
+#' Test whether the input design matrix is consistent with the sample names
+#' @param descon A DesignContrast object
+#' @param sampleNames A vector of string characters, specifying sample names
+#' 
+#' If the sample names in DesignContrast are identical with the given sample names,
+#' an invisible \code{TRUE} is returned.
+#' 
+#' If the two sets are identical, however the order of sample names do not match, a warning
+#' message is raised, and an invisible \code{FALSE} is returned
+#' 
+#' If the two sets have differences, the mismatching sample names are printed for diagnosis.
+#' 
+#' @return A invisible logical value. \code{TRUE} if and only if the sample names match perfectly.
 isInputDesignConsistent <- function(descon, sampleNames) {
     designSampleNames <- rownames(designMatrix(descon))
     if(setequal(sampleNames, designSampleNames)) {
@@ -135,7 +223,6 @@ isInputDesignConsistent <- function(descon, sampleNames) {
         return(invisible(FALSE))
     }
 }
-
 
 #' Parse study design and asked questions encoded in design and contrast matrices or in one-way ANOVA designs
 #' @param designFile: A plain tab-delimited file with headers encoding the design matrix, or NULL
@@ -156,6 +243,7 @@ isInputDesignConsistent <- function(descon, sampleNames) {
 #' parseDesignContrast(designFile=designFile, contrastFile=contrastFile)
 #' # with extra information about sample groups
 #' parseDesignContrast(designFile=designFile, contrastFile=contrastFile,sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As", dispLevels="Beryllium,Arsenic")
+#' @export
 parseDesignContrast <- function(designFile=NULL, contrastFile=NULL,
                                 sampleGroups=NULL, groupLevels=NULL, dispLevels=NULL,
                                 contrasts=NULL, expSampleNames=NULL) {
@@ -222,9 +310,13 @@ parseDesignContrast <- function(designFile=NULL, contrastFile=NULL,
 #' stopifnot(identical(cont1Ind, 1:4))
 #' stopifnot(identical(cont2Ind, c(1:2, 5:6)))
 #' stopifnot(identical(cont3Ind, c(3:6)))
+#' @export
 setMethod("contrastSampleIndices", c("DesignContrast", "character"), function(object, contrast) {
               .contrastSampleIndices(object, contrast)
           })
+
+#' @describeIn contrastSampleIndices,DesignContrast,character-method The method to use integer indexes to specify the contrast
+#' @export
 setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(object, contrast) {
               .contrastSampleIndices(object, contrast)
           })

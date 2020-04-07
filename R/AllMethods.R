@@ -1,6 +1,20 @@
+#' Return contrast names of a DesignContrast object
+#' @param object A DesignContrast object
+#' @export
 setMethod("contrastNames", "DesignContrast", function(object)
           return(colnames(contrastMatrix(object))))
 
+#' Transform an expression matrix to long table
+#' @param x A matrix or an ExpressionSet object
+#' @param idvar Variable name of the feature identifier, passed to \code{\link{reshape}}
+#' @param timevar The time variable, passed to \code{\link{reshape}}
+#' @param valuevar The value variable
+#' @param ids Feature identifiers
+#' @param valueType Character string, value type
+#' 
+#' @return A \code{data.frame}
+#' @importFrom stats reshape
+#' @export
 setMethod("exprsToLong", "matrix", function(x, idvar="illID",timevar="hybridID", valuevar="value", 
                                             ids=rownames(x), valueType="raw") {
   x <- as.data.frame(x)
@@ -13,10 +27,20 @@ setMethod("exprsToLong", "matrix", function(x, idvar="illID",timevar="hybridID",
   xLong <- xLong[,c(idvar, timevar, "type", valuevar)]
   return(xLong)
 })
+
+#' @describeIn exprsToLong,matrix-method The method for ExpressionSet
+#' @export
 setMethod("exprsToLong", "ExpressionSet", function(x,...) {
   exprsToLong(exprs(x),...)
 })
 
+#' Perform row-wise scaling to an ExpressionSet object
+#' @param x An ExpressionSet object.
+#' @param center Logical, whether the mean values of rows should be set to zero.
+#' @param scale Logical, whether the standard deviations of rows should be normalised to one.
+#' 
+#' @importFrom ribiosUtils rowscale
+#' @export
 rowscale.ExpressionSet <- function(x, center=TRUE, scale=TRUE) {
   if(storageMode(x)!="lockedEnvironment")
     warning("The storageMode of the input object is not 'lockedEnvironment': exprs is replaced by row-scaled values\n",
@@ -27,12 +51,11 @@ rowscale.ExpressionSet <- function(x, center=TRUE, scale=TRUE) {
   return(x)
 }
 
-
-## for limma::MArrayLM
-
 #' Extract design matrix from MArrayLM
 #'
 #' @param object A MArrayLM object from the limma package
+#' 
+#' @importClassesFrom limma MArrayLM
 #' @return Design matrix
 setMethod("designMatrix", "MArrayLM", function(object) {
     return(object$design)

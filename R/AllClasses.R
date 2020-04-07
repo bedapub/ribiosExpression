@@ -1,3 +1,16 @@
+#' Study design and contrast information
+#' 
+#' The DesignContrast class represents key information in a designed experiment
+#' 
+#' @name DesignContrast-class
+#' @aliases show,DesignContrast-method
+#' @docType class
+#' @section Objects from the Class: Objects can be created by calls of the
+#' function \code{DesignContrast}. However, the users should not directly call this
+#' function. Instead, \code{\link{parseDesignContrast}} should be called.
+#' @keywords classes
+#' @examples
+#' @exportClass DesignContrast
 setClass("DesignContrast",
          representation=list(design="matrix",
            contrasts="matrix",
@@ -18,6 +31,8 @@ setClass("DesignContrast",
            return(valid.gd & valid.gr & valid.dc)
          })
 
+#' @rdname DesignContrast
+#' @export
 setMethod("show", "DesignContrast", function(object) {
   cat("DesignContrast object:\n")
   grps <- object@groups

@@ -1,6 +1,3 @@
-## read matrix
-
-
 #' Read an expression matrix into an ExpressionSet object
 #' 
 #' The function reads in an expression matrix into an ExpressionSet object. The
@@ -24,6 +21,7 @@
 #' myeset <- readExprsMatrix(file.path(idir, "sample_eset_exprs.txt"))
 #' myeset2 <- readExprsMatrix(file.path(idir, "test.gct"))
 #' 
+#' @importFrom ribiosIO read_exprs_matrix
 #' @export readExprsMatrix
 readExprsMatrix <- function(x) {
   exp <- read_exprs_matrix(x)
@@ -35,9 +33,6 @@ readExprsMatrix <- function(x) {
                data.frame(row.names=rownames(exp))))
   return(res)
 }
-
-## import ChipFetcher output files as ExpressionSet
-
 
 #' Import ChipFetcher export files into an ExpressionSet object.
 #' 
@@ -56,6 +51,10 @@ readExprsMatrix <- function(x) {
 #' @return An \code{ExpressionSet} object.
 #' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
 #' @references \url{http://bioinfo.bas.roche.com:8080/bicgi/chipfetcher}
+#' @importFrom utils read.csv read.table
+#' @importFrom ribiosAnnotation annotateProbesets
+#' @importFrom methods new
+#' @importClassesFrom Biobase ExpressionSet-class AnnotatedDataFrame-class
 #' @export ChipFetcher2ExpressionSet
 ChipFetcher2ExpressionSet <- function(filename,
                                       chip,

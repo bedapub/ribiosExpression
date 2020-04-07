@@ -51,6 +51,7 @@
 #' exprs.file.format="gct")
 #' writeEset(sample.ExpressionSet, exprs.file, fData.file, pData.file,
 #' exprs.file.format="tsv")
+#' @export writeEset
 writeEset <- function(eset,exprs.file,fData.file,pData.file,
                       exprs.file.format=c("gct", "tsv"),
                       feat.name=NULL, feat.desc=NULL) {
@@ -97,6 +98,7 @@ writeEset <- function(eset,exprs.file,fData.file,pData.file,
 #' 
 #' @examples 
 #' writeSampleGroups(gl(3,4), stdout(), stdout())
+#' @export writeSampleGroups
 writeSampleGroups <- function(sampleGroups, sampleGroups.file, sampleGroupLevels.file) {
   stopifnot(is.factor(sampleGroups))
   writeLines(as.character(sampleGroups), sampleGroups.file)
@@ -133,7 +135,7 @@ writeSampleGroups <- function(sampleGroups, sampleGroups.file, sampleGroupLevels
 #' writeEset(sample.ExpressionSet, exprs.file, fData.file, pData.file,
 #' exprs.file.format="tsv")
 #' testRead2 <- readEset(exprs.file, fData.file, pData.file, exprs.file.format="tsv")
-
+#' @export
 readEset <- function(exprs.file,fData.file, pData.file,
                      exprs.file.format=c("gct", "tsv"),
                      sep="\t", header=TRUE, ...) {

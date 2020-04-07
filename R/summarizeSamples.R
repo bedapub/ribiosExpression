@@ -56,10 +56,14 @@ summarizeSamples <- function(eset, indSamples=eset$SAMPLEID, removeInvarCols=TRU
 }
 
 
+#' @rdname summarizeSamples
+#' @export
 poolReplicates <- function(eset, indSamples=eset$SAMPLEID, removeInvarCols=TRUE) {
   summarizeSamples(eset, indSamples=indSamples, removeInvarCols=TRUE, fun=sum, na.rm=TRUE)
 }
 
+#' @rdname summarizeSamples
+#' @export
 avgReplicates <- function(eset, indSamples=eset$SAMPLEID, removeInvarCols=TRUE) {
   summarizeSamples(eset, indSamples=indSamples, removeInvarCols=TRUE, fun=mean, na.rm=TRUE)
 }

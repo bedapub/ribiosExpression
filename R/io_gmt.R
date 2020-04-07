@@ -1,6 +1,3 @@
-## convert grp file to gmt file
-
-
 #' Convert GRP files into GMT-formatted strings
 #' 
 #' GRP files are used by Connectivity Map on-line tool, which stores the
@@ -81,9 +78,12 @@ grpFiles2gmt <- function(..., chiptype, n=-1L) {
 }
 
 ## print strings in GMT format
+#' @export
 setGeneric("formatGmt",
            function(title, comment, genes)
            standardGeneric("formatGmt"))
+
+#' @export
 setMethod("formatGmt",
           c("character", "character", "character"),
           function(title, comment,genes) {
@@ -95,11 +95,15 @@ setMethod("formatGmt",
             genes.collapse <- paste(genes, collapse="\t")
             paste(title, comment, genes.collapse,sep="\t")
           })
+
+#' @export
 setMethod("formatGmt",
           c("character", "missing", "character"),
           function(title, genes) {
             formatGmt(title, "", genes)
           })
+
+#' @export
 setMethod("formatGmt",
           c("character", "character", "list"),
           function(title, comment,genes) {
@@ -113,6 +117,8 @@ setMethod("formatGmt",
                    function(x) formatGmt(title[x], comment[x], genes[[x]])
                    )
           })
+
+#' @export
 setMethod("formatGmt",
           c("character", "missing", "list"),
           function(title, genes) {

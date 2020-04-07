@@ -1,8 +1,3 @@
-## ribios pacakge filterFeatureByAnno function has been temporarily removed
-## since it requires the AnnotationDbi package, which is bulky to load
-
-
-
 #' Filter multiple probesets matching to the same gene by keeping the one with
 #' the maximum statistic (by default the variance).
 #' 
