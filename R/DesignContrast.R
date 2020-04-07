@@ -300,6 +300,7 @@ parseDesignContrast <- function(designFile=NULL, contrastFile=NULL,
 #' @param object: A \code{DesignContrast} object
 #' @param contrast: Either a contrast name or a integer indicating the index of the contrast
 #' @return An integer vector, indices of samples that are involved, sorted by the ascending order of the coefficients of the contrast
+#' 
 #' @examples
 #' ## one-way ANOVA
 #' (myDesCon <- parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As", dispLevels="Beryllium,Arsenic", contrasts="As-Be"))

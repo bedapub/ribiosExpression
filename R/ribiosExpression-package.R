@@ -8,7 +8,7 @@ NULL
 #' @importFrom stats cor median prcomp qt sd
 #' @importFrom utils write.table
 #' @importFrom ribiosUtils haltifnot assertFile sortByCol removeInvarCol summarizeRows dfFactor
-#' @importFrom Biobase `annotation<-` assayData `fData<-` fData `pData<-` pData exprs `exprs<-`
+#' @importFrom Biobase `annotation<-` assayData `fData<-` fData `pData<-` pData exprs `exprs<-` annotation
 #' @importFrom Biobase featureData phenoData featureNames sampleNames  `featureNames<-` storageMode
 #' @importFrom graph connComp
 #' @importFrom ribiosAnnotation gtiChiptypes bioc2gti

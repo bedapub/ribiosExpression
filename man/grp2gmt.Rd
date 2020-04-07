@@ -6,6 +6,8 @@
 \title{Convert GRP files into GMT-formatted strings}
 \usage{
 grp2gmt(txt, chiptype, name)
+
+grpFiles2gmt(..., chiptype, n = -1L)
 }
 \arguments{
 \item{txt}{A vector of character strings, each containing one probeset}

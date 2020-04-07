@@ -79,8 +79,8 @@ grpFiles2gmt <- function(..., chiptype, n=-1L) {
   return(unlist(res, use.names=FALSE))
 }
 
-## print strings in GMT format
-#' @export
+#' print strings in GMT format
+#' @exportMethod formatGmt
 setGeneric("formatGmt",
            function(title, comment, genes)
            standardGeneric("formatGmt"))

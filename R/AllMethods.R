@@ -5,6 +5,7 @@ setMethod("contrastNames", "DesignContrast", function(object)
           return(colnames(contrastMatrix(object))))
 
 #' Transform an expression matrix to long table
+#' 
 #' @param x A matrix or an ExpressionSet object
 #' @param idvar Variable name of the feature identifier, passed to \code{\link{reshape}}
 #' @param timevar The time variable, passed to \code{\link{reshape}}

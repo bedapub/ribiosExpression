@@ -122,7 +122,7 @@ partek2ExpressionSet <- function(filename,
   raw.char <- rawt[probeStart:nrow(rawt),]
   raw.exp <- matrix(as.numeric(raw.char),
                     nrow=nrow(raw.char), ncol=ncol(raw.char), dimnames=dimnames(raw.char))
-  if(require(ribiosAnnotation)) {
+  if(requireNamespace("ribiosAnnotation")) {
     rf <- annotateProbesets(rownames(raw.exp), chip, orthologue=orthologue)
   } else {
     warning("ribiosAnnotation is not available. Features are not annotated")
