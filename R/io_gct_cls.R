@@ -38,6 +38,73 @@ writeCls <- function(eset, file=stdout(), sample.group.col) {
   writeLines(c(str1, str2, str3),
              con=file)
 }
+
+
+#' Export ExpressionSet as Gct/Cls files
+#' 
+#' Gct/Cls file formats are required by the Gene Set Enrichment Analysis (GSEA)
+#' tool. Functions \code{writeGct} and \code{writeCls} exports file of two
+#' formats respectively, and \code{writeGctCls} calls the two function
+#' internally to write two files.
+#' 
+#' The \code{feat.name} option specifies what identifiers should be used for
+#' features (probesets). When the value is missing, \code{featureNames} is
+#' called to provide feature identifiers.
+#' 
+#' In contrast, the \code{sample.group.col} cannot be missing: since cls files
+#' encode groups (classes) of samples, and if \code{sample.group.col} was
+#' missing, it is usually impossible to get class information from
+#' \code{sampleNames}.
+#' 
+#' Internally \code{writeCls} calls \code{\link{dfFactor}} function to
+#' determine factor of samples. Therefore \code{sample.group.col} is to a
+#' certain degree generic: it can be a character string or integer index of the
+#' \code{pData(eset)} data matrix, or a factor vector of the same length as
+#' \code{ncol(eset)}.
+#' 
+#' @aliases writeCls writeGct writeGctCls eset2gct eset2cls
+#' @param eset An object of the \code{eSet} class, for example an
+#' \code{ExpressionSet} object
+#' @param obj A matrix or \code{ExpressionSet} object, which shall be written
+#' in GCT format
+#' @param file Name of the Gct/Cls file. If left missing, the file is printed
+#' on the standard output.
+#' @param file.base For writeGctCls, the base name of the two files: the suffix
+#' (.gct and .cls) will be appended
+#' @param feat.desc Integer or character, indicating which column of the
+#' featureData should be used as feature names; if missing, results of the
+#' \code{featureNames} function will be used as identifiers in the Gct file.
+#' See details.
+#' @param feat.name Integer or character, indicating which column of the
+#' featureData should be used as feature descriptions. If the value is missing,
+#' the Description column of the Gct file will be left blank
+#' @param sample.group.col Integer, character or a factor vector of the same
+#' length as the sample number, indicating classes (groups) of samples. See
+#' details.
+#' @param write.add.fData.file Logical, whether additional featureData should
+#' be written into a file named \code{${file.base}.add.fData.txt}
+#' @param write.add.pData.file Logical, whether additional phenoData should be
+#' written into a file named \code{${file.base}.add.pData.txt}
+#' @return Functions are used for their side effects.
+#' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
+#' @seealso See \code{\link{dfFactor}} for possible values of the
+#' \code{sample.group.col} option.
+#' 
+#' See \code{\link{readGctCls}} for importing functions.
+#' @references
+#' \url{http://www.broadinstitute.org/gsea/doc/GSEAUserGuideTEXT.htm}
+#' @examples
+#' 
+#' data(sample.ExpressionSet)
+#' writeGct(sample.ExpressionSet[1:5, 1:4], file=stdout())
+#' writeCls(sample.ExpressionSet, file=stdout(), sample.group.col="type")
+#' 
+#' tmpfile <- tempfile()
+#' writeGctCls(sample.ExpressionSet, file.base=tmpfile, sample.group.col="type")
+#' readLines(paste(tmpfile, ".cls",sep=""))
+#' unlink(c(paste(tmpfile, ".cls", sep=""), paste(tmpfile, ".gct", sep="")))
+#' 
+#' @export writeGctCls
 writeGctCls <- function(eset,
                         file.base,
                         feat.name,
@@ -82,6 +149,69 @@ readGct <- function(gct.file) {
 
 readCls <- read_cls
 
+
+
+#' Read ExpressionSet from Gct/Cls files
+#' 
+#' As complementary functions to \code{writeGctCls}, \code{readGctCls} reads a
+#' pair of gct and cls files (with same base names) into an
+#' \code{ExpressionSet} object.
+#' 
+#' The \code{readGctCls} function calls internally the \code{readGct} and
+#' \code{readCls} functions to read in two formats respeectively.
+#' \code{readGct} returns a barely annotated \code{ExpressionSet} object, and
+#' \code{readCls} returns a vector of levels encoding sample groups.
+#' 
+#' Since gct/cls contains only one property of features and samples each
+#' (Description in the gct file as well as sample groups/levels in the cls
+#' file), \code{readGctCls} allows users to provide additional fData/pData
+#' files. They should be tab-delimited files, with first column machting
+#' exactly the names of features or samples. They must be within the path
+#' specified by the \code{path} option, namely in the same directory of gls/cls
+#' files.sample
+#' 
+#' See example below.
+#' 
+#' @aliases readGct readCls readGctCls
+#' @param file.base The full file name of gct/cls files without suffixe, if not
+#' in the current diretory, must contain the path (dirname) as well . For
+#' instance if it is set as \code{~/my/dir/input}, then the function seeks the
+#' file \code{~/my/dir/input.gct} and \code{~/my/dir/input.cls}.
+#' @param gct.file The name of the gct file (only valid when file.base is
+#' missing).
+#' @param cls.file The name of the cls file (only valid when file.base is
+#' missing).
+#' @param add.fData.file Optional, file of additional feature data, see
+#' details.
+#' @param add.pData.file Optional, file of additional phenotype (sample) data,
+#' see details.
+#' @return An \code{ExpressionSet} object. The \code{Description} column in the
+#' gct file is encoded in the \code{desc} column in the featureData of the
+#' resulting object. The sample groups in the cls file is encoded in the
+#' \code{cls} column in the phenoData.
+#' @note The \code{readGct} function is a wrapper of the
+#' \link[ribiosIO]{read_gct_matrix} function in the \code{ribiosIO} package,
+#' which makes up the GCT matrix into an \code{ExpressionSet} object.
+#' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
+#' @seealso \code{\link{writeGctCls}}. See
+#' \code{\link[ribiosIO]{read_gct_matrix}} for underlying C code to import GCT
+#' files.
+#' @examples
+#' 
+#' idir <- system.file("extdata", package="ribiosExpression")
+#' 
+#' sample.eset <- readGctCls(file.base=file.path(idir, "test"))
+#' 
+#' ext.eset <- readGctCls(file.base=file.path(idir, "test"),
+#' add.fData.file=file.path(idir, "test.add.fData.txt"),
+#' add.pData.file=file.path(idir, "test.add.pData.txt"))
+#' 
+#' stopifnot(identical(exprs(sample.eset), exprs(ext.eset)))
+#' 
+#' ## try to compare pData(sample.eset) with pData(ext.eset), and similarly
+#' ## fData(sample.eset) with fData(ext.eset)
+#' 
+#' @export readGctCls
 readGctCls <- function(file.base,
                        gct.file,
                        cls.file,

@@ -1,4 +1,30 @@
 ## read matrix
+
+
+#' Read an expression matrix into an ExpressionSet object
+#' 
+#' The function reads in an expression matrix into an ExpressionSet object. The
+#' expression matrix should be saved in the file format supported by the
+#' \code{\link{read_exprs_matrix}} function: currently supported formats
+#' include tab-delimited file and gct files.
+#' 
+#' The function is a wrapper of the \code{\link{read_exprs_matrix}} function in
+#' the \code{ribiosIO} package. The difference is it returns a valid
+#' \code{ExpressionSet} object instead of a primitive matrix.
+#' 
+#' @param x A file containing an expression matrix
+#' @return An \code{ExpressionSet} object holding the expression matrix. Both
+#' pData and fData are empty except for the feature/sample names recorded in
+#' the expression matrix.
+#' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
+#' @seealso \code{\link{read_exprs_matrix}} in the \code{ribiosIO} package.
+#' @examples
+#' 
+#' idir <- system.file("extdata", package="ribiosExpression")
+#' myeset <- readExprsMatrix(file.path(idir, "sample_eset_exprs.txt"))
+#' myeset2 <- readExprsMatrix(file.path(idir, "test.gct"))
+#' 
+#' @export readExprsMatrix
 readExprsMatrix <- function(x) {
   exp <- read_exprs_matrix(x)
   res <- new("ExpressionSet",
@@ -11,6 +37,26 @@ readExprsMatrix <- function(x) {
 }
 
 ## import ChipFetcher output files as ExpressionSet
+
+
+#' Import ChipFetcher export files into an ExpressionSet object.
+#' 
+#' Import files exported by Roche web-tool \code{ChipFetcher} into an
+#' \code{ExpressionSet} object.
+#' 
+#' \code{chip} and \code{orthologue} are only valid when
+#' \code{ribiosAnnotation} is available.
+#' 
+#' @param filename Exported file name of ChipFetcher
+#' @param chip Chip type used to annotate the features, e.g.
+#' \code{HG-U133_PLUS_2}. In case missing, chips are automatically mapped.
+#' Assigning the value of \code{chip} accelerates the probe mapping step.
+#' @param orthologue Logical, whether features should be mapped to human
+#' orthologues? By default \code{FALSE}.
+#' @return An \code{ExpressionSet} object.
+#' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
+#' @references \url{http://bioinfo.bas.roche.com:8080/bicgi/chipfetcher}
+#' @export ChipFetcher2ExpressionSet
 ChipFetcher2ExpressionSet <- function(filename,
                                       chip,
                                       orthologue=FALSE) {
