@@ -17,7 +17,6 @@ demonstrated.
 
 data(ribios.ExpressionSet)
 tbl <- eSetToLongTable(ribios.ExpressionSet)
-
 }
 \references{
 Jitao David Zhang <jitao_david.zhang@roche.com>
