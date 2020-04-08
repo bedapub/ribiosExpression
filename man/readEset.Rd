@@ -21,7 +21,9 @@ readEset(
 
 \item{pData.file}{Character, optional, file name where \code{pData} data is written to}
 
-\item{exprs.file.format}{Character, write \code{exprs} data in either \code{gct} or \code{tsv} format 
+\item{exprs.file.format}{Character, write \code{exprs} data in either \code{gct} or \code{tsv} format}
+
+\item{header}{Logical, whether a head line is present
 
 The function can read in eSet object saved by \code{\link{writeEset}} by parsing
 three plain text files: \code{exprs.file}, \code{fData.file}, and \code{pData.file}.
@@ -30,6 +32,8 @@ Currently both \code{tsv} and \code{gct} formats are supported for expression
 file.
 
 See \code{writeEset} for limitations of these functions.}
+
+\item{set}{Character, separator}
 }
 \description{
 Read eSet object from plain files

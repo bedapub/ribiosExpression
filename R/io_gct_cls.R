@@ -30,15 +30,12 @@ setMethod("writeGct",
             if(!missing(feat.name))
               feat.name <- getDfCol(fd, feat.name)
             if(!missing(feat.desc))
-              feat.desc <- getdfcol(fd, feat.desc)
+              feat.desc <- getDfCol(fd, feat.desc)
             write_gct(exprs(obj), file=file, feat.name=feat.name, feat.desc)
           })
 
 
-#' Write CLS (class file) from Eset
-#' @param eset An ExpressionSet object
-#' @param file A file, by default the standard output
-#' @param sample.group.col Column name in the sample annotation (\code{pData}) to be used as groups
+#' @describeIn writeGctCls writeCls
 #' @export 
 writeCls <- function(eset, file=stdout(), sample.group.col="group") {
   if(missing(sample.group.col)) {
@@ -76,11 +73,9 @@ writeCls <- function(eset, file=stdout(), sample.group.col="group") {
 #' \code{pData(eset)} data matrix, or a factor vector of the same length as
 #' \code{ncol(eset)}.
 #' 
-#' @aliases writeCls writeGct writeGctCls eset2gct eset2cls
+#' @aliases writeCls eset2gct eset2cls
 #' @param eset An object of the \code{eSet} class, for example an
 #' \code{ExpressionSet} object
-#' @param obj A matrix or \code{ExpressionSet} object, which shall be written
-#' in GCT format
 #' @param file Name of the Gct/Cls file. If left missing, the file is printed
 #' on the standard output.
 #' @param file.base For writeGctCls, the base name of the two files: the suffix
@@ -109,7 +104,7 @@ writeCls <- function(eset, file=stdout(), sample.group.col="group") {
 #' \url{http://www.broadinstitute.org/gsea/doc/GSEAUserGuideTEXT.htm}
 #' @examples
 #' 
-#' data(sample.ExpressionSet)
+#' data(sample.ExpressionSet, package="Biobase")
 #' writeGct(sample.ExpressionSet[1:5, 1:4], file=stdout())
 #' writeCls(sample.ExpressionSet, file=stdout(), sample.group.col="type")
 #' 
@@ -122,12 +117,13 @@ writeCls <- function(eset, file=stdout(), sample.group.col="group") {
 writeGctCls <- function(eset,
                         file.base,
                         feat.name,
+			feat.desc,
                         sample.group.col,
                         write.add.fData.file=TRUE,
                         write.add.pData.file=TRUE) {
   gct.file <- paste(file.base, ".gct", sep="")
   cls.file <- paste(file.base, ".cls", sep="")
-  writeGct(eset, file=gct.file, feat.name=feat.name)
+  writeGct(eset, file=gct.file, feat.name=feat.name, feat.desc=feat.desc)
   writeCls(eset, file=cls.file, sample.group.col=sample.group.col)
   if(write.add.fData.file) {
     add.fData.file <- paste(file.base, ".add.fData.txt", sep="")

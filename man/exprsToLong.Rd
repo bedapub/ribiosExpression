@@ -19,10 +19,12 @@ exprsToLong(x, ...)
   valueType = "raw"
 )
 
-\S4method{exprsToLong}{eSet}(x, ...)
+\S4method{exprsToLong}{eSet}(x)
 }
 \arguments{
 \item{x}{A matrix or an ExpressionSet object}
+
+\item{...}{Other parameters}
 
 \item{idvar}{Variable name of the feature identifier, passed to \code{\link{reshape}}}
 

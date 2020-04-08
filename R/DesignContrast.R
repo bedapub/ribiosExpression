@@ -107,7 +107,7 @@ parseContrastStr <- function(contrastStr) {
 }
 
 #' Parse design and contrast from strings
-#' @param groupStr A factor vector indicating sample groups
+#' @param groupsStr A factor vector indicating sample groups
 #' @param levelStr Level strings
 #' @param dispLevelStr Display level strings
 #' @param contrastStr A vector of character strings indicating contrasts
@@ -225,13 +225,13 @@ isInputDesignConsistent <- function(descon, sampleNames) {
 }
 
 #' Parse study design and asked questions encoded in design and contrast matrices or in one-way ANOVA designs
-#' @param designFile: A plain tab-delimited file with headers encoding the design matrix, or NULL
-#' @param contrastFile: A plain tab-delimited file with headers encoding the contrast matrix, or NULL
-#' @param sampleGroups: A character string concatenated by commas (e.g. A,B,C), or a plain text file containing one string per line (e.g. A\emph{newline}B\emph{newline}C), encoding sample group memberships.
-#' @param groupLevels: Similar format as 'sampleGroups', encoding levels (e.g. order) of the sampleGroups
-#' @param dispLevels: Similar format as 'sampleGroups', encoding the display of the groupLevels. Must match 'groupLevels'
-#' @param contrasts: Similar format as 'sampleGroups', encoding contrasts in case of one-way ANOVA designs
-#' @param expSampleNames: A vector of character strings giving the expected sample names (e.g. those in the input matrix)
+#' @param designFile A plain tab-delimited file with headers encoding the design matrix, or NULL
+#' @param contrastFile A plain tab-delimited file with headers encoding the contrast matrix, or NULL
+#' @param sampleGroups A character string concatenated by commas (e.g. A,B,C), or a plain text file containing one string per line (e.g. A\emph{newline}B\emph{newline}C), encoding sample group memberships.
+#' @param groupLevels Similar format as 'sampleGroups', encoding levels (e.g. order) of the sampleGroups
+#' @param dispLevels Similar format as 'sampleGroups', encoding the display of the groupLevels. Must match 'groupLevels'
+#' @param contrasts Similar format as 'sampleGroups', encoding contrasts in case of one-way ANOVA designs
+#' @param expSampleNames A vector of character strings giving the expected sample names (e.g. those in the input matrix)
 #' @return A S4-object 'DesignContrast'
 #' @examples
 #' ## one-way ANOVA

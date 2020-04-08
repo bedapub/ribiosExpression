@@ -3,6 +3,7 @@
 #' @param eset An eSet object
 #' @param factor One or more factor vectors, used to split the eSet object
 #' @param func Function to retrieve values from split sub-eset objects
+#' @param ... Passed to \code{pcaScores}
 #' 
 #' @examples 
 #' data(ribios.ExpressionSet, package="ribiosExpression")

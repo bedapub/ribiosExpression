@@ -15,19 +15,19 @@ parseDesignContrast(
 )
 }
 \arguments{
-\item{designFile:}{A plain tab-delimited file with headers encoding the design matrix, or NULL}
+\item{designFile}{A plain tab-delimited file with headers encoding the design matrix, or NULL}
 
-\item{contrastFile:}{A plain tab-delimited file with headers encoding the contrast matrix, or NULL}
+\item{contrastFile}{A plain tab-delimited file with headers encoding the contrast matrix, or NULL}
 
-\item{sampleGroups:}{A character string concatenated by commas (e.g. A,B,C), or a plain text file containing one string per line (e.g. A\emph{newline}B\emph{newline}C), encoding sample group memberships.}
+\item{sampleGroups}{A character string concatenated by commas (e.g. A,B,C), or a plain text file containing one string per line (e.g. A\emph{newline}B\emph{newline}C), encoding sample group memberships.}
 
-\item{groupLevels:}{Similar format as 'sampleGroups', encoding levels (e.g. order) of the sampleGroups}
+\item{groupLevels}{Similar format as 'sampleGroups', encoding levels (e.g. order) of the sampleGroups}
 
-\item{dispLevels:}{Similar format as 'sampleGroups', encoding the display of the groupLevels. Must match 'groupLevels'}
+\item{dispLevels}{Similar format as 'sampleGroups', encoding the display of the groupLevels. Must match 'groupLevels'}
 
-\item{contrasts:}{Similar format as 'sampleGroups', encoding contrasts in case of one-way ANOVA designs}
+\item{contrasts}{Similar format as 'sampleGroups', encoding contrasts in case of one-way ANOVA designs}
 
-\item{expSampleNames:}{A vector of character strings giving the expected sample names (e.g. those in the input matrix)}
+\item{expSampleNames}{A vector of character strings giving the expected sample names (e.g. those in the input matrix)}
 }
 \value{
 A S4-object 'DesignContrast'

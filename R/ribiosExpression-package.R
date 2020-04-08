@@ -8,12 +8,16 @@ NULL
 #' @importFrom methods as 
 #' @importFrom stats cor median prcomp qt sd
 #' @importFrom utils write.table
-#' @importFrom ribiosUtils haltifnot assertFile sortByCol removeInvarCol summarizeRows dfFactor putColsFirst
-#' @importFrom Biobase `annotation<-` assayData `fData<-` fData `pData<-` pData exprs `exprs<-` annotation
-#' @importFrom Biobase featureData phenoData featureNames sampleNames  `featureNames<-` storageMode
+#' @importFrom ribiosUtils haltifnot assertFile sortByCol removeInvarCol 
+#'             summarizeRows dfFactor putColsFirst ulen
+#' @importFrom Biobase `annotation<-` assayData `fData<-` fData `pData<-` 
+#'             featureNames pData exprs `exprs<-` annotation
+#'             featureData phenoData featureNames sampleNames 
+#'             `featureNames<-` storageMode
 #' @importFrom ribiosAnnotation gtiChiptypes bioc2gti
 #' @importFrom ribiosIO readMatrix read_gct_matrix write_gct writeMatrix
 #' @importFrom ribiosArg parseStrings parseFactor
+#' @importFrom ribiosPlot pcaScores
 #' @importClassesFrom Biobase eSet ExpressionSet
 NULL
 

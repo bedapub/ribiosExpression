@@ -5,9 +5,17 @@
 \alias{DesignContrast-class}
 \alias{show,DesignContrast-method}
 \title{Study design and contrast information}
+\usage{
+\S4method{show}{DesignContrast}(object)
+}
 \description{
 The DesignContrast class represents key information in a designed experiment
 }
+\section{Functions}{
+\itemize{
+\item \code{show,DesignContrast-method}: The show method
+}}
+
 \section{Objects from the Class}{
  Objects can be created by calls of the
 function \code{DesignContrast}. However, the users should not directly call this

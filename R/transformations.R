@@ -21,8 +21,10 @@ matrixToLongTable <- function(x, valueLabel="value", rowLabel="row", colLabel="c
 }
 
 #' Detect if any column has an empty string as name and fix
+#'
 #' @param df A \code{data.frame}
-#' 
+#' @param prefix A character string, the prefix to be used if an column's name is empty.
+#'
 #' If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1
 #' @examples 
 #' testDf <- data.frame("Col1"=LETTERS[1:3], "Col2"=letters[2:4])

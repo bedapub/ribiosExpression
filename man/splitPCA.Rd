@@ -12,6 +12,8 @@ splitPCA(eset, factor, func = function(e) exprs(e), ...)
 \item{factor}{One or more factor vectors, used to split the eSet object}
 
 \item{func}{Function to retrieve values from split sub-eset objects}
+
+\item{...}{Passed to \code{pcaScores}}
 }
 \description{
 Split an eSet object and run PCA on each split, return PCA scores as one data.frame

@@ -7,13 +7,13 @@
 parseDesignContrastStr(groupsStr, levelStr, dispLevelStr, contrastStr)
 }
 \arguments{
+\item{groupsStr}{A factor vector indicating sample groups}
+
 \item{levelStr}{Level strings}
 
 \item{dispLevelStr}{Display level strings}
 
 \item{contrastStr}{A vector of character strings indicating contrasts}
-
-\item{groupStr}{A factor vector indicating sample groups}
 }
 \value{
 A DesignContrast object

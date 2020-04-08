@@ -30,7 +30,7 @@ setClass("DesignContrast",
            return(valid.gd & valid.gr & valid.dc)
          })
 
-#' @rdname DesignContrast
+#' @describeIn DesignContrast-class The show method
 #' @importMethodsFrom methods show
 #' @importFrom ribiosUtils headtail
 #' @export

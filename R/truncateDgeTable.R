@@ -1,6 +1,6 @@
 #' Transform limma::topTable results to a DGEtable
 #' 
-#' @param limmaTopTable: topTable returned by limma::topTable
+#' @param limmaTopTable topTable returned by limma::topTable
 #' @return A data.frame known as DGEtable which has controlled column names
 #' 
 #' @examples

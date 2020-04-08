@@ -67,7 +67,7 @@ especially the phenoData where factor information, such as sample groupping
 and orders of levels, may be important.
 }
 \examples{
-data(sample.ExpressionSet)
+data(sample.ExpressionSet, package="Biobase")
 exprs.file <- tempfile()
 fData.file <- tempfile()
 pData.file <- tempfile()

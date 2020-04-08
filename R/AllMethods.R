@@ -23,8 +23,8 @@ setMethod("exprsToLong", "matrix", function(x, idvar="illID",timevar="hybridID",
 
 #' @describeIn exprsToLong The method for eSet as input
 #' @export
-setMethod("exprsToLong", "eSet", function(x,...) {
-  exprsToLong(exprs(x),...)
+setMethod("exprsToLong", "eSet", function(x) {
+  exprsToLong(exprs(x))
 })
 
 #' Perform row-wise scaling to an ExpressionSet object

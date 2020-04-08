@@ -6,6 +6,7 @@
 #' @param valuevar The value variable
 #' @param ids Feature identifiers
 #' @param valueType Character string, value type
+#' @param ... Other parameters
 #' 
 #' @aliases exprsToLong-matrix-method exprsToLong-eSet-method
 #' @return A \code{data.frame}
@@ -32,8 +33,8 @@ setGeneric("nContrast", function(object) standardGeneric("nContrast"))
 
 #' Return indices of samples involved in the given contrast of two or more coefficients
 #'
-#' @param object: A \code{DesignContrast} object
-#' @param contrast: Either a contrast name or a integer indicating the index of the contrast
+#' @param object A \code{DesignContrast} object
+#' @param contrast Either a contrast name or a integer indicating the index of the contrast
 #' @return An integer vector, indices of samples that are involved, sorted by the ascending order of the coefficients of the contrast
 #' 
 #' @aliases contrastSampleIndices,DesignContrast,numeric-method contrastSampleIndices,DesignContrast,character-method

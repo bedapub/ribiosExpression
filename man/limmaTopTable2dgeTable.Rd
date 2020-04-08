@@ -7,7 +7,7 @@
 limmaTopTable2dgeTable(limmaTopTable)
 }
 \arguments{
-\item{limmaTopTable:}{topTable returned by limma::topTable}
+\item{limmaTopTable}{topTable returned by limma::topTable}
 }
 \value{
 A data.frame known as DGEtable which has controlled column names

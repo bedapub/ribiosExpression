@@ -43,7 +43,7 @@
 #' 
 #' @seealso \code{\link{readEset}}
 #' @examples 
-#' data(sample.ExpressionSet)
+#' data(sample.ExpressionSet, package="Biobase")
 #' exprs.file <- tempfile()
 #' fData.file <- tempfile()
 #' pData.file <- tempfile()
@@ -111,6 +111,8 @@ writeSampleGroups <- function(sampleGroups, sampleGroups.file, sampleGroupLevels
 #' @param fData.file Character, optional, file name where \code{fData} data is written to
 #' @param pData.file Character, optional, file name where \code{pData} data is written to
 #' @param exprs.file.format Character, write \code{exprs} data in either \code{gct} or \code{tsv} format 
+#' @param set Character, separator
+#' @param header Logical, whether a head line is present
 #' 
 #' The function can read in eSet object saved by \code{\link{writeEset}} by parsing
 #' three plain text files: \code{exprs.file}, \code{fData.file}, and \code{pData.file}.
@@ -123,7 +125,7 @@ writeSampleGroups <- function(sampleGroups, sampleGroups.file, sampleGroupLevels
 #' @seealso \code{\link{writeEset}}
 #' 
 #' @examples 
-#' data(sample.ExpressionSet)
+#' data(sample.ExpressionSet, package="Biobase")
 #' fData(sample.ExpressionSet) <- data.frame(ProbeID=featureNames(sample.ExpressionSet),
 #'  row.names=featureNames(sample.ExpressionSet))
 #' exprs.file <- tempfile()

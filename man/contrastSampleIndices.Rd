@@ -13,9 +13,9 @@ contrastSampleIndices(object, contrast)
 \S4method{contrastSampleIndices}{DesignContrast,numeric}(object, contrast)
 }
 \arguments{
-\item{object:}{A \code{DesignContrast} object}
+\item{object}{A \code{DesignContrast} object}
 
-\item{contrast:}{Either a contrast name or a integer indicating the index of the contrast}
+\item{contrast}{Either a contrast name or a integer indicating the index of the contrast}
 }
 \value{
 An integer vector, indices of samples that are involved, sorted by the ascending order of the coefficients of the contrast
