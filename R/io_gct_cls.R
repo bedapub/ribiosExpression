@@ -14,7 +14,7 @@ setMethod("writeGct",
             write_gct(obj, file=file, feat.name=feat.name, feat.desc=feat.desc)
           })
 
-getdfcol <- function(df, name) {
+getDfCol <- function(df, name) {
   nameInF <- ncol(df)>=1 & length(name)==1 && (name %in% colnames(df) || name %in% 1:ncol(df))
   if(nameInF) return(df[, name])
   return(name)
