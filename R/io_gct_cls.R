@@ -31,7 +31,7 @@ setMethod("writeGct",
               feat.name <- getDfCol(fd, feat.name)
             if(!missing(feat.desc))
               feat.desc <- getdfcol(fd, feat.desc)
-            writegct(exprs(obj), file=file, feat.name=feat.name, feat.desc)
+            write_gct(exprs(obj), file=file, feat.name=feat.name, feat.desc)
           })
 
 
