@@ -1,5 +1,18 @@
+#' Transform an expression matrix to long table
+#' 
+#' @param x A matrix or an ExpressionSet object
+#' @param idvar Variable name of the feature identifier, passed to \code{\link{reshape}}
+#' @param timevar The time variable, passed to \code{\link{reshape}}
+#' @param valuevar The value variable
+#' @param ids Feature identifiers
+#' @param valueType Character string, value type
+#' 
+#' @aliases exprsToLong-matrix-method exprsToLong-eSet-method
+#' @return A \code{data.frame}
+#' @importFrom stats reshape
 #' @exportMethod exprsToLong
 setGeneric("exprsToLong", function(x,...) standardGeneric("exprsToLong"))
+
 #' @exportMethod contrastNames
 setGeneric("contrastNames", function(object) standardGeneric("contrastNames"))
 #' @exportMethod designVariables
