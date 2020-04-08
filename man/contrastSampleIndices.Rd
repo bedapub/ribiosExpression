@@ -4,7 +4,7 @@
 \alias{contrastSampleIndices}
 \alias{contrastSampleIndices,DesignContrast,numeric-method}
 \alias{contrastSampleIndices,DesignContrast,character-method}
-\title{}
+\title{Return indices of samples involved in the given contrast of two or more coefficients}
 \usage{
 contrastSampleIndices(object, contrast)
 
