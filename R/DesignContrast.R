@@ -26,7 +26,7 @@ design2group <- function(designMatrix) {
 #' 
 #' @param designMatrix A design matrix
 #' @param contrastMatrix A contrast matrix. If null, no comparison can be done.
-#' @param group A factor vector of the same length as the number of columns of the design matrix. 
+#' @param groups A factor vector of the same length as the number of columns of the design matrix. 
 #'   If missing, \code{design2group} is used to infer groups.
 #' @param dispLevels A character vector of the same length as the number of levels encoded by \code{group},
 #'   indicating how different groups should be labelled. If missing, levels of \code{group} are used.

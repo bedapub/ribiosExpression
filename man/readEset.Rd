@@ -23,7 +23,11 @@ readEset(
 
 \item{exprs.file.format}{Character, write \code{exprs} data in either \code{gct} or \code{tsv} format}
 
-\item{header}{Logical, whether a head line is present
+\item{sep}{Character, separator}
+
+\item{header}{Logical, whether a head line is present}
+
+\item{...}{Passed to \code{\link{readFKtable}}
 
 The function can read in eSet object saved by \code{\link{writeEset}} by parsing
 three plain text files: \code{exprs.file}, \code{fData.file}, and \code{pData.file}.
@@ -32,8 +36,6 @@ Currently both \code{tsv} and \code{gct} formats are supported for expression
 file.
 
 See \code{writeEset} for limitations of these functions.}
-
-\item{set}{Character, separator}
 }
 \description{
 Read eSet object from plain files
@@ -41,8 +43,8 @@ Read eSet object from plain files
 \examples{
 data(sample.ExpressionSet, package="Biobase")
 fData(sample.ExpressionSet) <- data.frame(
- ProbeID=Biobase::featureNames(sample.ExpressionSet),
- row.names=Biobase::featureNames(sample.ExpressionSet))
+ ProbeID=featureNames(sample.ExpressionSet),
+ row.names=featureNames(sample.ExpressionSet))
 exprs.file <- tempfile()
 fData.file <- tempfile()
 pData.file <- tempfile()
@@ -54,5 +56,5 @@ exprs.file.format="tsv")
 testRead2 <- readEset(exprs.file, fData.file, pData.file, exprs.file.format="tsv")
 }
 \seealso{
-\code{\link{writeEset}}
+\code{\link{writeEset}}, \code{\link{readFKtable}}.
 }

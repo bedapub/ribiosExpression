@@ -8,12 +8,32 @@
 \usage{
 \S4method{show}{DesignContrast}(object)
 }
+\arguments{
+\item{object}{An object of \code{DesignContrast}.}
+}
 \description{
 The DesignContrast class represents key information in a designed experiment
 }
 \section{Functions}{
 \itemize{
 \item \code{show,DesignContrast-method}: The show method
+}}
+
+\section{Slots}{
+
+\describe{
+\item{\code{design}}{A numeric matrix. The number of rows equals the 
+sample size. The columns corresponds to the variables of design}
+
+\item{\code{contrasts}}{A numeric matrix. The number of rows equals the number of 
+columns in the design matrix. The columns corresponds to the comparisons
+one wishes to make.}
+
+\item{\code{groups}}{A factor vector, giving sample groups. 
+The length equals the number of samples.}
+
+\item{\code{dispLevels}}{A character vector, used for displaying sample groups. 
+The length equals the number of levels of the \code{groups} factor.}
 }}
 
 \section{Objects from the Class}{

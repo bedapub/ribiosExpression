@@ -111,8 +111,9 @@ writeSampleGroups <- function(sampleGroups, sampleGroups.file, sampleGroupLevels
 #' @param fData.file Character, optional, file name where \code{fData} data is written to
 #' @param pData.file Character, optional, file name where \code{pData} data is written to
 #' @param exprs.file.format Character, write \code{exprs} data in either \code{gct} or \code{tsv} format 
-#' @param set Character, separator
+#' @param sep Character, separator
 #' @param header Logical, whether a head line is present
+#' @param ... Passed to \code{\link{readFKtable}}
 #' 
 #' The function can read in eSet object saved by \code{\link{writeEset}} by parsing
 #' three plain text files: \code{exprs.file}, \code{fData.file}, and \code{pData.file}.
@@ -122,13 +123,13 @@ writeSampleGroups <- function(sampleGroups, sampleGroups.file, sampleGroupLevels
 #' 
 #' See \code{writeEset} for limitations of these functions.
 #' 
-#' @seealso \code{\link{writeEset}}
+#' @seealso \code{\link{writeEset}}, \code{\link{readFKtable}}.
 #' 
 #' @examples 
 #' data(sample.ExpressionSet, package="Biobase")
 #' fData(sample.ExpressionSet) <- data.frame(
-#'  ProbeID=Biobase::featureNames(sample.ExpressionSet),
-#'  row.names=Biobase::featureNames(sample.ExpressionSet))
+#'  ProbeID=featureNames(sample.ExpressionSet),
+#'  row.names=featureNames(sample.ExpressionSet))
 #' exprs.file <- tempfile()
 #' fData.file <- tempfile()
 #' pData.file <- tempfile()
