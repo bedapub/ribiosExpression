@@ -34,3 +34,25 @@ Suggests:
 License: GPL-3
 Encoding: UTF-8
 RoxygenNote: 7.1.0
+Collate: 
+    'AllClasses.R'
+    'AllGenerics.R'
+    'AllMethods.R'
+    'DesignContrast.R'
+    'annotate.R'
+    'assertFullRank.R'
+    'filter.R'
+    'import.R'
+    'io_gct_cls.R'
+    'io_gmt.R'
+    'io_tab.R'
+    'kendallW.R'
+    'mergeEset.R'
+    'obsolete.R'
+    'readFKtable.R'
+    'ribiosExpression-package.R'
+    'splitPCA.R'
+    'summarizeProbesets.R'
+    'summarizeSamples.R'
+    'transformations.R'
+    'truncateDgeTable.R'
