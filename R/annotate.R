@@ -25,8 +25,8 @@
 #' annotation information.
 #' @examples
 #' 
-#' data(ribios.eSet)
-#' myset <- ribios.eSet[100:105,]
+#' data(ribios.ExpressionSet)
+#' myset <- ribios.ExpressionSet[100:105,]
 #' 
 #' ## eSet
 #' \dontrun{
@@ -60,7 +60,8 @@ annChar <- function(object, target, check.target=FALSE) {
 #' 
 #' Annotate an \code{eSet} with the chip type defined by the value of
 #' \code{target}. \code{check.target} determines whether the chip type should
-#' be first checked. }
+#' be first checked. 
+#' 
 #' @export
 setMethod("annotate",
           c("eSet", "character", "logical"),
@@ -158,12 +159,12 @@ setGeneric("reannotate",
 #' saved in the \code{annotation} slot.
 #' @examples
 #' 
-#' data(ribios.eSet)
-#' print(ribios.eSet)
+#' data(ribios.ExpressionSet)
+#' print(ribios.ExpressionSet)
 #' 
 #' \dontrun{
-#' gti.eSet <- reannotate(ribios.eSet)
-#' gti.eSet <- reannotate(ribios.eSet, check.target=FALSE)
+#' gti.eSet <- reannotate(ribios.ExpressionSet)
+#' gti.eSet <- reannotate(ribios.ExpressionSet, check.target=FALSE)
 #' print(gti.eSet)
 #' }
 #' @export
@@ -181,8 +182,9 @@ setMethod("reannotate",
             annotate(object, new.ann)
           })
 
-#' @describeIn reannotation,eSet,logical-method When 
+#' @describeIn reannotate,eSet,logical-method When 
 #'    check.target is missing, it is assumed to be \code{FALSE}
+#' @aliases reannotate,eSet,logical-method
 #' @export
 setMethod("reannotate",
           c("eSet", "missing"),
