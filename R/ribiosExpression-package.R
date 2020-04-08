@@ -12,13 +12,17 @@ NULL
 #'             summarizeRows dfFactor putColsFirst ulen
 #' @importFrom Biobase `annotation<-` assayData `fData<-` fData `pData<-` 
 #'             featureNames pData exprs `exprs<-` annotation
-#'             featureData phenoData featureNames sampleNames 
+#'             featureData phenoData sampleNames 
 #'             `featureNames<-` storageMode
 #' @importFrom ribiosAnnotation gtiChiptypes bioc2gti
 #' @importFrom ribiosIO readMatrix read_gct_matrix write_gct writeMatrix
 #' @importFrom ribiosArg parseStrings parseFactor
 #' @importFrom ribiosPlot pcaScores
 #' @importClassesFrom Biobase eSet ExpressionSet
+#' @export `annotation<-` assayData `fData<-` fData `pData<-` 
+#' @export featureNames pData exprs `exprs<-` annotation
+#' @export featureData phenoData sampleNames 
+#' @export `featureNames<-`
 NULL
 
 #' An ExpressionSet for case demonstrations

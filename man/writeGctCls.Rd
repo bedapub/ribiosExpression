@@ -80,7 +80,7 @@ certain degree generic: it can be a character string or integer index of the
 
 \examples{
 
-data(sample.ExpressionSet)
+data(sample.ExpressionSet, package="Biobase")
 writeGct(sample.ExpressionSet[1:5, 1:4], file=stdout())
 writeCls(sample.ExpressionSet, file=stdout(), sample.group.col="type")
 

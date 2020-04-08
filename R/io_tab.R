@@ -126,8 +126,9 @@ writeSampleGroups <- function(sampleGroups, sampleGroups.file, sampleGroupLevels
 #' 
 #' @examples 
 #' data(sample.ExpressionSet, package="Biobase")
-#' fData(sample.ExpressionSet) <- data.frame(ProbeID=featureNames(sample.ExpressionSet),
-#'  row.names=featureNames(sample.ExpressionSet))
+#' fData(sample.ExpressionSet) <- data.frame(
+#'  ProbeID=Biobase::featureNames(sample.ExpressionSet),
+#'  row.names=Biobase::featureNames(sample.ExpressionSet))
 #' exprs.file <- tempfile()
 #' fData.file <- tempfile()
 #' pData.file <- tempfile()
