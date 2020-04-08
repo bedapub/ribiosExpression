@@ -1,6 +1,8 @@
 #' Transform limma::topTable results to a DGEtable
+#' 
 #' @param limmaTopTable: topTable returned by limma::topTable
 #' @return A data.frame known as DGEtable which has controlled column names
+#' 
 #' @examples
 #' example.sd <- 0.3*sqrt(4/rchisq(100,df=4))
 #' example.y <- matrix(rnorm(100*6,sd=example.sd),100,6)
@@ -22,13 +24,15 @@ limmaTopTable2dgeTable <- function(limmaTopTable) {
     return(limmaTopTable)
 }
 
-#' truncateDgeTable uses logFC
+## truncateDgeTable uses logFC
 utils::globalVariables(c("logFC"))
 
 #' Truncate dgeTable into tables of positively and negatively differentially expressed genes according to the pre-defined criteria
+#' 
 #' @param dgeTable dgeTable A DGEtable defined in ribiosExpression. Notice that the column names returned by limma::topTable are remapped (see limmaTopTable2dgeTable).
 #' @return A list of two elements: 'pos' and 'neg'. Each contains a dgeTable of positively/negatively regulated genes
 #' @references The logic is described at http://rochewiki.roche.com/confluence/display/BIOINFO/Substream+Algorithm
+#' 
 #' @export
 truncateDgeTable <- function(dgeTable) {
     dgeTable <- sortByCol(dgeTable, "PValue", decreasing=FALSE)
