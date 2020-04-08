@@ -7,7 +7,7 @@ NULL
 #' @importFrom methods as 
 #' @importFrom stats cor median prcomp qt sd
 #' @importFrom utils write.table
-#' @importFrom ribiosUtils haltifnot assertFile sortByCol removeInvarCol summarizeRows dfFactor
+#' @importFrom ribiosUtils haltifnot assertFile sortByCol removeInvarCol summarizeRows dfFactor putColsFirst
 #' @importFrom Biobase `annotation<-` assayData `fData<-` fData `pData<-` pData exprs `exprs<-` annotation
 #' @importFrom Biobase featureData phenoData featureNames sampleNames  `featureNames<-` storageMode
 #' @importFrom graph connComp
