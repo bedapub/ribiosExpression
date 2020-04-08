@@ -38,12 +38,12 @@ type name in GTI.
 }
 \examples{
 
-data(ribios.eSet)
-print(ribios.eSet)
+data(ribios.ExpressionSet)
+print(ribios.ExpressionSet)
 
 \dontrun{
-gti.eSet <- reannotate(ribios.eSet)
-gti.eSet <- reannotate(ribios.eSet, check.target=FALSE)
+gti.eSet <- reannotate(ribios.ExpressionSet)
+gti.eSet <- reannotate(ribios.ExpressionSet, check.target=FALSE)
 print(gti.eSet)
 }
 }
