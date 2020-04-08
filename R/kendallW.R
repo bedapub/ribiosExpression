@@ -3,6 +3,8 @@ getRcrit <- function (a, n) {
   t <- 0 - qt(a, n - 2)
   sqrt(t^2/(t^2 + n - 2))
 }
+
+#' @importFrom RGBL connComp
 getSubGraphs <- function (object, alpha, nc, w.crit) {
   r.crit <- getRcrit(alpha, nc)
   cc <- connComp(as(new("graphAM", object > r.crit), "graphNEL"))
