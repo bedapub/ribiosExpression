@@ -1,4 +1,5 @@
 #' Data structures and functions for gene expression analysis
+#' 
 #' @docType package
 #' @description Provides data structures and functions for gene expression analysis
 #' @name ribiosExpression-package
@@ -10,7 +11,6 @@ NULL
 #' @importFrom ribiosUtils haltifnot assertFile sortByCol removeInvarCol summarizeRows dfFactor putColsFirst
 #' @importFrom Biobase `annotation<-` assayData `fData<-` fData `pData<-` pData exprs `exprs<-` annotation
 #' @importFrom Biobase featureData phenoData featureNames sampleNames  `featureNames<-` storageMode
-#' @importFrom graph connComp
 #' @importFrom ribiosAnnotation gtiChiptypes bioc2gti
 #' @importFrom ribiosIO readMatrix read_gct_matrix write_gct writeMatrix
 #' @importFrom ribiosArg parseStrings parseFactor
@@ -18,7 +18,6 @@ NULL
 NULL
 
 #' Make GMT format strings with titles, comments and genes
-#' 
 #' 
 #' @name formatGmt-methods
 #' @aliases formatGmt-methods formatGmt,character,character,character-method
@@ -50,46 +49,7 @@ NULL
 #' @keywords methods
 NULL
 
-#' Make GMT format strings
-#' 
-#' Make strings in the GMT format
-#' 
-#' Resulting string(s) can be exported into \code{GMT} file by
-#' \code{\link{writeLines}}
-#' 
-#' @param title Character, title(s) of gene set(s)
-#' @param comment Character, comment(s) of gene set(s). Can be of the same
-#' length as the \code{title}, or be of length one: in the latter case, it will
-#' be replicated in gene set. This option can also be left out: the comment
-#' field of the GMT file will be left blank.
-#' @param genes A character vector of gene names, or a list of such vectors. In
-#' the former case, one GMT line is produced; otherwise multiple lines are
-#' returned. In the latter case, the length of the list must match the length
-#' of \code{title}.
-#' @return One or more lines of GMT file
-#' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
-#' @examples
-#' 
-#' formatGmt(title="GeneSet0", comment="My geneset", genes=c("MAPT", "MAPK", "AKT1"))
-#' formatGmt(title="GeneSet0", genes=c("MAPT", "MAPK", "AKT1"))
-#' 
-#' formatGmt(title=c("GeneSet0", "GeneSet1"),
-#'           comment=c("My geneset 0", "My geneset 1"),
-#'           genes=list(c("MAPT", "MAPK", "AKT1"), c("EGFR", "CDC42")))
-#' formatGmt(title=c("GeneSet0", "GeneSet1"),
-#'           comment="My genesets",
-#'           genes=list(c("MAPT", "MAPK", "AKT1"), c("EGFR", "CDC42")))
-#' formatGmt(title=c("GeneSet0", "GeneSet1"),
-#'           genes=list(c("MAPT", "MAPK", "AKT1"), c("EGFR", "CDC42")))
-#' 
-#' 
-NULL
-
-
-
-
-
-#' Interface to function kendallWmat
+#' Interface to the function kendallWmat
 #' 
 #' The S4 method acts as interface between advanced data structures (such as
 #' \code{ExpressionSet}) and the \code{kendallWmat} function. The function
@@ -125,25 +85,8 @@ NULL
 #' 
 #' data(ribios.ExpressionSet)
 #' tbl <- eSetToLongTable(ribios.ExpressionSet)
-#' 
 NULL
 
-
-#' Write matrix or ExpressionSet in GCT file format
-#' 
-#' 
-#' @name writeGct-methods
-#' @aliases writeGct-methods writeGct,ExpressionSet-method
-#' writeGct,matrix-method
-#' @docType methods
-#' @section Methods: \describe{ The S4-method is a wrapper of the
-#' \code{write_gct} function implemented in the \code{ribiosIO} package.
-#' \item{list("signature(obj = \"ExpressionSet\")")}{ An \code{ExpressionSet}
-#' object. }
-#' 
-#' \item{list("signature(obj = \"matrix\")")}{ A matrix } }
-#' @keywords methods
-NULL
 
 
 

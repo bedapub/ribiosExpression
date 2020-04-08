@@ -69,3 +69,52 @@ setMethod("contrastMatrix", "MArrayLM", function(object) {
 setMethod("contrastNames", "MArrayLM", function(object) {
     return(colnames(contrastMatrix(object)))
 })
+
+##--------------------##
+## formatGmt methods
+##--------------------##
+
+#' @describeIn formatGmt title, comment, and genes are one character string
+#' @export
+setMethod("formatGmt",
+          c("character", "character", "character"),
+          function(title, comment,genes) {
+            if(length(title)!=1L)
+              stop("'title' must be a character string")
+            if(length(comment)!=1L)
+              stop("'comment' must be a character string")
+            genes <- unique(genes)
+            genes.collapse <- paste(genes, collapse="\t")
+            paste(title, comment, genes.collapse,sep="\t")
+          })
+
+#' @describeIn formatGmt title and genes are both one character string, comments are missing
+#' @export
+setMethod("formatGmt",
+          c("character", "missing", "character"),
+          function(title, genes) {
+            formatGmt(title, "", genes)
+          })
+
+#' @describeIn formatGmt title and comments are both vectors of character strings, genes are a list of the same length
+#' @export
+setMethod("formatGmt",
+          c("character", "character", "list"),
+          function(title, comment,genes) {
+            if(!identical(length(title), length(genes))) {
+              stop("'genes' must be a list of the same length as the character vector 'titles'")
+            }
+            if(length(comment)==1)
+              comment <- rep(comment, length(title))
+            stopifnot(identical(length(title), length(comment)))
+            sapply(1:length(genes),
+                   function(x) formatGmt(title[x], comment[x], genes[[x]])
+            )
+          })
+
+#' @export
+setMethod("formatGmt",
+          c("character", "missing", "list"),
+          function(title, genes) {
+            formatGmt(title, "", genes)
+          })

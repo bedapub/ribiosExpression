@@ -2,10 +2,10 @@
 ## export and import gct/cls files
 ##------------------------------##
 
-## Export ExpressionSet into gct/cls files
-#' @exportMethod writeGct
-setGeneric("writeGct", function(obj, file, feat.name, feat.desc) standardGeneric("writeGct"))
+#' @include AllGenerics.R
 
+#' @describeIn writeGct Method for matrix as input, 
+#'    feta.name and feat.desc are passed to \code{write_gct}.
 #' @export 
 setMethod("writeGct",
           c("matrix", "ANY", "ANY", "ANY"),
@@ -13,22 +13,27 @@ setMethod("writeGct",
             if(missing(file)) file <- stdout()
             write_gct(obj, file=file, feat.name=feat.name, feat.desc=feat.desc)
           })
-getDfCol <- function(df, name) {
+
+getdfcol <- function(df, name) {
   nameInF <- ncol(df)>=1 & length(name)==1 && (name %in% colnames(df) || name %in% 1:ncol(df))
   if(nameInF) return(df[, name])
   return(name)
 }
+
+#' @describeIn writeGct Use \code{eSet} as input. \code{feat.name} and \code{feat.desc} are 
+#'     variable (column) names in \code{fData}.
 #' @export 
 setMethod("writeGct",
-          c("ExpressionSet", "ANY", "ANY", "ANY"),
+          c("eSet", "ANY", "ANY", "ANY"),
           function(obj, file, feat.name, feat.desc) {
             fd <- fData(obj)
             if(!missing(feat.name))
               feat.name <- getDfCol(fd, feat.name)
             if(!missing(feat.desc))
-              feat.desc <- getDfCol(fd, feat.desc)
-            writeGct(exprs(obj), file=file, feat.name=feat.name, feat.desc)
+              feat.desc <- getdfcol(fd, feat.desc)
+            writegct(exprs(obj), file=file, feat.name=feat.name, feat.desc)
           })
+
 
 #' Write CLS (class file) from Eset
 #' @param eset An ExpressionSet object
