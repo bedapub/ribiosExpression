@@ -25,5 +25,6 @@ Transform eSet to long data.frame
 \examples{
 data(ribios.ExpressionSet, package="ribiosExpression")
 exprsLongTbl <- eSetToLongTable(ribios.ExpressionSet)
-seLongTbl <- eSetToLongTable(ribios.ExpressionSet, exprsFun=function(eset) Biobase::assayData(eset)$se.exprs)
+seLongTbl <- eSetToLongTable(ribios.ExpressionSet, 
+   exprsFun=function(eset) Biobase::assayData(eset)$se.exprs)
 }

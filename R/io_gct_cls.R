@@ -136,6 +136,7 @@ writeGctCls <- function(eset,
 
 #' Import ExpressionSet into gct/cls files
 #' the C version, about 5x faster than the R implementation for the ALL dataset
+#' @describeIn readGctCls readGct uses the C implementation of reading in a gct file
 #' @param gct.file Character string, the path to a GCT file
 #' @return A \code{ExpressionSet} object
 #' @export

@@ -62,7 +62,8 @@ vectorizeExprs <- function(exp) {
 #' @examples 
 #' data(ribios.ExpressionSet, package="ribiosExpression")
 #' exprsLongTbl <- eSetToLongTable(ribios.ExpressionSet)
-#' seLongTbl <- eSetToLongTable(ribios.ExpressionSet, exprsFun=function(eset) Biobase::assayData(eset)$se.exprs)
+#' seLongTbl <- eSetToLongTable(ribios.ExpressionSet, 
+#'    exprsFun=function(eset) Biobase::assayData(eset)$se.exprs)
 #' @export
 eSetToLongTable <- function(x, 
                             exprsFun=function(eset) Biobase::exprs(eset),

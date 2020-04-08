@@ -235,14 +235,19 @@ isInputDesignConsistent <- function(descon, sampleNames) {
 #' @return A S4-object 'DesignContrast'
 #' @examples
 #' ## one-way ANOVA
-#' parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As", dispLevels="Beryllium,Arsenic", contrasts="As-Be")
+#' parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As", 
+#'     dispLevels="Beryllium,Arsenic", contrasts="As-Be")
 #' ## design/contrast matrix
-#' designFile <- system.file("extdata/example-designMatrix.txt", package="ribiosExpression")
-#' contrastFile <- system.file("extdata/example-contrastMatrix.txt", package="ribiosExpression")
+#' designFile <- system.file("extdata/example-designMatrix.txt", 
+#'     package="ribiosExpression")
+#' contrastFile <- system.file("extdata/example-contrastMatrix.txt", 
+#'     package="ribiosExpression")
 #' # minimal information
 #' parseDesignContrast(designFile=designFile, contrastFile=contrastFile)
 #' # with extra information about sample groups
-#' parseDesignContrast(designFile=designFile, contrastFile=contrastFile,sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As", dispLevels="Beryllium,Arsenic")
+#' parseDesignContrast(designFile=designFile, contrastFile=contrastFile,
+#'     sampleGroups="As,Be,As,Be,As,Be",
+#'     groupLevels="Be,As", dispLevels="Beryllium,Arsenic")
 #' @export
 parseDesignContrast <- function(designFile=NULL, contrastFile=NULL,
                                 sampleGroups=NULL, groupLevels=NULL, dispLevels=NULL,
@@ -303,12 +308,18 @@ parseDesignContrast <- function(designFile=NULL, contrastFile=NULL,
 #' 
 #' @examples
 #' ## one-way ANOVA
-#' (myDesCon <- parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As", dispLevels="Beryllium,Arsenic", contrasts="As-Be"))
+#' myDesCon <- parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",
+#'    groupLevels="Be,As", dispLevels="Beryllium,Arsenic", contrasts="As-Be")
 #' contrastSampleIndices(myDesCon, 1L)
-#' (myInterDesCon <- new("DesignContrast", design=matrix(c(rep(1,6), rep(0,2), rep(1,2), rep(0,2), rep(0,4), rep(1,2)), nrow=6, byrow=FALSE), contrasts=matrix(c(0,1,0, 0,0,1, 0,-1,1), byrow=FALSE, nrow=3), groups=factor(rep(c("As", "Be", "Cd"), each=2)), dispLevels=c("Arsenic", "Beryllium", "Cadmium")))
-#' (cont1Ind <- contrastSampleIndices(myInterDesCon, 1L))
-#' (cont2Ind <- contrastSampleIndices(myInterDesCon, 2L))
-#' (cont3Ind <- contrastSampleIndices(myInterDesCon, 3L))
+#' myInterDesCon <- new("DesignContrast", 
+#'     design=matrix(c(rep(1,6), rep(0,2), rep(1,2), rep(0,2), 
+#'            rep(0,4), rep(1,2)), nrow=6, byrow=FALSE), 
+#'     contrasts=matrix(c(0,1,0, 0,0,1, 0,-1,1), byrow=FALSE, nrow=3), 
+#'     groups=factor(rep(c("As", "Be", "Cd"), each=2)), 
+#'     dispLevels=c("Arsenic", "Beryllium", "Cadmium"))
+#' cont1Ind <- contrastSampleIndices(myInterDesCon, 1L)
+#' cont2Ind <- contrastSampleIndices(myInterDesCon, 2L)
+#' cont3Ind <- contrastSampleIndices(myInterDesCon, 3L)
 #' stopifnot(identical(cont1Ind, 1:4))
 #' stopifnot(identical(cont2Ind, c(1:2, 5:6)))
 #' stopifnot(identical(cont3Ind, c(3:6)))

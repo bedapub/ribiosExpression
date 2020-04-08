@@ -22,6 +22,9 @@ limmaTopTable2dgeTable <- function(limmaTopTable) {
     return(limmaTopTable)
 }
 
+#' truncateDgeTable uses logFC
+utils::globalVariables(c("logFC"))
+
 #' Truncate dgeTable into tables of positively and negatively differentially expressed genes according to the pre-defined criteria
 #' @param dgeTable dgeTable A DGEtable defined in ribiosExpression. Notice that the column names returned by limma::topTable are remapped (see limmaTopTable2dgeTable).
 #' @return A list of two elements: 'pos' and 'neg'. Each contains a dgeTable of positively/negatively regulated genes

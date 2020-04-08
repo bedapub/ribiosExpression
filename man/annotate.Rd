@@ -2,10 +2,62 @@
 % Please edit documentation in R/annotate.R
 \name{annotate}
 \alias{annotate}
-\title{Annotate an object with the target}
+\title{Annotate eSet or probesets}
 \usage{
 annotate(object, target, check.target, ...)
 }
+\arguments{
+\item{object}{An object of \code{eSet}, or a character vector of
+probesets}
+
+\item{target}{Chip type to be annotated}
+
+\item{check.target}{Logical, with \code{FALSE} as default. If set to
+\code{TRUE}, before looking up the annotations, it first check whether
+\code{target} is one of the valid chip types supported by GTI, and stops if
+it is not the case.}
+
+\item{\dots}{Currently not implemented}
+}
+\value{
+An \code{eSet}, or a \code{data.frame} containing
+annotation information of the probesets.
+}
 \description{
-Annotate an object with the target
+The function annotates an object of \code{eSet}, or a vector of
+characters representing probesets.
+}
+\details{
+Once successfully annotated, the \code{annotation} slot of the
+\code{eSet} object is set to the value of \code{target}.
+}
+\note{
+Internal function \code{annChar} is called to annotate probesets, and
+the method for \code{eSet} calls the version for characters to do
+annotation.
+}
+\examples{
+
+data(ribios.eSet)
+myset <- ribios.eSet[100:105,]
+
+## eSet
+\dontrun{
+annotate(myset, "HG_U95AV2")
+annotate(myset, "HG_U_95AV2", check.target=TRUE)
+}
+
+## characters
+\dontrun{
+annotate(featureNames(myset), "HG_U95AV2")
+}
+
+}
+\seealso{
+Internally the function \code{annotateProbesets} in the
+\code{ribiosAnnotation} package is used to connect to GTI and fetch
+annotation information.
+}
+\author{
+Jitao David Zhang <jitao_david.zhang@roche.com>
 }
