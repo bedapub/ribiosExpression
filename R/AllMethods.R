@@ -1,12 +1,62 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-#' Return contrast names of a DesignContrast object
-#' @param object A DesignContrast object
+##-----------------------##
+## DesignContrast methods
+##-----------------------##
+
+#' @describeIn groups Return the raw sample groups from a DesignContrast object
+#' @export
+setMethod("groups", "DesignContrast", function(object) {
+return(object@groups)
+})
+
+#' @describeIn dispGroups Return the sample groups from a DesignContrast object
+#'     , suing display labels
+#' @export
+setMethod("dispGroups", "DesignContrast", function(object) {
+  groups <- object@groups
+  levels(groups) <- object@dispLevels
+  return(groups)
+})
+
+#' @describeIn designMatrix Return the design matrix from a DesignContrast 
+#'     object
+#' @export
+setMethod("designMatrix", "DesignContrast", function(object) {
+  return(object@design)
+})
+
+#' @describeIn contrastMatrix Return the contrast matrix from a DesignContrast
+#'     object
+#' @export
+setMethod("contrastMatrix", "DesignContrast", function(object) {
+  return(object@contrasts)
+})
+
+#' @describeIn nContrast Return the number of contrast in a DesignContrast 
+#'     object
+#' @export
+setMethod("nContrast", "DesignContrast", function(object) {
+  return(ncol(object@contrasts))
+})
+
+#' @describeIn designVariables Return the names of variables (column names) 
+#'    in the design matrix of a DesignContrast object
+#' @export 
+setMethod("designVariables", "DesignContrast", function(object) {
+  return(colnames(designMatrix(object)))
+})
+
+#' @describeIn contrastNames Return contrast names, i.e., column names of the 
+#'   contrast matrix
 #' @export
 setMethod("contrastNames", "DesignContrast", function(object)
           return(colnames(contrastMatrix(object))))
 
+##---------------##
+## exprsToLong
+##---------------##
 #' @describeIn exprsToLong The method for matrix as input
 setMethod("exprsToLong", "matrix", function(x, idvar="illID",timevar="hybridID", valuevar="value", 
                                             ids=rownames(x), valueType="raw") {
@@ -44,28 +94,26 @@ rowscale.ExpressionSet <- function(x, center=TRUE, scale=TRUE) {
   return(x)
 }
 
-#' Extract design matrix from MArrayLM
-#'
-#' @param object A MArrayLM object from the limma package
-#' 
+##----------------------------------------------##
+## design/contrast matrix from MArrayLM objects
+##----------------------------------------------##
+
+#' @describeIn designMatrix Extract design matrix from an object of MArrayLM
 #' @importClassesFrom limma MArrayLM
-#' @return Design matrix
+#' @export
 setMethod("designMatrix", "MArrayLM", function(object) {
     return(object$design)
 })
 
-#' Extract contrast matrix from MArrayLM
-#'
-#' @param object A MArrayLM object from the limma package
-#' @return contrast matrix
+
+#' @describeIn contrastMatrix Extract contrast matrix from an object of MArrayLM
+#' @export
 setMethod("contrastMatrix", "MArrayLM", function(object) {
     return(object$contrast)
 })
 
-#' Extract contrast names from MArrayLM
-#'
-#' @param object A MArrayLM object from the limma package
-#' @return Character vector of contrast names
+#' @describeIn contrastNames Extract contrast names from an object of MArrayLM
+#' @export
 setMethod("contrastNames", "MArrayLM", function(object) {
     return(colnames(contrastMatrix(object)))
 })
@@ -96,7 +144,8 @@ setMethod("formatGmt",
             formatGmt(title, "", genes)
           })
 
-#' @describeIn formatGmt title and comments are both vectors of character strings, genes are a list of the same length
+#' @describeIn formatGmt title and comments are both vectors of character 
+#'     strings, genes are a list of the same length
 #' @export
 setMethod("formatGmt",
           c("character", "character", "list"),
@@ -112,6 +161,8 @@ setMethod("formatGmt",
             )
           })
 
+#' @describeIn formatGmt title is vectors of character strings, comments are 
+#'     missing, genes are a list of the same length as the title
 #' @export
 setMethod("formatGmt",
           c("character", "missing", "list"),

@@ -14,19 +14,51 @@
 #' @exportMethod exprsToLong
 setGeneric("exprsToLong", function(x,...) standardGeneric("exprsToLong"))
 
+#' Extract contrastNames from an object
+#' @param object An object, see supported methods below
+#' @aliases contrastNames,DesignContrast-method
 #' @exportMethod contrastNames
 setGeneric("contrastNames", function(object) standardGeneric("contrastNames"))
-#' @exportMethod designVariables
-setGeneric("designVariables", function(object) standardGeneric("designVariables"))
 
+#' Extract design variable names from an object
+#' @param object An object, see supported methods below
+#' @aliases designVariables,DesignContrast-method
+#' @exportMethod designVariables
+setGeneric("designVariables", function(object) 
+  standardGeneric("designVariables"))
+
+#' Extract sample groups from an object
+#' 
+#' @param object An object, see supported methods below
 #' @exportMethod groups
+#' @aliases groups,DesignContrast-method
 setGeneric("groups", function(object) standardGeneric("groups"))
+
+#' Extract displayed group labels from an object
+#' 
+#' @param object An object, see supported methods below
 #' @exportMethod dispGroups
+#' @aliases dispGroups,DesignContrast-method
 setGeneric("dispGroups", function(object) standardGeneric("dispGroups"))
+
+#' Extract the design matrix from an object
+#' 
+#' @param object An object, see supported methods below
 #' @exportMethod designMatrix
+#' @aliases designMatrix,DesignContrast-method
 setGeneric("designMatrix", function(object) standardGeneric("designMatrix"))
+
+#' Extract the contrast matrix from an object
+#' 
+#' @param object An object, see supported methods below
 #' @exportMethod contrastMatrix
+#' @aliases contrastMatrix,DesignContrast-method
 setGeneric("contrastMatrix", function(object) standardGeneric("contrastMatrix"))
+
+#' Extract the number of contrasts from an object
+#' 
+#' @param object An object, see supported methods below
+#' @aliases nContrast,DesignContrast-method
 #' @exportMethod nContrast
 setGeneric("nContrast", function(object) standardGeneric("nContrast"))
 

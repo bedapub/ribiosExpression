@@ -56,38 +56,6 @@ DesignContrast <- function(designMatrix, contrastMatrix=NULL, groups=NULL, dispL
   return(res)
 }
 
-#' @export
-setMethod("groups", "DesignContrast", function(object) {
-  return(object@groups)
-})
-
-#' @export
-setMethod("dispGroups", "DesignContrast", function(object) {
-  groups <- object@groups
-  levels(groups) <- object@dispLevels
-  return(groups)
-})
-
-#' @export
-setMethod("designMatrix", "DesignContrast", function(object) {
-  return(object@design)
-})
-
-#' @export
-setMethod("contrastMatrix", "DesignContrast", function(object) {
-  return(object@contrasts)
-})
-
-#' @export
-setMethod("nContrast", "DesignContrast", function(object) {
-              return(ncol(object@contrasts))
-          })
-
-#' @export 
-setMethod("designVariables", "DesignContrast", function(object) {
-  return(colnames(designMatrix(object)))
-})
-
 #' Parse contrast from strings
 #' @param contrastStr A vector of character strings
 #' @return A contrast matrix
