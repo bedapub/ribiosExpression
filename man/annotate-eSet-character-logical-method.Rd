@@ -10,6 +10,12 @@
 \item{object}{An eSet}
 
 \item{target}{An chiptype in \code{ribiosAnnotation::gtiChiptypes()}}
+
+\item{check.target}{Logical, whether checking the target exists or not.
+
+Annotate an \code{eSet} with the chip type defined by the value of
+\code{target}. \code{check.target} determines whether the chip type should
+be first checked.}
 }
 \description{
 Annotate an eSet object with a chip type

@@ -1,21 +1,13 @@
+#' @include AllClasses.R AllGenerics.R
+NULL
+
 #' Return contrast names of a DesignContrast object
 #' @param object A DesignContrast object
 #' @export
 setMethod("contrastNames", "DesignContrast", function(object)
           return(colnames(contrastMatrix(object))))
 
-#' Transform an expression matrix to long table
-#' 
-#' @param x A matrix or an ExpressionSet object
-#' @param idvar Variable name of the feature identifier, passed to \code{\link{reshape}}
-#' @param timevar The time variable, passed to \code{\link{reshape}}
-#' @param valuevar The value variable
-#' @param ids Feature identifiers
-#' @param valueType Character string, value type
-#' 
-#' @return A \code{data.frame}
-#' @importFrom stats reshape
-#' @export
+#' @describeIn exprsToLong The method for matrix as input
 setMethod("exprsToLong", "matrix", function(x, idvar="illID",timevar="hybridID", valuevar="value", 
                                             ids=rownames(x), valueType="raw") {
   x <- as.data.frame(x)
@@ -29,9 +21,9 @@ setMethod("exprsToLong", "matrix", function(x, idvar="illID",timevar="hybridID",
   return(xLong)
 })
 
-#' @describeIn exprsToLong,matrix-method The method for ExpressionSet
+#' @describeIn exprsToLong The method for eSet as input
 #' @export
-setMethod("exprsToLong", "ExpressionSet", function(x,...) {
+setMethod("exprsToLong", "eSet", function(x,...) {
   exprsToLong(exprs(x),...)
 })
 

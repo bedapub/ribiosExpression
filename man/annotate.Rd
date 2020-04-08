@@ -38,8 +38,8 @@ annotation.
 }
 \examples{
 
-data(ribios.eSet)
-myset <- ribios.eSet[100:105,]
+data(ribios.ExpressionSet)
+myset <- ribios.ExpressionSet[100:105,]
 
 ## eSet
 \dontrun{
