@@ -21,9 +21,6 @@ Imports:
     ribiosUtils (>= 1.0-5),
     ribiosPlot,
     limma,
-    edgeR,
-    rrcov,
-    graph,
     ribiosArg,
     magrittr,
     dplyr,
@@ -46,7 +43,6 @@ Collate:
     'io_gct_cls.R'
     'io_gmt.R'
     'io_tab.R'
-    'kendallW.R'
     'mergeEset.R'
     'obsolete.R'
     'readFKtable.R'
