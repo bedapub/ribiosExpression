@@ -3,10 +3,18 @@
 annChar <- function(object, target, check.target=FALSE) {
   if(check.target) {
     has.target <- target %in% gtiChiptypes()
-    if(!has.target)
-      stop("Chip type ", target, " is not supported by GTI.\n",
-           "Call 'gtiChiptypes()' to see supported types")
+    supportedIDs <- c("GeneID", "GeneSymbol", "RefSeq",
+                                       "Ensembl", "UniProt")
+    isKnownFeatureIDs <- target %in% supportedIDs
+    if(!has.target & !isKnownFeatureIDs) {
+      stop("Chip type ", target, " is not supported. \n",
+           "Call 'gtiChiptypes()' to see supported probeset types or \
+           specify one of the following feature types:",
+           paste(supportedIDs, collape=","))
+    }
   }
+  ## TODO: add other supported IDs, in fact this can become an improved version 
+  ## of ribiosAnnotation::annotateAnyIDs
   return(annotateProbesets(object, target))
 }
 
