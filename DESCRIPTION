@@ -47,6 +47,7 @@ Collate:
     'readFKtable.R'
     'readFeatureAnnotationFile.R'
     'ribiosExpression-package.R'
+    'sniffFeatureType.R'
     'splitPCA.R'
     'summarizeProbesets.R'
     'summarizeSamples.R'
