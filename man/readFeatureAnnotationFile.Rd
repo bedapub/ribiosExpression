@@ -9,15 +9,15 @@ readFeatureAnnotationFile(file, ...)
 \arguments{
 \item{file}{A tab-delimited file without quotes, the first column must
 contain feauture identifiers. In case the first column has no column name 
-and it contains row names, they will be used as feature IDs.}
+and it contains row names, they will be used as feature names.}
 
 \item{...}{Other parameters passed to \code{\link[ribiosIO]{readMatrix}}, 
 which are further passed to \code{\link[utils]{read.table}}.}
 }
 \value{
 A \code{data.frame} containing feature annotation, with the first
-  column named as `FeatureID` that contains feature identifiers as character 
-  strings. In case the input table contains the column `FeatureID`, the
+  column named as `FeatureName` that contains feature identifiers as character 
+  strings. In case the input table contains the column `FeatureName`, the
   content in that column must match the row names, otherwise an error 
   is reported.
 }

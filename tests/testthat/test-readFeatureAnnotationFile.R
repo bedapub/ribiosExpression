@@ -1,26 +1,18 @@
 library(testthat)
 library(ribiosExpression)
 
-f1 <- system.file("extdata",
-  "featureAnnotation/featureAnnotationFile-withRowNames.txt", 
-  package="ribiosExpression")
-
-f2 <- system.file("extdata",
-  "featureAnnotation/featureAnnotationFile-withoutRowNames.txt", 
-  package="ribiosExpression")
-
 fileDir <- system.file("extdata",
                        "featureAnnotation", package="ribiosExpression")
 f1 <- file.path(fileDir, "featureAnnotationFile-withRowNames.txt")
 f2 <- file.path(fileDir, "featureAnnotationFile-withoutRowNames.txt")
-f3 <- file.path(fileDir, "featureAnnotationFile-withRowNamesFeatureID.txt")
-f4 <- file.path(fileDir, "featureAnnotationFile-withoutRowNamesFeatureID.txt")
+f3 <- file.path(fileDir, "featureAnnotationFile-withRowNamesFeatureName.txt")
+f4 <- file.path(fileDir, "featureAnnotationFile-withoutRowNamesFeatureName.txt")
 f1Read <- readFeatureAnnotationFile(f1, stringsAsFactors=FALSE)
 f2Read <- readFeatureAnnotationFile(f2, stringsAsFactors=FALSE)
 f3Read <- readFeatureAnnotationFile(f3, stringsAsFactors=FALSE)
 f4Read <- readFeatureAnnotationFile(f4, stringsAsFactors=FALSE)
 
-f1Expected <- data.frame(FeatureID=c("1", "2"),
+f1Expected <- data.frame(FeatureName=c("1", "2"),
                          GeneID=c(1, 2),
                          GeneSymbol=c("A1BG", "A2M"),
                          row.names=c("1", "2"),

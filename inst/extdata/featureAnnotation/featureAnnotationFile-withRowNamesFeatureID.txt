@@ -1,3 +1,0 @@
-	GeneID	GeneSymbol	FeatureID
-1	1	A1BG	1
-2	2	A2M	2
