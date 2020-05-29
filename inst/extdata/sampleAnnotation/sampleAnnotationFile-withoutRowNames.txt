@@ -1,0 +1,5 @@
+SampleID	group
+S1	ctrl
+S2	trt
+S3	ctrl
+S4	trt

@@ -1,0 +1,5 @@
+	SampleID	group	SampleName
+S1	S1	ctrl	S1
+S2	S2	trt	S2
+S3	S3	ctrl	S3
+S4	S4	trt	S4
