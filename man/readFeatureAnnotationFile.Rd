@@ -8,15 +8,14 @@ readFeatureAnnotationFile(file)
 }
 \arguments{
 \item{file}{A tab-delimited file without quotes, the first column must
-contain feauture identifiers. In case the first column contains column 
-names, in which case the first column has no name, the row names will be 
-used as feature identifiers.}
+contain feauture identifiers. In case the first column has no column name 
+and it contains row names, they will be used as feature IDs.}
 }
 \value{
 A \code{data.frame} containing feature annotation, with the first
   column named as `FeatureID` that contains feature identifiers. In case the 
-  input table contains the column `FeatureID`, it will be renamed as
-   `FeatureID.1`.
+  input table contains the column `FeatureID`, the content in that column
+  must match the row names, otherwise an error is reported.
 }
 \description{
 Read in feature annotation file in the tsv-format, with or without row names
