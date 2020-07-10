@@ -38,7 +38,7 @@ readAnnotationFile <- function(file, outputKeyName="FeatureName", ...) {
   if(outputKeyName %in% colnames(annoTbl)) {
     ribiosUtils::haltifnot(identical(as.character(annoTbl[, outputKeyName]),
                         as.character(annoTbl[,1L])),
-                        msg="The content in the column speicified by outputKeyName does not match the first column.")
+                        msg="Error in readAnnotationFile: the content in the column speicified by outputKeyName does not match the first column. It is likely caused by using column names that are reserved for feature (FeatureName) or sample (SampleName) annotation. Please consider renaming such columns. If the problem persists, please contact the developer.")
   }
   if(colnames(annoTbl)[1]=="") { ## the annotation file contains row names
     if(outputKeyName %in% colnames(annoTbl)) {
