@@ -16,8 +16,8 @@ which are further passed to \code{\link[utils]{read.table}}.}
 }
 \value{
 A \code{data.frame} containing sample annotation, with the first
-  column named as `SampleName` that contains sample identifiers as character 
-  strings. In case the input table contains the column `Samples`, the
+  column named as `ExperimentName` that contains sample identifiers as character 
+  strings. In case the input table contains the column `ExperimentName`, the
   content in that column must match the row names, otherwise an error 
   is reported.
 }
