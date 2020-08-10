@@ -92,8 +92,8 @@ readFeatureAnnotationFile <- function(file, ...) {
 #' @param ... Other parameters passed to \code{\link[ribiosIO]{readMatrix}}, 
 #'   which are further passed to \code{\link[utils]{read.table}}.
 #' @return A \code{data.frame} containing sample annotation, with the first
-#'   column named as `SampleName` that contains sample identifiers as character 
-#'   strings. In case the input table contains the column `Samples`, the
+#'   column named as `ExperimentName` that contains sample identifiers as character 
+#'   strings. In case the input table contains the column `ExperimentName`, the
 #'   content in that column must match the row names, otherwise an error 
 #'   is reported.
 #' @examples 
@@ -109,5 +109,5 @@ readFeatureAnnotationFile <- function(file, ...) {
 #' head(f2Read)
 #' @export
 readSampleAnnotationFile <- function(file, ...) {
-  res <- readAnnotationFile(file, outputKeyName = "SampleName", ...)
+  res <- readAnnotationFile(file, outputKeyName = "ExperimentName", ...)
 }
