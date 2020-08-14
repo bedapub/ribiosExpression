@@ -18,6 +18,8 @@
 limmaTopTable2dgeTable <- function(limmaTopTable) {
     colnames(limmaTopTable)[colnames(limmaTopTable)=="P.Value"] <- "PValue"
     colnames(limmaTopTable)[grepl("adj\\.P\\.", colnames(limmaTopTable))] <- "FDR"
+    colnames(limmaTopTable)[grepl("CI\\.L", colnames(limmaTopTable))] <- "CIL"
+    colnames(limmaTopTable)[grepl("CI\\.R", colnames(limmaTopTable))] <- "CIR"
     limmaTopTable$Feature <- rownames(limmaTopTable)
     limmaTopTable <- putColsFirst(limmaTopTable,
                                   c("Feature", "AveExpr", "t", "logFC", "PValue", "FDR", "B"))
