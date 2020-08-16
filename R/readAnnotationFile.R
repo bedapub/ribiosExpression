@@ -53,7 +53,13 @@ readAnnotationFile <- function(file, outputKeyName="FeatureName", ...) {
   }
   annoTbl <- ribiosUtils::putColsFirst(annoTbl, outputKeyName)
   annoTbl[, outputKeyName] <- as.character(annoTbl[, outputKeyName])
-  rownames(annoTbl) <- as.character(annoTbl[, outputKeyName])
+  keyNames <- as.character(annoTbl[, outputKeyName])
+  if(any(duplicated(keyNames))) {
+     warning(sprintf("Duplicated key names in file %s: %s", file,
+		     paste(keyNames[duplicated(keyNames)], collapse=",")))
+     keyNames <- make.unique(keyNames)
+  }
+  rownames(annoTbl) <- keyNames
   return(annoTbl)
 }
 
