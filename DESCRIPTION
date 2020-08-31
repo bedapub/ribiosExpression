@@ -1,8 +1,8 @@
 Package: ribiosExpression
 Type: Package
 Title: Expression analysis component of ribios
-Version: 1.1-2
-Date: 2020-08-16
+Version: 1.1-3
+Date: 2020-08-31
 Authors@R:
   person(given = "Jitao David",
          family = "Zhang",
@@ -46,7 +46,9 @@ Collate:
     'obsolete.R'
     'readAnnotationFile.R'
     'readFKtable.R'
+    'removeAllZeroVar.R'
     'ribiosExpression-package.R'
+    'ribiosExpressionSet.R'
     'sniffFeatureType.R'
     'splitPCA.R'
     'summarizeProbesets.R'

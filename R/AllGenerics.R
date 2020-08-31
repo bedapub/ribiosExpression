@@ -48,12 +48,28 @@ setGeneric("dispGroups", function(object) standardGeneric("dispGroups"))
 #' @aliases designMatrix,DesignContrast-method
 setGeneric("designMatrix", function(object) standardGeneric("designMatrix"))
 
+#' Assign design matrix to an object
+#' 
+#' @param object An object, see supported methods below
+#' @param value Design matrix
+#' @exportMethod `designMatrix<-`
+setGeneric("designMatrix<-", function(object, value) standardGeneric("designMatrix<-"))
+
+
 #' Extract the contrast matrix from an object
 #' 
 #' @param object An object, see supported methods below
 #' @exportMethod contrastMatrix
 #' @aliases contrastMatrix,DesignContrast-method
 setGeneric("contrastMatrix", function(object) standardGeneric("contrastMatrix"))
+
+#' Assign contrast matrix to an object
+#' 
+#' @param object An object, see supported methods below
+#' @param value Contrast matrix
+#' @exportMethod `contrastMatrix<-`
+setGeneric("contrastMatrix<-", function(object, value) standardGeneric("contrastMatrix<-"))
+
 
 #' Extract the number of contrasts from an object
 #' 

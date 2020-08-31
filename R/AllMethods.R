@@ -27,11 +27,29 @@ setMethod("designMatrix", "DesignContrast", function(object) {
   return(object@design)
 })
 
+#' @describeIn designMatrix Assign a design matrix to a \code{DesignContrast}
+#'     object
+#' @param value A design matrix
+#' @export
+setReplaceMethod("designMatrix", "DesignContrast", function(object, value) {
+  object@design <- value
+  return(object)
+})
+
 #' @describeIn contrastMatrix Return the contrast matrix from a DesignContrast
 #'     object
 #' @export
 setMethod("contrastMatrix", "DesignContrast", function(object) {
   return(object@contrasts)
+})
+
+#' @describeIn contrastMatrix Assign a contrast matrix to a \code{contrastContrast}
+#'     object
+#' @param value A contrast matrix
+#' @export
+setReplaceMethod("contrastMatrix", "DesignContrast", function(object, value) {
+  object@contrasts <- value
+  return(object)
 })
 
 #' @describeIn nContrast Return the number of contrast in a DesignContrast 

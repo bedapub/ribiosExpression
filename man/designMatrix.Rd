@@ -3,6 +3,7 @@
 \name{designMatrix}
 \alias{designMatrix}
 \alias{designMatrix,DesignContrast-method}
+\alias{designMatrix<-,DesignContrast-method}
 \alias{designMatrix,MArrayLM-method}
 \title{Extract the design matrix from an object}
 \usage{
@@ -10,10 +11,14 @@ designMatrix(object)
 
 \S4method{designMatrix}{DesignContrast}(object)
 
+\S4method{designMatrix}{DesignContrast}(object) <- value
+
 \S4method{designMatrix}{MArrayLM}(object)
 }
 \arguments{
 \item{object}{An object, see supported methods below}
+
+\item{value}{A design matrix}
 }
 \description{
 Extract the design matrix from an object
@@ -21,6 +26,9 @@ Extract the design matrix from an object
 \section{Methods (by class)}{
 \itemize{
 \item \code{DesignContrast}: Return the design matrix from a DesignContrast 
+object
+
+\item \code{DesignContrast}: Assign a design matrix to a \code{DesignContrast}
 object
 
 \item \code{MArrayLM}: Extract design matrix from an object of MArrayLM

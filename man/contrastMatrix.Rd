@@ -3,6 +3,7 @@
 \name{contrastMatrix}
 \alias{contrastMatrix}
 \alias{contrastMatrix,DesignContrast-method}
+\alias{contrastMatrix<-,DesignContrast-method}
 \alias{contrastMatrix,MArrayLM-method}
 \title{Extract the contrast matrix from an object}
 \usage{
@@ -10,10 +11,14 @@ contrastMatrix(object)
 
 \S4method{contrastMatrix}{DesignContrast}(object)
 
+\S4method{contrastMatrix}{DesignContrast}(object) <- value
+
 \S4method{contrastMatrix}{MArrayLM}(object)
 }
 \arguments{
 \item{object}{An object, see supported methods below}
+
+\item{value}{A contrast matrix}
 }
 \description{
 Extract the contrast matrix from an object
@@ -21,6 +26,9 @@ Extract the contrast matrix from an object
 \section{Methods (by class)}{
 \itemize{
 \item \code{DesignContrast}: Return the contrast matrix from a DesignContrast
+object
+
+\item \code{DesignContrast}: Assign a contrast matrix to a \code{contrastContrast}
 object
 
 \item \code{MArrayLM}: Extract contrast matrix from an object of MArrayLM
