@@ -30,7 +30,8 @@ fixDesignMatrixColnames <- function(designMatrix,
     }
   }
   cnames <- gsub(":", interceptChar, cnames)
-  cnames[1] <- "Baseline"
+  if(cnames[1]=="(Intercept)")
+    cnames[1] <- "Baseline"
   cnames <- make.names(cnames)
   colnames(designMatrix) <- cnames
   return(designMatrix)
