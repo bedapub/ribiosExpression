@@ -25,7 +25,7 @@ fixDesignMatrixColnames <- function(designMatrix,
   varnames <- names(contrasts)
   for (i in seq(along=varnames)) {
     if(removeContrastNames[i]) {
-      vn <- varnames[i]
+      vn <- make.names(varnames[i])
       cnames <- sub(vn, "", cnames)
     }
   }
