@@ -26,7 +26,8 @@ fixDesignMatrixColnames <- function(designMatrix,
   for (i in seq(along=varnames)) {
     if(removeContrastNames[i]) {
       vn <- make.names(varnames[i])
-      cnames <- sub(vn, "", cnames)
+      cnames <- sub(varnames[i], "", cnames, fixed=TRUE) ## in case of interaction
+      cnames <- sub(vn, "", cnames, fixed=TRUE) ## other cases
     }
   }
   cnames <- gsub(":", interceptChar, cnames)
