@@ -23,8 +23,9 @@ expectedAddColnames <- c("Baseline", "Fac1_2", "Fac1_3", "Fac1_4",
 expectedIntColnames <- c("Baseline", "Fac1_2", "Fac1_3", "Fac1_4", 
                          "Fac1_5", "Fac1_6", "Dis", "myVar",
                          "Fac1_2_Dis", "Fac1_3_Dis", "Fac1_4_Dis", "Fac1_5_Dis", "Fac1_6_Dis")
-expectedInteractionColnames <- c(as.vector(t(outer(levels(myFac1), levels(myFac2), paste, sep="_"))),
-                                 "myVar")
+expectedInteractionColnames <- c("Baseline",
+                                 c(as.vector(t(outer(levels(myFac1), levels(myFac2), paste, sep="_")))[-1],
+                                 "myVar"))
 
 test_that("fixDesignMatrixColnames works for additive models", {
   expect_equivalent(myDesignAdd, myDesignAddFixed)
