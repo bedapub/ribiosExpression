@@ -281,3 +281,46 @@ setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(obje
               .contrastSampleIndices(object, contrast)
           })
 
+#' Plot a DesignContrast object
+#' @param x A \code{DesignContrast} object
+#' @param y NULL, ignored
+#' @param name Name of the object, used in the title of the heatmaps
+#' @param ... Other parameters passed to \code{\link{biosHeatmap}}
+#' 
+#' @description
+#' The function plots two heatmaps, one of the design matrix and the other of the contrast matrix.
+#' @return An invisible list of two elements, containing return values of \code{\link{biosHeatmap}} for design and contrast matrices, respectively.
+#' @examples 
+#' myFac <- gl(3,3, labels=c("baseline", "treat1", "treat2"))
+#' myDesign <- model.matrix(~myFac)
+#' colnames(myDesign) <- c("baseline", "treat1", "treat2")
+#' myContrast <- limma::makeContrasts(contrasts=c("treat1", "treat2"), levels=myDesign)
+#' res1 <- DesignContrast(myDesign, myContrast, groups=myFac)
+#' res2 <- DesignContrast(myDesign, myContrast, groups=myFac, dispLevels=c("C", "T1", "T2"))
+#' plot(res1, name="Res 1")
+#' plot(res2, name="Res 2")
+#' @importFrom ribiosPlot biosHeatmap blackyellow royalbluered
+#' @export
+plot.DesignContrast <- function(x, y=NULL,
+                                name=NULL, ...) {
+  if(!is.null(name)) {
+    designMain <- paste(name, "design")
+    contrastMain <- paste(name, "contrasts")
+  } else {
+    designMain <- "Design"
+    contrastMain <- "Contrasts"
+  }
+  
+  designRes <- ribiosPlot::biosHeatmap(designMatrix(x), 
+                           col=ribiosPlot::blackyellow,
+                           Colv=FALSE, dendrogram = "row",
+                           main=designMain,
+                           color.key.title = "Coeffient", ...)
+  contrastRes <- ribiosPlot::biosHeatmap(contrastMatrix(x), 
+                             col=ribiosPlot::royalbluered, Colv=FALSE,
+                             dendrogram = "none", Rowv=FALSE,
+                             main=contrastMain, 
+                             color.key.title = "Coeffient", ...)
+  res <- list(design=designRes, contrast=contrastRes)
+  return(invisible(res))
+}
