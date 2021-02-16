@@ -14,12 +14,13 @@ f2Read <- readSampleAnnotationFile(f2, stringsAsFactors=FALSE)
 f3Read <- readSampleAnnotationFile(f3, stringsAsFactors=FALSE)
 f4Read <- readSampleAnnotationFile(f4, stringsAsFactors=FALSE)
 
-f1Expected <- data.frame(SampleName=c("S1", "S2", "S3", "S4"),
+f1Expected <- data.frame(ExperimentName=c("S1", "S2", "S3", "S4"),
                          SampleID=c("S1", "S2", "S3", "S4"),
                          group=c("ctrl", "trt", "ctrl", "trt"),
                          row.names=c("S1", "S2", "S3", "S4"),
                          stringsAsFactors = FALSE)
-f2Expected <- f3Expected <- f4Expected <- f1Expected
+f2Expected <- f1Expected
+f3Expected <- f4Expected <- cbind(f1Expected, SampleName=rownames(f1Expected))
 
 test_that("readSampleAnnotationFile works as expected",
           {
