@@ -4,6 +4,7 @@
 \alias{summarizeSamples}
 \alias{poolReplicates}
 \alias{avgReplicates}
+\alias{medianReplicates}
 \title{Summarize samples by applying the function to sample subsets}
 \usage{
 summarizeSamples(
@@ -44,6 +45,9 @@ function.
 \code{poolReplicates} and \code{avgReplicates} are two specific form of the
 more generic \code{summarizeSamples} function: they take sum and average of
 replicates given by the factor, respectively.
+
+From version 1.1-7, the function summarizes not only \code{exprs}, but also
+all other objects in \code{assayData}
 }
 \examples{
 
@@ -54,7 +58,7 @@ index <- factor(c(gl(12,2), 13, 14))
 
 (ss.eset2 <- summarizeSamples(ribios.ExpressionSet, index, fun=mean,
 na.rm=TRUE))
-## equivalently 
+## equivalently
 (ss.eset2 <- poolReplicates(ribios.ExpressionSet, index))
 
 (ss.eset3 <- avgReplicates(ribios.ExpressionSet, index))
