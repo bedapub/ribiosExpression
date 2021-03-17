@@ -56,3 +56,9 @@ Collate:
     'summarizeSamples.R'
     'transformations.R'
     'truncateDgeTable.R'
+Remotes:
+    github::bedapub/ribiosIO,
+    github::bedapub/ribiosUtils,
+    github::bedapub/ribiosPlot,
+    github::bedapub/ribiosArg,
+    github::bedapub/ribiosAnnotation
