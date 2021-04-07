@@ -4,7 +4,6 @@ library(ribiosExpression)
 fileDir <- system.file("extdata",
                        "sampleAnnotation", package="ribiosExpression")
 
-fileDir <- "/pstore/apps/bioinfo/ribiosExpression/inst/extdata/sampleAnnotation/"
 f1 <- file.path(fileDir, "sampleAnnotationFile-withRowNames.txt")
 f2 <- file.path(fileDir, "sampleAnnotationFile-withoutRowNames.txt")
 f3 <- file.path(fileDir, "sampleAnnotationFile-withRowNamesSampleName.txt")
