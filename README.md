@@ -14,8 +14,3 @@ Run following commands in the R console.
 library(devtools)
 devtools::install_github("bedapub/ribiosExpression")
 ```
-
-## Todo
-
-1. `make check` is not clean yet.
-
