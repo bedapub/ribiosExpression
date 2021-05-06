@@ -67,6 +67,12 @@ summarizeProbesets <- function(eset,
   if(missing(index.name) || !index.name %in% colnames(fData(eset))) {
     stop("'index.name' must be a valid column name in fData(", as.character(match.call()$eset), ")")
   }
+  if(!identical(rownames(pData(eset)), colnames(exprs(eset)))) {
+    stop('The sample names of the eSet must match in exprs and pData, check sampleNames(eset) and colnames(exprs(eset))')
+  }
+  if(!identical(rownames(fData(eset)), rownames(exprs(eset)))) {
+    stop('The feature names of the eSet must match in exprs and fData, check featureNames(eset) and rownames(exprs(eset))')
+  }
   fun <- match.fun(fun)
   
   probe.index <- as.character(fData(eset)[,index.name])
