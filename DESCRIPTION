@@ -1,7 +1,7 @@
 Package: ribiosExpression
 Type: Package
-Title: Expression analysis component of ribios
-Version: 1.1-8
+Title: Expression Analysis with RibiosExpression
+Version: 1.1-9
 Date: 2021-05-06
 Authors@R:
   person(given = "Jitao David",
