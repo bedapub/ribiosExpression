@@ -78,7 +78,7 @@ avgReplicates <- function(eset, indSamples=eset$SAMPLEID, removeInvarCols=TRUE) 
   summarizeSamples(eset, indSamples=indSamples, removeInvarCols=TRUE, fun=mean, na.rm=TRUE)
 }
 
-#' @rdname medianSamples
+#' @rdname summarizeSamples
 #' @export
 medianReplicates <- function(eset, indSamples=eset$SAMPLEID, removeInvarCols=TRUE) {
   summarizeSamples(eset, indSamples=indSamples,

@@ -18,6 +18,8 @@ summarizeSamples(
 poolReplicates(eset, indSamples = eset$SAMPLEID, removeInvarCols = TRUE)
 
 avgReplicates(eset, indSamples = eset$SAMPLEID, removeInvarCols = TRUE)
+
+medianReplicates(eset, indSamples = eset$SAMPLEID, removeInvarCols = TRUE)
 }
 \arguments{
 \item{eset}{An \code{eSet} object.}

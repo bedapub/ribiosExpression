@@ -21,3 +21,13 @@ An invisible list of two elements, containing return values of \code{\link{biosH
 \description{
 The function plots two heatmaps, one of the design matrix and the other of the contrast matrix.
 }
+\examples{
+myFac <- gl(3,3, labels=c("baseline", "treat1", "treat2"))
+myDesign <- model.matrix(~myFac)
+colnames(myDesign) <- c("baseline", "treat1", "treat2")
+myContrast <- limma::makeContrasts(contrasts=c("treat1", "treat2"), levels=myDesign)
+res1 <- DesignContrast(myDesign, myContrast, groups=myFac)
+res2 <- DesignContrast(myDesign, myContrast, groups=myFac, dispLevels=c("C", "T1", "T2"))
+plot(res1, name="Res 1")
+plot(res2, name="Res 2")
+}
