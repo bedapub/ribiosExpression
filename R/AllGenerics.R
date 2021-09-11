@@ -1,5 +1,5 @@
 #' Transform an expression matrix to long table
-#' 
+#'
 #' @param x A matrix or an ExpressionSet object
 #' @param idvar Variable name of the feature identifier, passed to \code{\link{reshape}}
 #' @param timevar The time variable, passed to \code{\link{reshape}}
@@ -7,7 +7,7 @@
 #' @param ids Feature identifiers
 #' @param valueType Character string, value type
 #' @param ... Other parameters
-#' 
+#'
 #' @aliases exprsToLong-matrix-method exprsToLong-eSet-method
 #' @return A \code{data.frame}
 #' @importFrom stats reshape
@@ -24,32 +24,32 @@ setGeneric("contrastNames", function(object) standardGeneric("contrastNames"))
 #' @param object An object, see supported methods below
 #' @aliases designVariables,DesignContrast-method
 #' @exportMethod designVariables
-setGeneric("designVariables", function(object) 
+setGeneric("designVariables", function(object)
   standardGeneric("designVariables"))
 
 #' Extract sample groups from an object
-#' 
+#'
 #' @param object An object, see supported methods below
 #' @exportMethod groups
 #' @aliases groups,DesignContrast-method
 setGeneric("groups", function(object) standardGeneric("groups"))
 
 #' Extract displayed group labels from an object
-#' 
+#'
 #' @param object An object, see supported methods below
 #' @exportMethod dispGroups
 #' @aliases dispGroups,DesignContrast-method
 setGeneric("dispGroups", function(object) standardGeneric("dispGroups"))
 
 #' Extract the design matrix from an object
-#' 
+#'
 #' @param object An object, see supported methods below
 #' @exportMethod designMatrix
 #' @aliases designMatrix,DesignContrast-method
 setGeneric("designMatrix", function(object) standardGeneric("designMatrix"))
 
 #' Assign design matrix to an object
-#' 
+#'
 #' @param object An object, see supported methods below
 #' @param value Design matrix
 #' @exportMethod `designMatrix<-`
@@ -57,22 +57,38 @@ setGeneric("designMatrix<-", function(object, value) standardGeneric("designMatr
 
 
 #' Extract the contrast matrix from an object
-#' 
+#'
 #' @param object An object, see supported methods below
 #' @exportMethod contrastMatrix
 #' @aliases contrastMatrix,DesignContrast-method
 setGeneric("contrastMatrix", function(object) standardGeneric("contrastMatrix"))
 
 #' Assign contrast matrix to an object
-#' 
+#'
 #' @param object An object, see supported methods below
 #' @param value Contrast matrix
 #' @exportMethod `contrastMatrix<-`
 setGeneric("contrastMatrix<-", function(object, value) standardGeneric("contrastMatrix<-"))
 
 
+#' Extract the contrast annotation data.frame from an object
+#'
+#' @param object An object, see supported methods below
+#' @exportMethod contrastAnnotation
+#' @aliases contrastAnnotation,DesignContrast-method
+setGeneric("contrastAnnotation", function(object) standardGeneric("contrastAnnotation"))
+
+#' Assign contrast annotaiton to an object
+#'
+#' @param object An object, see supported methods below
+#' @param value Contrast anaotation data.frame
+#' @exportMethod `contrastAnnotation<-`
+setGeneric("contrastAnnotation<-", function(object, value)
+  standardGeneric("contrastAnnotation<-"))
+
+
 #' Extract the number of contrasts from an object
-#' 
+#'
 #' @param object An object, see supported methods below
 #' @aliases nContrast,DesignContrast-method
 #' @exportMethod nContrast
@@ -84,18 +100,18 @@ setGeneric("nContrast", function(object) standardGeneric("nContrast"))
 #' @param object A \code{DesignContrast} object
 #' @param contrast Either a contrast name or a integer indicating the index of the contrast
 #' @return An integer vector, indices of samples that are involved, sorted by the ascending order of the coefficients of the contrast
-#' 
+#'
 #' @aliases contrastSampleIndices,DesignContrast,numeric-method contrastSampleIndices,DesignContrast,character-method
 #' @examples
 #' ## one-way ANOVA
 #' myDesCon <- parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",
 #'    groupLevels="Be,As", dispLevels="Beryllium,Arsenic", contrasts="As-Be")
 #' contrastSampleIndices(myDesCon, 1L)
-#' myInterDesCon <- new("DesignContrast", 
-#'     design=matrix(c(rep(1,6), rep(0,2), rep(1,2), rep(0,2), 
-#'            rep(0,4), rep(1,2)), nrow=6, byrow=FALSE), 
-#'     contrasts=matrix(c(0,1,0, 0,0,1, 0,-1,1), byrow=FALSE, nrow=3), 
-#'     groups=factor(rep(c("As", "Be", "Cd"), each=2)), 
+#' myInterDesCon <- new("DesignContrast",
+#'     design=matrix(c(rep(1,6), rep(0,2), rep(1,2), rep(0,2),
+#'            rep(0,4), rep(1,2)), nrow=6, byrow=FALSE),
+#'     contrasts=matrix(c(0,1,0, 0,0,1, 0,-1,1), byrow=FALSE, nrow=3),
+#'     groups=factor(rep(c("As", "Be", "Cd"), each=2)),
 #'     dispLevels=c("Arsenic", "Beryllium", "Cadmium"))
 #' cont1Ind <- contrastSampleIndices(myInterDesCon, 1L)
 #' cont2Ind <- contrastSampleIndices(myInterDesCon, 2L)
@@ -107,10 +123,10 @@ setGeneric("nContrast", function(object) standardGeneric("nContrast"))
 setGeneric("contrastSampleIndices", function(object, contrast) standardGeneric("contrastSampleIndices"))
 
 #' Make strings in the GMT format
-#' 
+#'
 #' Resulting string(s) can be exported into \code{GMT} file by
 #' \code{\link{writeLines}}
-#' 
+#'
 #' @param title Character, title(s) of gene set(s)
 #' @param comment Character, comment(s) of gene set(s). Can be of the same
 #' length as the \code{title}, or be of length one: in the latter case, it will
@@ -123,10 +139,10 @@ setGeneric("contrastSampleIndices", function(object, contrast) standardGeneric("
 #' @return One or more lines of GMT file
 #' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
 #' @examples
-#' 
+#'
 #' formatGmt(title="GeneSet0", comment="My geneset", genes=c("MAPT", "MAPK", "AKT1"))
 #' formatGmt(title="GeneSet0", genes=c("MAPT", "MAPK", "AKT1"))
-#' 
+#'
 #' formatGmt(title=c("GeneSet0", "GeneSet1"),
 #'           comment=c("My geneset 0", "My geneset 1"),
 #'           genes=list(c("MAPT", "MAPK", "AKT1"), c("EGFR", "CDC42")))
@@ -141,13 +157,13 @@ setGeneric("formatGmt",
              standardGeneric("formatGmt"))
 
 #' Annotate eSet or probesets
-#' 
+#'
 #' The function annotates an object of \code{eSet}, or a vector of
 #' characters representing probesets.
-#' 
+#'
 #' Once successfully annotated, the \code{annotation} slot of the
 #' \code{eSet} object is set to the value of \code{target}.
-#' 
+#'
 #' @param object An object of \code{eSet}, or a character vector of
 #' probesets
 #' @param target Chip type to be annotated
@@ -166,39 +182,39 @@ setGeneric("formatGmt",
 #' \code{ribiosAnnotation} package is used to connect to GTI and fetch
 #' annotation information.
 #' @examples
-#' 
+#'
 #' data(ribios.ExpressionSet)
 #' myset <- ribios.ExpressionSet[100:105,]
-#' 
+#'
 #' ## eSet
 #' \dontrun{
 #' annotate(myset, "HG_U95AV2")
 #' annotate(myset, "HG_U_95AV2", check.target=TRUE)
 #' }
-#' 
+#'
 #' ## characters
 #' \dontrun{
 #' annotate(featureNames(myset), "HG_U95AV2")
 #' }
-#' 
+#'
 #' @exportMethod annotate
 setGeneric("annotate",
            function(object, target, check.target, ...) standardGeneric("annotate"))
 
 #' Transform an eSet object of Bioc-annotation into of GTI-annotation
-#' 
+#'
 #' The function is used to transform an eSet object, which is
 #' annotated by Bioconductor annotation packages, into an object with
 #' annotation information from GTI.
-#' 
+#'
 #' The translation between Bioconductor annotation package names and GTI chip
 #' types is performed by the \code{bioc2gti} function in the
 #' \code{ribiosAnnotation} package.
-#' 
+#'
 #' Once the re-annotation succeeds, the \code{annotation} slot of the
 #' \code{eSet} object will be overwritten by the corresponding chip
 #' type name in GTI.
-#' 
+#'
 #' @param object An \code{eSet} object, with the \code{annotation}
 #' slot set as one of the valid annotations recognized by Bioconductor, for
 #' instance \code{hgu95av2}.
@@ -214,10 +230,10 @@ setGeneric("annotate",
 #' without prior information of bioc-annotation, or if that information is not
 #' saved in the \code{annotation} slot.
 #' @examples
-#' 
+#'
 #' data(ribios.ExpressionSet)
 #' print(ribios.ExpressionSet)
-#' 
+#'
 #' \dontrun{
 #' gti.eSet <- reannotate(ribios.ExpressionSet)
 #' gti.eSet <- reannotate(ribios.ExpressionSet, check.target=FALSE)
@@ -238,5 +254,5 @@ setGeneric("reannotate",
 #' @param feat.desc Specifying feature descriptions
 #' @aliases writeGct,matrix,ANY,ANY,ANY-method writeGct,eSet,ANY,ANY,ANY-method
 #' @exportMethod writeGct
-setGeneric("writeGct", function(obj, file, feat.name, feat.desc) 
+setGeneric("writeGct", function(obj, file, feat.name, feat.desc)
 	   standardGeneric("writeGct"))

@@ -1,12 +1,12 @@
 #' Infer groups from a design matrix
 #' @param designMatrix A design matrix
 #' @return A factor vector giving the groups inferred from the design matrix
-#' 
+#'
 #' A naive logic is used: samples of the same design vectors are of the same group.
-#' 
-#' The inference is known to fail when control variables, such as age or RIN numbers, 
+#'
+#' The inference is known to fail when control variables, such as age or RIN numbers,
 #' vary between samples of the same group.
-#' 
+#'
 #' @importFrom stats model.matrix
 #' @examples
 #' myDesign <- model.matrix(~gl(3,3))
@@ -23,17 +23,18 @@ design2group <- function(designMatrix) {
 }
 
 #' Contrast a DesignContrast object
-#' 
+#'
 #' @param designMatrix A design matrix
 #' @param contrastMatrix A contrast matrix. If null, no comparison can be done.
-#' @param groups A factor vector of the same length as the number of columns of the design matrix. 
+#' @param groups A factor vector of the same length as the number of columns of the design matrix.
 #'   If missing, \code{design2group} is used to infer groups.
 #' @param dispLevels A character vector of the same length as the number of levels encoded by \code{group},
 #'   indicating how different groups should be labelled. If missing, levels of \code{group} are used.
-#' 
+#' @param contrastAnnotation A data.frame or NULL, annotating contrasts
+#'
 #' @importFrom limma makeContrasts
 #' @return A DesignContrast object
-#' @examples 
+#' @examples
 #' myFac <- gl(3,3, labels=c("baseline", "treat1", "treat2"))
 #' myDesign <- model.matrix(~myFac)
 #' colnames(myDesign) <- c("baseline", "treat1", "treat2")
@@ -41,7 +42,11 @@ design2group <- function(designMatrix) {
 #' DesignContrast(myDesign, myContrast, groups=myFac)
 #' DesignContrast(myDesign, myContrast, groups=myFac, dispLevels=c("C", "T1", "T2"))
 #' @export
-DesignContrast <- function(designMatrix, contrastMatrix=NULL, groups=NULL, dispLevels=NULL) {
+DesignContrast <- function(designMatrix,
+                           contrastMatrix=NULL,
+                           groups=NULL,
+                           dispLevels=NULL,
+                           contrastAnnotation=NULL) {
   if(is.null(groups))
     groups <- design2group(designMatrix)
   if(is.null(dispLevels))
@@ -52,7 +57,8 @@ DesignContrast <- function(designMatrix, contrastMatrix=NULL, groups=NULL, dispL
              design=designMatrix,
              contrasts=contrastMatrix,
              groups=groups,
-             dispLevels=dispLevels)
+             dispLevels=dispLevels,
+             contrastAnnotation=contrastAnnotation)
   return(res)
 }
 
@@ -117,8 +123,8 @@ parseDesignContrastFile <- function(designFile, contrastFile,
     groups <- parseFactor(groupsStr, rlevels=levelStr, make.names=FALSE)
     levels <- levels(groups)
     notvalid <- (levels != make.names(levels))
-    if (any(notvalid)) 
-      stop("The levels must by syntactically valid names in R, see help(make.names).  Non-valid names: ", 
+    if (any(notvalid))
+      stop("The levels must by syntactically valid names in R, see help(make.names).  Non-valid names: ",
            paste(levels[notvalid], collapse = ","))
   } else {
     groups <- NULL
@@ -147,11 +153,11 @@ plainFile2ConcString <- function(str) {
 #' @param vec1 A vector
 #' @param vec2 Another vector
 #' @param col.names A character vector of length 2 giving column names of the output \code{data.frame}.
-#' 
+#'
 #' The shorter vector of the two are extended to the same length by appending empty strings.
 #' @return A \code{data.frame} of two columns. The row count matches the longer vector
-#' 
-#' @examples 
+#'
+#' @example
 #' dataFrameTwoVecs(LETTERS[1:5], letters[2:9])
 #' @export
 dataFrameTwoVecs <- function(vec1, vec2, col.names=c("Vec1", "Vec2")) {
@@ -165,15 +171,15 @@ dataFrameTwoVecs <- function(vec1, vec2, col.names=c("Vec1", "Vec2")) {
 #' Test whether the input design matrix is consistent with the sample names
 #' @param descon A DesignContrast object
 #' @param sampleNames A vector of string characters, specifying sample names
-#' 
+#'
 #' If the sample names in DesignContrast are identical with the given sample names,
 #' an invisible \code{TRUE} is returned.
-#' 
+#'
 #' If the two sets are identical, however the order of sample names do not match, a warning
 #' message is raised, and an invisible \code{FALSE} is returned
-#' 
+#'
 #' If the two sets have differences, the mismatching sample names are printed for diagnosis.
-#' 
+#'
 #' @return A invisible logical value. \code{TRUE} if and only if the sample names match perfectly.
 isInputDesignConsistent <- function(descon, sampleNames) {
     designSampleNames <- rownames(designMatrix(descon))
@@ -203,12 +209,12 @@ isInputDesignConsistent <- function(descon, sampleNames) {
 #' @return A S4-object 'DesignContrast'
 #' @examples
 #' ## one-way ANOVA
-#' parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As", 
+#' parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As",
 #'     dispLevels="Beryllium,Arsenic", contrasts="As-Be")
 #' ## design/contrast matrix
-#' designFile <- system.file("extdata/example-designMatrix.txt", 
+#' designFile <- system.file("extdata/example-designMatrix.txt",
 #'     package="ribiosExpression")
-#' contrastFile <- system.file("extdata/example-contrastMatrix.txt", 
+#' contrastFile <- system.file("extdata/example-contrastMatrix.txt",
 #'     package="ribiosExpression")
 #' # minimal information
 #' parseDesignContrast(designFile=designFile, contrastFile=contrastFile)
@@ -225,7 +231,7 @@ parseDesignContrast <- function(designFile=NULL, contrastFile=NULL,
     groupLevels <- plainFile2ConcString(groupLevels)
     dispLevels <- plainFile2ConcString(dispLevels)
     contrasts <- plainFile2ConcString(contrasts)
-    
+
     if(!is.null(designFile) & !is.null(contrastFile)) {
         descon <- parseDesignContrastFile(designFile=designFile,
                                        contrastFile=contrastFile,
@@ -286,11 +292,11 @@ setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(obje
 #' @param y NULL, ignored
 #' @param name Name of the object, used in the title of the heatmaps
 #' @param ... Other parameters passed to \code{\link{biosHeatmap}}
-#' 
+#'
 #' @description
 #' The function plots two heatmaps, one of the design matrix and the other of the contrast matrix.
 #' @return An invisible list of two elements, containing return values of \code{\link{biosHeatmap}} for design and contrast matrices, respectively.
-#' @examples 
+#' @example
 #' myFac <- gl(3,3, labels=c("baseline", "treat1", "treat2"))
 #' myDesign <- model.matrix(~myFac)
 #' colnames(myDesign) <- c("baseline", "treat1", "treat2")
@@ -310,16 +316,16 @@ plot.DesignContrast <- function(x, y=NULL,
     designMain <- "Design"
     contrastMain <- "Contrasts"
   }
-  
-  designRes <- ribiosPlot::biosHeatmap(designMatrix(x), 
+
+  designRes <- ribiosPlot::biosHeatmap(designMatrix(x),
                            col=ribiosPlot::blackyellow,
                            Colv=FALSE, dendrogram = "row",
                            main=designMain,
                            color.key.title = "Coeffient", ...)
-  contrastRes <- ribiosPlot::biosHeatmap(contrastMatrix(x), 
+  contrastRes <- ribiosPlot::biosHeatmap(contrastMatrix(x),
                              col=ribiosPlot::royalbluered, Colv=FALSE,
                              dendrogram = "none", Rowv=FALSE,
-                             main=contrastMain, 
+                             main=contrastMain,
                              color.key.title = "Coeffient", ...)
   res <- list(design=designRes, contrast=contrastRes)
   return(invisible(res))

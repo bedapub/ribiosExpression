@@ -20,7 +20,7 @@ setMethod("dispGroups", "DesignContrast", function(object) {
   return(groups)
 })
 
-#' @describeIn designMatrix Return the design matrix from a DesignContrast 
+#' @describeIn designMatrix Return the design matrix from a DesignContrast
 #'     object
 #' @export
 setMethod("designMatrix", "DesignContrast", function(object) {
@@ -52,7 +52,23 @@ setReplaceMethod("contrastMatrix", "DesignContrast", function(object, value) {
   return(object)
 })
 
-#' @describeIn nContrast Return the number of contrast in a DesignContrast 
+#' @describeIn contrastAnnotation Return the contrast annotation data.frame
+#'   from a DesignContrast object
+#' @export
+setMethod("contrastAnnotation", "DesignContrast", function(object) {
+  return(object@contrastAnnotation)
+})
+
+#' @describeIn contrastAnnotation Assign a contrast annotation data.frame
+#'   to a \code{contrastContrast} object
+#' @param value A contrast annotation data.frame
+#' @export
+setReplaceMethod("contrastAnnotation", "DesignContrast", function(object, value) {
+  object@contrastAnnotation <- value
+  return(object)
+})
+
+#' @describeIn nContrast Return the number of contrast in a DesignContras
 #'     object
 #' @export
 setMethod("nContrast", "DesignContrast", function(object) {
@@ -61,12 +77,12 @@ setMethod("nContrast", "DesignContrast", function(object) {
 
 #' @describeIn designVariables Return the names of variables (column names) 
 #'    in the design matrix of a DesignContrast object
-#' @export 
+#' @export
 setMethod("designVariables", "DesignContrast", function(object) {
   return(colnames(designMatrix(object)))
 })
 
-#' @describeIn contrastNames Return contrast names, i.e., column names of the 
+#' @describeIn contrastNames Return contrast names, i.e., column names of the
 #'   contrast matrix
 #' @export
 setMethod("contrastNames", "DesignContrast", function(object)
@@ -162,7 +178,7 @@ setMethod("formatGmt",
             formatGmt(title, "", genes)
           })
 
-#' @describeIn formatGmt title and comments are both vectors of character 
+#' @describeIn formatGmt title and comments are both vectors of character
 #'     strings, genes are a list of the same length
 #' @export
 setMethod("formatGmt",
@@ -179,7 +195,7 @@ setMethod("formatGmt",
             )
           })
 
-#' @describeIn formatGmt title is vectors of character strings, comments are 
+#' @describeIn formatGmt title is vectors of character strings, comments are
 #'     missing, genes are a list of the same length as the title
 #' @export
 setMethod("formatGmt",

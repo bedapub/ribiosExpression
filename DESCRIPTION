@@ -1,8 +1,8 @@
 Package: ribiosExpression
 Type: Package
 Title: Expression Analysis with RibiosExpression
-Version: 1.1-9
-Date: 2021-05-06
+Version: 1.2.0
+Date: 2021-09-11
 Authors@R:
   person(given = "Jitao David",
          family = "Zhang",
