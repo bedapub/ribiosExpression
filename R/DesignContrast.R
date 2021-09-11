@@ -162,7 +162,7 @@ plainFile2ConcString <- function(str) {
 #' The shorter vector of the two are extended to the same length by appending empty strings.
 #' @return A \code{data.frame} of two columns. The row count matches the longer vector
 #'
-#' @example
+#' @examples
 #' dataFrameTwoVecs(LETTERS[1:5], letters[2:9])
 #' @export
 dataFrameTwoVecs <- function(vec1, vec2, col.names=c("Vec1", "Vec2")) {
@@ -301,7 +301,7 @@ setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(obje
 #' @description
 #' The function plots two heatmaps, one of the design matrix and the other of the contrast matrix.
 #' @return An invisible list of two elements, containing return values of \code{\link{biosHeatmap}} for design and contrast matrices, respectively.
-#' @example
+#' @examples
 #' myFac <- gl(3,3, labels=c("baseline", "treat1", "treat2"))
 #' myDesign <- model.matrix(~myFac)
 #' colnames(myDesign) <- c("baseline", "treat1", "treat2")
