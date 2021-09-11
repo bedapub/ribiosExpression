@@ -8,7 +8,8 @@ DesignContrast(
   designMatrix,
   contrastMatrix = NULL,
   groups = NULL,
-  dispLevels = NULL
+  dispLevels = NULL,
+  contrastAnnotation = NULL
 )
 }
 \arguments{
@@ -16,11 +17,13 @@ DesignContrast(
 
 \item{contrastMatrix}{A contrast matrix. If null, no comparison can be done.}
 
-\item{groups}{A factor vector of the same length as the number of columns of the design matrix. 
+\item{groups}{A factor vector of the same length as the number of columns of the design matrix.
 If missing, \code{design2group} is used to infer groups.}
 
 \item{dispLevels}{A character vector of the same length as the number of levels encoded by \code{group},
 indicating how different groups should be labelled. If missing, levels of \code{group} are used.}
+
+\item{contrastAnnotation}{A data.frame or NULL, annotating contrasts}
 }
 \value{
 A DesignContrast object

@@ -37,12 +37,12 @@ Parse study design and asked questions encoded in design and contrast matrices o
 }
 \examples{
 ## one-way ANOVA
-parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As", 
+parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",groupLevels="Be,As",
     dispLevels="Beryllium,Arsenic", contrasts="As-Be")
 ## design/contrast matrix
-designFile <- system.file("extdata/example-designMatrix.txt", 
+designFile <- system.file("extdata/example-designMatrix.txt",
     package="ribiosExpression")
-contrastFile <- system.file("extdata/example-contrastMatrix.txt", 
+contrastFile <- system.file("extdata/example-contrastMatrix.txt",
     package="ribiosExpression")
 # minimal information
 parseDesignContrast(designFile=designFile, contrastFile=contrastFile)

@@ -21,6 +21,3 @@ A \code{data.frame} of two columns. The row count matches the longer vector
 \description{
 Build a data.frame from two vectors of potential different lengths
 }
-\examples{
-dataFrameTwoVecs(LETTERS[1:5], letters[2:9])
-}

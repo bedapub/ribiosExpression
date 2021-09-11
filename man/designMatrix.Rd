@@ -25,7 +25,7 @@ Extract the design matrix from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{DesignContrast}: Return the design matrix from a DesignContrast 
+\item \code{DesignContrast}: Return the design matrix from a DesignContrast
 object
 
 \item \code{DesignContrast}: Assign a design matrix to a \code{DesignContrast}

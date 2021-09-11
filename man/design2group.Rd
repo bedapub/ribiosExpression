@@ -14,7 +14,7 @@ A factor vector giving the groups inferred from the design matrix
 
 A naive logic is used: samples of the same design vectors are of the same group.
 
-The inference is known to fail when control variables, such as age or RIN numbers, 
+The inference is known to fail when control variables, such as age or RIN numbers,
 vary between samples of the same group.
 }
 \description{

@@ -53,6 +53,11 @@ DesignContrast <- function(designMatrix,
     dispLevels <- levels(groups)
   if(is.null(contrastMatrix))
     contrastMatrix <- matrix(nrow=ncol(designMatrix), dimnames=list(colnames(designMatrix), NULL))
+  if(is.null(contrastAnnotation)) {
+    contrastNames <- colnames(contrastMatrix)
+    if(is.null(contrastNames))  contrastNames <- 1:ncol(contrastMatrix)
+    contrastAnnotation <- data.frame(row.names=contrastNames)
+  }
   res <- new("DesignContrast",
              design=designMatrix,
              contrasts=contrastMatrix,

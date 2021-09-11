@@ -22,18 +22,20 @@ The DesignContrast class represents key information in a designed experiment
 \section{Slots}{
 
 \describe{
-\item{\code{design}}{A numeric matrix. The number of rows equals the 
+\item{\code{design}}{A numeric matrix. The number of rows equals the
 sample size. The columns corresponds to the variables of design}
 
-\item{\code{contrasts}}{A numeric matrix. The number of rows equals the number of 
+\item{\code{contrasts}}{A numeric matrix. The number of rows equals the number of
 columns in the design matrix. The columns corresponds to the comparisons
 one wishes to make.}
 
-\item{\code{groups}}{A factor vector, giving sample groups. 
+\item{\code{groups}}{A factor vector, giving sample groups.
 The length equals the number of samples.}
 
-\item{\code{dispLevels}}{A character vector, used for displaying sample groups. 
+\item{\code{dispLevels}}{A character vector, used for displaying sample groups.
 The length equals the number of levels of the \code{groups} factor.}
+
+\item{\code{contrastAnnotation}}{A data.frame, used to annotate the contrasts.}
 }}
 
 \section{Objects from the Class}{

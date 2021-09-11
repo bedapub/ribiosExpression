@@ -107,10 +107,10 @@ setGeneric("nContrast", function(object) standardGeneric("nContrast"))
 #' myDesCon <- parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",
 #'    groupLevels="Be,As", dispLevels="Beryllium,Arsenic", contrasts="As-Be")
 #' contrastSampleIndices(myDesCon, 1L)
-#' myInterDesCon <- new("DesignContrast",
-#'     design=matrix(c(rep(1,6), rep(0,2), rep(1,2), rep(0,2),
+#' myInterDesCon <- DesignContrast(
+#'     designMatrix=matrix(c(rep(1,6), rep(0,2), rep(1,2), rep(0,2),
 #'            rep(0,4), rep(1,2)), nrow=6, byrow=FALSE),
-#'     contrasts=matrix(c(0,1,0, 0,0,1, 0,-1,1), byrow=FALSE, nrow=3),
+#'     contrastMatrix=matrix(c(0,1,0, 0,0,1, 0,-1,1), byrow=FALSE, nrow=3),
 #'     groups=factor(rep(c("As", "Be", "Cd"), each=2)),
 #'     dispLevels=c("Arsenic", "Beryllium", "Cadmium"))
 #' cont1Ind <- contrastSampleIndices(myInterDesCon, 1L)

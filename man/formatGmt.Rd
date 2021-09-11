@@ -44,10 +44,10 @@ Resulting string(s) can be exported into \code{GMT} file by
 
 \item \code{title = character,comment = missing,genes = character}: title and genes are both one character string, comments are missing
 
-\item \code{title = character,comment = character,genes = list}: title and comments are both vectors of character 
+\item \code{title = character,comment = character,genes = list}: title and comments are both vectors of character
 strings, genes are a list of the same length
 
-\item \code{title = character,comment = missing,genes = list}: title is vectors of character strings, comments are 
+\item \code{title = character,comment = missing,genes = list}: title is vectors of character strings, comments are
 missing, genes are a list of the same length as the title
 }}
 
