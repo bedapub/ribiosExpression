@@ -2,24 +2,38 @@
 % Please edit documentation in R/DesignContrast.R
 \name{plot.DesignContrast}
 \alias{plot.DesignContrast}
-\title{Plot a DesignContrast object}
+\title{Plot a DesignContrast object with two heatmaps}
 \usage{
-\method{plot}{DesignContrast}(x, y = NULL, name = NULL, ...)
+\method{plot}{DesignContrast}(
+  x,
+  y = NULL,
+  title = NULL,
+  clusterDesign = FALSE,
+  clusterSamples = FALSE,
+  clusterContrasts = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{A \code{DesignContrast} object}
 
 \item{y}{NULL, ignored}
 
-\item{name}{Name of the object, used in the title of the heatmaps}
+\item{title}{Title of the object, used in the title of the heatmaps}
 
-\item{...}{Other parameters passed to \code{\link{biosHeatmap}}}
+\item{clusterDesign}{Logical, cluster rows of the design matrix}
+
+\item{clusterSamples}{Logical, cluster columns of the design matrix}
+
+\item{clusterContrasts}{Logical, cluster rows of the contrast matrix (notice that the contrast matrix required by limma is the transposed contrast matrix)}
+
+\item{...}{Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap}}}
 }
 \value{
-An invisible list of two elements, containing return values of \code{\link{biosHeatmap}} for design and contrast matrices, respectively.
+Heatmap object
 }
 \description{
-The function plots two heatmaps, one of the design matrix and the other of the contrast matrix.
+The function plots a ComplexHeatmap containing two matrices, one of the design matrix and the other of the contrast matrix.
 }
 \examples{
 myFac <- gl(3,3, labels=c("baseline", "treat1", "treat2"))
@@ -28,6 +42,6 @@ colnames(myDesign) <- c("baseline", "treat1", "treat2")
 myContrast <- limma::makeContrasts(contrasts=c("treat1", "treat2"), levels=myDesign)
 res1 <- DesignContrast(myDesign, myContrast, groups=myFac)
 res2 <- DesignContrast(myDesign, myContrast, groups=myFac, dispLevels=c("C", "T1", "T2"))
-plot(res1, name="Res 1")
-plot(res2, name="Res 2")
+plot(res1, title="DesCon 1")
+plot(res2, title="DesCon 1 (identical)")
 }

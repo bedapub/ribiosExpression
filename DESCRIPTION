@@ -24,7 +24,9 @@ Imports:
     magrittr,
     dplyr,
     Matrix,
-    ribiosAnnotation (>= 1.0-8)
+    ribiosAnnotation (>= 1.0-8),
+    ComplexHeatmap,
+    circlize
 Suggests:
     testthat
 License: GPL-3

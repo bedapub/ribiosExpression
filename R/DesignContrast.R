@@ -292,15 +292,19 @@ setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(obje
               .contrastSampleIndices(object, contrast)
           })
 
-#' Plot a DesignContrast object
+#' Plot a DesignContrast object with two heatmaps
+#' 
 #' @param x A \code{DesignContrast} object
 #' @param y NULL, ignored
-#' @param name Name of the object, used in the title of the heatmaps
-#' @param ... Other parameters passed to \code{\link{biosHeatmap}}
+#' @param title Title of the object, used in the title of the heatmaps
+#' @param clusterDesign Logical, cluster rows of the design matrix
+#' @param clusterSamples Logical, cluster columns of the design matrix
+#' @param clusterContrasts Logical, cluster rows of the contrast matrix (notice that the contrast matrix required by limma is the transposed contrast matrix)
+#' @param ... Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap}}
 #'
 #' @description
-#' The function plots two heatmaps, one of the design matrix and the other of the contrast matrix.
-#' @return An invisible list of two elements, containing return values of \code{\link{biosHeatmap}} for design and contrast matrices, respectively.
+#' The function plots a ComplexHeatmap containing two matrices, one of the design matrix and the other of the contrast matrix.
+#' @return Heatmap object
 #' @examples
 #' myFac <- gl(3,3, labels=c("baseline", "treat1", "treat2"))
 #' myDesign <- model.matrix(~myFac)
@@ -308,30 +312,47 @@ setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(obje
 #' myContrast <- limma::makeContrasts(contrasts=c("treat1", "treat2"), levels=myDesign)
 #' res1 <- DesignContrast(myDesign, myContrast, groups=myFac)
 #' res2 <- DesignContrast(myDesign, myContrast, groups=myFac, dispLevels=c("C", "T1", "T2"))
-#' plot(res1, name="Res 1")
-#' plot(res2, name="Res 2")
-#' @importFrom ribiosPlot biosHeatmap blackyellow royalbluered
+#' plot(res1, title="DesCon 1")
+#' plot(res2, title="DesCon 1 (identical)")
+#' @importFrom ribiosPlot royalbluered
+#' @importFrom ComplexHeatmap Heatmap `%v%`
+#' @importFrom circlize colorRamp2
 #' @export
 plot.DesignContrast <- function(x, y=NULL,
-                                name=NULL, ...) {
-  if(!is.null(name)) {
-    designMain <- paste(name, "design")
-    contrastMain <- paste(name, "contrasts")
-  } else {
-    designMain <- "Design"
-    contrastMain <- "Contrasts"
+                                title=NULL, 
+                                clusterDesign = FALSE,
+                                clusterSamples = FALSE,
+                                clusterContrasts = FALSE,
+                                ...) {
+  
+  if(is.null(title)) {
+    title <- c("Design and contrast")
   }
-
-  designRes <- ribiosPlot::biosHeatmap(designMatrix(x),
-                           col=ribiosPlot::blackyellow,
-                           Colv=FALSE, dendrogram = "row",
-                           main=designMain,
-                           color.key.title = "Coeffient", ...)
-  contrastRes <- ribiosPlot::biosHeatmap(contrastMatrix(x),
-                             col=ribiosPlot::royalbluered, Colv=FALSE,
-                             dendrogram = "none", Rowv=FALSE,
-                             main=contrastMain,
-                             color.key.title = "Coeffient", ...)
-  res <- list(design=designRes, contrast=contrastRes)
-  return(invisible(res))
+  
+  desMat <- designMatrix(x)
+  contMat <- contrastMatrix(x)
+  
+  contMatAbsMax <- max(abs(contMat), na.rm=TRUE)
+  contMatSymRange <- c(-contMatAbsMax, 0, contMatAbsMax)
+  
+  ht1 <- ComplexHeatmap::Heatmap(desMat, name="Design",
+                                 col = circlize::colorRamp2(range(desMat, na.rm=TRUE),
+                                                            c("black", "yellow")),
+                                 cluster_rows = clusterDesign,
+                                 cluster_columns = clusterSamples,
+                                 border="black",
+                                 column_title = title,
+                                 row_title = "Design matrix",
+                                 ...)
+  ht2 <- ComplexHeatmap::Heatmap(t(contMat), name="Contrast",
+                                 col = circlize::colorRamp2(contMatSymRange,
+                                                            ribiosPlot::royalbluered(3)),
+                                 cluster_rows = clusterDesign,
+                                 cluster_columns = clusterContrasts,
+                                 border="black",
+                                 row_title = "Contrasts",
+                                 ...)
+  
+  res <- ht1 %v% ht2
+  return(res)
 }
