@@ -26,7 +26,8 @@ Imports:
     Matrix,
     ribiosAnnotation (>= 1.0-8),
     ComplexHeatmap,
-    circlize
+    circlize,
+    openxlsx
 Suggests:
     testthat
 License: GPL-3
@@ -58,6 +59,7 @@ Collate:
     'summarizeSamples.R'
     'transformations.R'
     'truncateDgeTable.R'
+    'writeVarMetadata.R'
 Remotes:
     github::bedapub/ribiosIO,
     github::bedapub/ribiosUtils,
