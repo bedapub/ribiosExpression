@@ -54,8 +54,12 @@ summarizeSamples <- function(eset, indSamples=eset$SAMPLEID, removeInvarCols=TRU
     assign(item, item.pool, envir=assayDataEnv)
   }
   eset.pd <- do.call(rbind, tapply(1:ncol(eset), indSamples, function(x) {
-    pData(eset)[x[1],]
+    pData(eset)[x[1], , drop=FALSE]
   }))
+  if(ncol(eset.pd)==1) {
+    eset.pd <- as.data.frame(eset.pd)
+    colnames(eset.pd) <- colnames(pData(eset))
+  }
   if(removeInvarCols) eset.pd <- removeInvarCol(eset.pd)
   rownames(eset.pd) <- colnames(get("exprs", envir=assayDataEnv))
   eset.poolEset <- new("ExpressionSet",
