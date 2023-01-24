@@ -44,8 +44,8 @@ Transform an expression matrix to long table
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{matrix}: The method for matrix as input
+\item \code{exprsToLong(matrix)}: The method for matrix as input
 
-\item \code{eSet}: The method for eSet as input
+\item \code{exprsToLong(eSet)}: The method for eSet as input
+
 }}
-

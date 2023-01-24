@@ -60,9 +60,9 @@ See example below.
 }
 \section{Functions}{
 \itemize{
-\item \code{readGct}: readGct uses the C implementation of reading in a gct file
-}}
+\item \code{readGct()}: readGct uses the C implementation of reading in a gct file
 
+}}
 \note{
 The \code{readGct} function is a wrapper of the
 \link[ribiosIO]{read_gct_matrix} function in the \code{ribiosIO} package,

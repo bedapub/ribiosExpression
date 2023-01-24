@@ -28,11 +28,11 @@ Export matrix or eEset that can be coereced as one into gct/cls files
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{matrix}: Method for matrix as input, 
+\item \code{writeGct(matrix)}: Method for matrix as input, 
 feta.name and feat.desc are passed to \code{write_gct}.
 
-\item \code{eSet}: Use \code{eSet} as input. \code{feat.name} and \code{feat.desc} are 
+\item \code{writeGct(eSet)}: Use \code{eSet} as input. \code{feat.name} and \code{feat.desc} are 
 variable (column) names in \code{fData}.
-}}
 
+}}
 \keyword{methods}

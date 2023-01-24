@@ -75,9 +75,9 @@ certain degree generic: it can be a character string or integer index of the
 }
 \section{Functions}{
 \itemize{
-\item \code{writeCls}: writeCls
-}}
+\item \code{writeCls()}: writeCls
 
+}}
 \examples{
 
 data(sample.ExpressionSet, package="Biobase")

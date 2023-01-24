@@ -25,12 +25,12 @@ Extract the design matrix from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{DesignContrast}: Return the design matrix from a DesignContrast
+\item \code{designMatrix(DesignContrast)}: Return the design matrix from a DesignContrast
 object
 
-\item \code{DesignContrast}: Assign a design matrix to a \code{DesignContrast}
+\item \code{designMatrix(DesignContrast) <- value}: Assign a design matrix to a \code{DesignContrast}
 object
 
-\item \code{MArrayLM}: Extract design matrix from an object of MArrayLM
+\item \code{designMatrix(MArrayLM)}: Extract design matrix from an object of MArrayLM
+
 }}
-

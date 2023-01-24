@@ -25,12 +25,12 @@ Extract the contrast matrix from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{DesignContrast}: Return the contrast matrix from a DesignContrast
+\item \code{contrastMatrix(DesignContrast)}: Return the contrast matrix from a DesignContrast
 object
 
-\item \code{DesignContrast}: Assign a contrast matrix to a \code{contrastContrast}
+\item \code{contrastMatrix(DesignContrast) <- value}: Assign a contrast matrix to a \code{contrastContrast}
 object
 
-\item \code{MArrayLM}: Extract contrast matrix from an object of MArrayLM
+\item \code{contrastMatrix(MArrayLM)}: Extract contrast matrix from an object of MArrayLM
+
 }}
-

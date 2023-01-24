@@ -17,6 +17,6 @@ Extract sample groups from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{DesignContrast}: Return the raw sample groups from a DesignContrast object
-}}
+\item \code{groups(DesignContrast)}: Return the raw sample groups from a DesignContrast object
 
+}}

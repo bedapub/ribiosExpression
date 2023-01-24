@@ -17,7 +17,7 @@ Extract design variable names from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{DesignContrast}: Return the names of variables (column names) 
+\item \code{designVariables(DesignContrast)}: Return the names of variables (column names) 
 in the design matrix of a DesignContrast object
-}}
 
+}}

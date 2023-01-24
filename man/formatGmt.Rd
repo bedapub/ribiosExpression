@@ -40,17 +40,17 @@ Resulting string(s) can be exported into \code{GMT} file by
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{title = character,comment = character,genes = character}: title, comment, and genes are one character string
+\item \code{formatGmt(title = character, comment = character, genes = character)}: title, comment, and genes are one character string
 
-\item \code{title = character,comment = missing,genes = character}: title and genes are both one character string, comments are missing
+\item \code{formatGmt(title = character, comment = missing, genes = character)}: title and genes are both one character string, comments are missing
 
-\item \code{title = character,comment = character,genes = list}: title and comments are both vectors of character
+\item \code{formatGmt(title = character, comment = character, genes = list)}: title and comments are both vectors of character
 strings, genes are a list of the same length
 
-\item \code{title = character,comment = missing,genes = list}: title is vectors of character strings, comments are
+\item \code{formatGmt(title = character, comment = missing, genes = list)}: title is vectors of character strings, comments are
 missing, genes are a list of the same length as the title
-}}
 
+}}
 \examples{
 
 formatGmt(title="GeneSet0", comment="My geneset", genes=c("MAPT", "MAPK", "AKT1"))

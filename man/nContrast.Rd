@@ -17,7 +17,7 @@ Extract the number of contrasts from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{DesignContrast}: Return the number of contrast in a DesignContras
+\item \code{nContrast(DesignContrast)}: Return the number of contrast in a DesignContras
 object
-}}
 
+}}

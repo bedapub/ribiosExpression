@@ -16,9 +16,9 @@ The DesignContrast class represents key information in a designed experiment
 }
 \section{Functions}{
 \itemize{
-\item \code{show,DesignContrast-method}: The show method
-}}
+\item \code{show(DesignContrast)}: The show method
 
+}}
 \section{Slots}{
 
 \describe{

@@ -25,11 +25,11 @@ Return indices of samples involved in the given contrast of two or more coeffici
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = DesignContrast,contrast = character}: Use character string to specify the contrast
+\item \code{contrastSampleIndices(object = DesignContrast, contrast = character)}: Use character string to specify the contrast
 
-\item \code{object = DesignContrast,contrast = numeric}: Use integer indices to specify the contrast
+\item \code{contrastSampleIndices(object = DesignContrast, contrast = numeric)}: Use integer indices to specify the contrast
+
 }}
-
 \examples{
 ## one-way ANOVA
 myDesCon <- parseDesignContrast(sampleGroups="As,Be,As,Be,As,Be",

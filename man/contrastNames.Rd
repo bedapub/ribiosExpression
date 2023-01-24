@@ -20,9 +20,9 @@ Extract contrastNames from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{DesignContrast}: Return contrast names, i.e., column names of the
+\item \code{contrastNames(DesignContrast)}: Return contrast names, i.e., column names of the
 contrast matrix
 
-\item \code{MArrayLM}: Extract contrast names from an object of MArrayLM
-}}
+\item \code{contrastNames(MArrayLM)}: Extract contrast names from an object of MArrayLM
 
+}}

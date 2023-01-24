@@ -174,13 +174,7 @@ setGeneric("formatGmt",
 #' @param \dots Currently not implemented
 #' @return An \code{eSet}, or a \code{data.frame} containing
 #' annotation information of the probesets.
-#' @note Internal function \code{annChar} is called to annotate probesets, and
-#' the method for \code{eSet} calls the version for characters to do
-#' annotation.
 #' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
-#' @seealso Internally the function \code{annotateProbesets} in the
-#' \code{ribiosAnnotation} package is used to connect to GTI and fetch
-#' annotation information.
 #' @examples
 #'
 #' data(ribios.ExpressionSet)

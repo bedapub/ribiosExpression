@@ -37,11 +37,11 @@ Remove all-zero variables from design matrix and the corresponding contrast matr
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{matrix}: S3 function for matrix as input
+\item \code{removeAllZeroVar(matrix)}: S3 function for matrix as input
 
-\item \code{DesignContrast}: S3 function for matrix as input
+\item \code{removeAllZeroVar(DesignContrast)}: S3 function for matrix as input
+
 }}
-
 \examples{
 myTestDesign <- matrix(c(1,1,1,1, 1,1,0,0,0,0,1,1,0,0,0,0), 
   byrow=FALSE, nrow=4L, 

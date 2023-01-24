@@ -31,11 +31,6 @@ characters representing probesets.
 Once successfully annotated, the \code{annotation} slot of the
 \code{eSet} object is set to the value of \code{target}.
 }
-\note{
-Internal function \code{annChar} is called to annotate probesets, and
-the method for \code{eSet} calls the version for characters to do
-annotation.
-}
 \examples{
 
 data(ribios.ExpressionSet)
@@ -52,11 +47,6 @@ annotate(myset, "HG_U_95AV2", check.target=TRUE)
 annotate(featureNames(myset), "HG_U95AV2")
 }
 
-}
-\seealso{
-Internally the function \code{annotateProbesets} in the
-\code{ribiosAnnotation} package is used to connect to GTI and fetch
-annotation information.
 }
 \author{
 Jitao David Zhang <jitao_david.zhang@roche.com>
