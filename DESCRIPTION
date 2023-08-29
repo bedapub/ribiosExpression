@@ -44,6 +44,7 @@ Collate:
     'io_gct_cls.R'
     'io_gmt.R'
     'io_tab.R'
+    'limmaDgeTable.R'
     'mergeEset.R'
     'obsolete.R'
     'readAnnotationFile.R'
