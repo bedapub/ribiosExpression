@@ -292,6 +292,8 @@ setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(obje
               .contrastSampleIndices(object, contrast)
           })
 
+assert_is_range <- function(x) stopifnot(length(x)==2 && class(x) %in% c("integer", "numeric"))
+  
 #' Plot a DesignContrast object with two heatmaps
 #' 
 #' @param x A \code{DesignContrast} object
@@ -300,7 +302,10 @@ setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(obje
 #' @param clusterDesign Logical, cluster rows of the design matrix
 #' @param clusterSamples Logical, cluster columns of the design matrix
 #' @param clusterContrasts Logical, cluster rows of the contrast matrix (notice that the contrast matrix required by limma is the transposed contrast matrix)
-#' @param ... Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap}}
+#' @param designRange NULL or a vector of length 2, giving range of the design matrix to be visualized. If NULL, the whole range is used.
+#' @param contrastRange NULL or a vector of length 2, giving range of the contrast matrix to be visualized. If NULL, a symmetric range of the largest absolute value and its negate is used.
+#' @param designParams Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap} for the design matrix}
+#' @param contrastParams Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap} for the contrast matrix}
 #'
 #' @description
 #' The function plots a ComplexHeatmap containing two matrices, one of the design matrix and the other of the contrast matrix.
@@ -314,45 +319,49 @@ setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(obje
 #' res2 <- DesignContrast(myDesign, myContrast, groups=myFac, dispLevels=c("C", "T1", "T2"))
 #' plot(res1, title="DesCon 1")
 #' plot(res2, title="DesCon 1 (identical)")
+#' plot(res2, title="DesCon 1 (identical)", designRange=c(-2,2), 
+#'     contrastRange=c(-2,1),
+#'     designParams=list(row_names_gp=gpar(fontsize=8)),
+#'     contrastParams=list(column_names_gp=gpar(fontsize=12, color="red")))
 #' @importFrom ribiosPlot royalbluered
 #' @importFrom ComplexHeatmap Heatmap `%v%`
 #' @importFrom circlize colorRamp2
 #' @export
-plot.DesignContrast <- function(x, y=NULL,
-                                title=NULL, 
-                                clusterDesign = FALSE,
-                                clusterSamples = FALSE,
-                                clusterContrasts = FALSE,
-                                ...) {
-  
-  if(is.null(title)) {
+plot.DesignContrast <- function (x, y = NULL, title = NULL, 
+                                 clusterDesign = FALSE, clusterSamples = FALSE, 
+                                 clusterContrasts = FALSE, 
+                                 designRange=NULL, contrastRange=NULL, 
+                                 designParams=NULL, contrastParams=NULL) {
+  if (is.null(title)) {
     title <- c("Design and contrast")
   }
-  
   desMat <- designMatrix(x)
   contMat <- contrastMatrix(x)
   
-  contMatAbsMax <- max(abs(contMat), na.rm=TRUE)
-  contMatSymRange <- c(-contMatAbsMax, 0, contMatAbsMax)
-  
-  ht1 <- ComplexHeatmap::Heatmap(desMat, name="Design",
-                                 col = circlize::colorRamp2(range(desMat, na.rm=TRUE),
-                                                            c("black", "yellow")),
-                                 cluster_rows = clusterDesign,
-                                 cluster_columns = clusterSamples,
-                                 border="black",
-                                 column_title = title,
-                                 row_title = "Design matrix",
-                                 ...)
-  ht2 <- ComplexHeatmap::Heatmap(t(contMat), name="Contrast",
-                                 col = circlize::colorRamp2(contMatSymRange,
-                                                            ribiosPlot::royalbluered(3)),
-                                 cluster_rows = clusterDesign,
-                                 cluster_columns = clusterContrasts,
-                                 border="black",
-                                 row_title = "Contrasts",
-                                 ...)
-  
+  if(is.null(designRange)) {
+    designRange <- range(desMat, na.rm = TRUE) 
+  } else {
+    assert_is_range(designRange)
+  }
+  if(is.null(contrastRange)) {
+    contMatAbsMax <- max(abs(contMat), na.rm = TRUE)
+    contrastRange <- c(-contMatAbsMax, 0, contMatAbsMax)
+  } else {
+    assert_is_range(contrastRange)
+  }
+  ht1 <- do.call(
+    ComplexHeatmap::Heatmap,
+    append(list(desMat, name = "Design", 
+                col = circlize::colorRamp2(designRange, c("black", "yellow")), 
+                cluster_rows = clusterDesign, 
+                cluster_columns = clusterSamples, border = "black", column_title = title, 
+                row_title = "Design matrix"), designParams))
+  ht2 <- do.call(
+    ComplexHeatmap::Heatmap,
+    append(list(t(contMat), name = "Contrast", 
+                col = circlize::colorRamp2(contrastRange, ribiosPlot::royalbluered(length(contrastRange))), 
+                cluster_rows = clusterDesign, cluster_columns = clusterContrasts, 
+                border = "black", row_title = "Contrasts"), contrastParams))
   res <- ht1 %v% ht2
   return(res)
 }

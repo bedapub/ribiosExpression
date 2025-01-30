@@ -11,7 +11,10 @@
   clusterDesign = FALSE,
   clusterSamples = FALSE,
   clusterContrasts = FALSE,
-  ...
+  designRange = NULL,
+  contrastRange = NULL,
+  designParams = NULL,
+  contrastParams = NULL
 )
 }
 \arguments{
@@ -27,7 +30,13 @@
 
 \item{clusterContrasts}{Logical, cluster rows of the contrast matrix (notice that the contrast matrix required by limma is the transposed contrast matrix)}
 
-\item{...}{Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap}}}
+\item{designRange}{NULL or a vector of length 2, giving range of the design matrix to be visualized. If NULL, the whole range is used.}
+
+\item{contrastRange}{NULL or a vector of length 2, giving range of the contrast matrix to be visualized. If NULL, a symmetric range of the largest absolute value and its negate is used.}
+
+\item{designParams}{Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap} for the design matrix}}
+
+\item{contrastParams}{Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap} for the contrast matrix}}
 }
 \value{
 Heatmap object
@@ -44,4 +53,8 @@ res1 <- DesignContrast(myDesign, myContrast, groups=myFac)
 res2 <- DesignContrast(myDesign, myContrast, groups=myFac, dispLevels=c("C", "T1", "T2"))
 plot(res1, title="DesCon 1")
 plot(res2, title="DesCon 1 (identical)")
+plot(res2, title="DesCon 1 (identical)", designRange=c(-2,2), 
+    contrastRange=c(-2,1),
+    designParams=list(row_names_gp=gpar(fontsize=8)),
+    contrastParams=list(column_names_gp=gpar(fontsize=12, color="red")))
 }
