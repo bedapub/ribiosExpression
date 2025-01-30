@@ -1,6 +1,7 @@
 #' Data structures and functions for gene expression analysis
 #' 
-#' @docType package
+#' @keywords internal 
+"_PACKAGE"
 #' @description Provides data structures and functions for gene expression analysis
 #' @name ribiosExpression-package
 NULL

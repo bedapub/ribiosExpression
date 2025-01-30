@@ -2,8 +2,16 @@
 % Please edit documentation in R/ribiosExpression-package.R
 \docType{package}
 \name{ribiosExpression-package}
+\alias{ribiosExpression}
 \alias{ribiosExpression-package}
 \title{Data structures and functions for gene expression analysis}
 \description{
+Data structures and functions for expression analysis.
+
 Provides data structures and functions for gene expression analysis
 }
+\author{
+\strong{Maintainer}: Jitao David Zhang \email{jitao_david.zhang@roche.com} (\href{https://orcid.org/0000-0002-3085-0909}{ORCID}) [contributor]
+
+}
+\keyword{internal}
