@@ -27,7 +27,8 @@ Imports:
     circlize,
     openxlsx
 Suggests:
-    testthat
+    testthat,
+    grid
 License: GPL-3
 Encoding: UTF-8
 RoxygenNote: 7.3.2

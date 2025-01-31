@@ -14,7 +14,8 @@
   designRange = NULL,
   contrastRange = NULL,
   designParams = NULL,
-  contrastParams = NULL
+  contrastParams = NULL,
+  ...
 )
 }
 \arguments{
@@ -37,6 +38,8 @@
 \item{designParams}{Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap} for the design matrix}}
 
 \item{contrastParams}{Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap} for the contrast matrix}}
+
+\item{...}{Ignored}
 }
 \value{
 Heatmap object
@@ -55,6 +58,6 @@ plot(res1, title="DesCon 1")
 plot(res2, title="DesCon 1 (identical)")
 plot(res2, title="DesCon 1 (identical)", designRange=c(-2,2), 
     contrastRange=c(-2,1),
-    designParams=list(row_names_gp=gpar(fontsize=8)),
-    contrastParams=list(column_names_gp=gpar(fontsize=12, color="red")))
+    designParams=list(row_names_gp=grid::gpar(fontsize=8)),
+    contrastParams=list(column_names_gp=grid::gpar(fontsize=12, color="red")))
 }

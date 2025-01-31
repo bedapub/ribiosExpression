@@ -306,6 +306,7 @@ assert_is_range <- function(x) stopifnot(length(x)==2 && class(x) %in% c("intege
 #' @param contrastRange NULL or a vector of length 2, giving range of the contrast matrix to be visualized. If NULL, a symmetric range of the largest absolute value and its negate is used.
 #' @param designParams Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap} for the design matrix}
 #' @param contrastParams Other parameters passed to \code{\link[ComplexHeatmap]{Heatmap} for the contrast matrix}
+#' @param ... Ignored
 #'
 #' @description
 #' The function plots a ComplexHeatmap containing two matrices, one of the design matrix and the other of the contrast matrix.
@@ -321,8 +322,8 @@ assert_is_range <- function(x) stopifnot(length(x)==2 && class(x) %in% c("intege
 #' plot(res2, title="DesCon 1 (identical)")
 #' plot(res2, title="DesCon 1 (identical)", designRange=c(-2,2), 
 #'     contrastRange=c(-2,1),
-#'     designParams=list(row_names_gp=gpar(fontsize=8)),
-#'     contrastParams=list(column_names_gp=gpar(fontsize=12, color="red")))
+#'     designParams=list(row_names_gp=grid::gpar(fontsize=8)),
+#'     contrastParams=list(column_names_gp=grid::gpar(fontsize=12, color="red")))
 #' @importFrom ribiosPlot royalbluered
 #' @importFrom ComplexHeatmap Heatmap `%v%`
 #' @importFrom circlize colorRamp2
@@ -331,7 +332,7 @@ plot.DesignContrast <- function (x, y = NULL, title = NULL,
                                  clusterDesign = FALSE, clusterSamples = FALSE, 
                                  clusterContrasts = FALSE, 
                                  designRange=NULL, contrastRange=NULL, 
-                                 designParams=NULL, contrastParams=NULL) {
+                                 designParams=NULL, contrastParams=NULL, ...) {
   if (is.null(title)) {
     title <- c("Design and contrast")
   }
