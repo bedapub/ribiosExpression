@@ -16,12 +16,14 @@ setGeneric("exprsToLong", function(x,...) standardGeneric("exprsToLong"))
 
 #' Extract contrastNames from an object
 #' @param object An object, see supported methods below
+#' @return A character vector of contrast names
 #' @aliases contrastNames,DesignContrast-method
 #' @exportMethod contrastNames
 setGeneric("contrastNames", function(object) standardGeneric("contrastNames"))
 
 #' Extract design variable names from an object
 #' @param object An object, see supported methods below
+#' @return A character vector of variable names
 #' @aliases designVariables,DesignContrast-method
 #' @exportMethod designVariables
 setGeneric("designVariables", function(object)
@@ -30,6 +32,7 @@ setGeneric("designVariables", function(object)
 #' Extract sample groups from an object
 #'
 #' @param object An object, see supported methods below
+#' @return A factor of sample groups
 #' @exportMethod groups
 #' @aliases groups,DesignContrast-method
 setGeneric("groups", function(object) standardGeneric("groups"))
@@ -37,6 +40,7 @@ setGeneric("groups", function(object) standardGeneric("groups"))
 #' Extract displayed group labels from an object
 #'
 #' @param object An object, see supported methods below
+#' @return A factor of display group labels
 #' @exportMethod dispGroups
 #' @aliases dispGroups,DesignContrast-method
 setGeneric("dispGroups", function(object) standardGeneric("dispGroups"))
@@ -44,6 +48,7 @@ setGeneric("dispGroups", function(object) standardGeneric("dispGroups"))
 #' Extract the design matrix from an object
 #'
 #' @param object An object, see supported methods below
+#' @return A numeric design matrix
 #' @exportMethod designMatrix
 #' @aliases designMatrix,DesignContrast-method
 setGeneric("designMatrix", function(object) standardGeneric("designMatrix"))
@@ -52,13 +57,14 @@ setGeneric("designMatrix", function(object) standardGeneric("designMatrix"))
 #'
 #' @param object An object, see supported methods below
 #' @param value Design matrix
-#' @exportMethod `designMatrix<-`
+#' @return The modified object
 setGeneric("designMatrix<-", function(object, value) standardGeneric("designMatrix<-"))
 
 
 #' Extract the contrast matrix from an object
 #'
 #' @param object An object, see supported methods below
+#' @return A numeric contrast matrix
 #' @exportMethod contrastMatrix
 #' @aliases contrastMatrix,DesignContrast-method
 setGeneric("contrastMatrix", function(object) standardGeneric("contrastMatrix"))
@@ -67,22 +73,23 @@ setGeneric("contrastMatrix", function(object) standardGeneric("contrastMatrix"))
 #'
 #' @param object An object, see supported methods below
 #' @param value Contrast matrix
-#' @exportMethod `contrastMatrix<-`
+#' @return The modified object
 setGeneric("contrastMatrix<-", function(object, value) standardGeneric("contrastMatrix<-"))
 
 
 #' Extract the contrast annotation data.frame from an object
 #'
 #' @param object An object, see supported methods below
+#' @return A data.frame annotating contrasts
 #' @exportMethod contrastAnnotation
 #' @aliases contrastAnnotation,DesignContrast-method
 setGeneric("contrastAnnotation", function(object) standardGeneric("contrastAnnotation"))
 
-#' Assign contrast annotaiton to an object
+#' Assign contrast annotation to an object
 #'
 #' @param object An object, see supported methods below
-#' @param value Contrast anaotation data.frame
-#' @exportMethod `contrastAnnotation<-`
+#' @param value Contrast annotation data.frame
+#' @return The modified object
 setGeneric("contrastAnnotation<-", function(object, value)
   standardGeneric("contrastAnnotation<-"))
 
@@ -90,6 +97,7 @@ setGeneric("contrastAnnotation<-", function(object, value)
 #' Extract the number of contrasts from an object
 #'
 #' @param object An object, see supported methods below
+#' @return An integer, number of contrasts
 #' @aliases nContrast,DesignContrast-method
 #' @exportMethod nContrast
 setGeneric("nContrast", function(object) standardGeneric("nContrast"))
@@ -240,12 +248,13 @@ setGeneric("annotate",
 setGeneric("reannotate",
            function(object, check.target,...) standardGeneric("reannotate"))
 
-#' Export matrix or eEset that can be coereced as one into gct/cls files
+#' Export matrix or eSet that can be coerced as one into gct/cls files
 #' @keywords methods
 #' @param obj The input object, see methods below for supported data types
 #' @param file The output file
 #' @param feat.name Specifying feature names
 #' @param feat.desc Specifying feature descriptions
+#' @return Used for its side effect of writing files; returns invisibly.
 #' @aliases writeGct,matrix,ANY,ANY,ANY-method writeGct,eSet,ANY,ANY,ANY-method
 #' @exportMethod writeGct
 setGeneric("writeGct", function(obj, file, feat.name, feat.desc)

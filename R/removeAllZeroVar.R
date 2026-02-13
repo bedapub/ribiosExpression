@@ -42,7 +42,7 @@ removeAllZeroVar.matrix <- function(obj, contrasts) {
     if(length(indInvalidContrast)==0) {
       keepContrast <- rep(TRUE, ncol(contrasts))
     } else {
-      keepContrast <- setdiff(1:ncol(contrasts), indInvalidContrast)
+      keepContrast <- setdiff(seq_len(ncol(contrasts)), indInvalidContrast)
     }
     notEstContrasts <- colnames(contrasts)[indInvalidContrast]
     contrasts <- contrasts[!isNotEst, keepContrast]

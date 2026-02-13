@@ -1,0 +1,168 @@
+---
+title: "Introduction to ribiosExpression"
+author:
+  - name: Jitao David Zhang
+    affiliation: Roche Pharma Research and Early Development
+    email: jitao_david.zhang@roche.com
+package: ribiosExpression
+output:
+  BiocStyle::html_document:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Introduction to ribiosExpression}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+The `ribiosExpression` package provides data structures and utility functions
+for gene expression analysis. It extends the Biobase `ExpressionSet` class with
+tools for:
+ 
+- **Study design and contrasts**: The `DesignContrast` class encapsulates design
+  matrices, contrast matrices, and grouping information commonly used in
+  differential expression analysis with `limma`.
+- **I/O operations**: Import and export expression data in GCT/CLS formats,
+  tab-delimited files, and GMT gene set formats.
+- **Probeset summarization and filtering**: Collapse multiple probesets per gene
+  and filter by summary statistics.
+- **Expression data transformation**: Convert expression matrices and
+  `ExpressionSet` objects to long-format data frames for downstream analysis and
+  visualization.
+
+# Installation
+
+```{r install, eval=FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("ribiosExpression")
+```
+
+# Quick start
+
+## Loading the package
+
+```{r load}
+library(ribiosExpression)
+library(Biobase)
+```
+
+## Working with DesignContrast objects
+
+The `DesignContrast` class is a central data structure for representing study
+designs and contrasts. You can create one directly or parse it from strings:
+
+```{r design-contrast}
+## One-way ANOVA design from strings
+dc <- parseDesignContrast(
+  sampleGroups = "Control,Treatment,Control,Treatment,Control,Treatment",
+  groupLevels = "Control,Treatment",
+  dispLevels = "Ctrl,Trt",
+  contrasts = "Treatment-Control"
+)
+dc
+```
+
+Access the components:
+
+```{r access-dc}
+designMatrix(dc)
+contrastMatrix(dc)
+groups(dc)
+```
+
+## Building from design and contrast matrices
+
+```{r build-dc}
+myFac <- gl(3, 3, labels = c("baseline", "treat1", "treat2"))
+myDesign <- model.matrix(~myFac)
+colnames(myDesign) <- c("baseline", "treat1", "treat2")
+myContrast <- limma::makeContrasts(
+  contrasts = c("treat1", "treat2"),
+  levels = myDesign
+)
+dc2 <- DesignContrast(myDesign, myContrast, groups = myFac)
+dc2
+```
+
+## Visualizing the design
+
+```{r plot-dc, fig.width=6, fig.height=6}
+plot(dc2, title = "Example Design")
+```
+
+## Reading and writing expression data
+
+### Read an expression matrix into an ExpressionSet
+
+```{r read-exprs}
+idir <- system.file("extdata", package = "ribiosExpression")
+eset <- readExprsMatrix(file.path(idir, "sample_eset_exprs.txt"))
+eset
+```
+
+### Read GCT/CLS files
+
+```{r read-gct}
+gct_eset <- readGctCls(file.base = file.path(idir, "test"))
+gct_eset
+```
+
+### Write ExpressionSet to files
+
+```{r write-eset}
+exprs_file <- tempfile(fileext = ".tsv")
+writeEset(eset, exprs_file, exprs.file.format = "tsv")
+```
+
+## Transforming expression data to long format
+
+```{r long-table}
+data(ribios.ExpressionSet)
+longTbl <- eSetToLongTable(ribios.ExpressionSet[1:5, 1:3])
+head(longTbl)
+```
+
+## Probeset summarization
+
+When multiple probesets map to the same gene, you can summarize them:
+
+```{r summarize}
+data(ribios.ExpressionSet)
+summarized <- summarizeProbesets(
+  ribios.ExpressionSet,
+  index.name = "GeneID",
+  fun = mean
+)
+summarized
+```
+
+## Filtering probesets
+
+Keep only the probeset with the maximum variance per gene:
+
+```{r filter}
+filtered <- keepMaxStatProbe(
+  ribios.ExpressionSet,
+  probe.index.name = "GeneID",
+  stat = sd,
+  na.rm = TRUE
+)
+filtered
+```
+
+# Session info
+
+```{r session-info}
+sessionInfo()
+```
