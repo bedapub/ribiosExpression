@@ -29,7 +29,7 @@
 #' @note It is user's responsibility to check that all GRP files do exist and
 #' are readable.
 #' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
-#' @references See \url{http://www.broadinstitute.org/cmap/index.jsp} for the
+#' @references See \url{https://www.broadinstitute.org/connectivity-map-cmap} for the
 #' use of GRP files in the Connectivity Map web tool.
 #' @examples
 #' 

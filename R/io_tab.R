@@ -94,7 +94,8 @@ writeEset <- function(eset,exprs.file,fData.file,pData.file,
 #' @param sampleGroups.file Character, file name where the information of sample groups is written to.
 #' @param sampleGroupLevels.file Character, file name where the information of sample group levels is written to.
 #' 
-#' The function is used to export sample group and group level information for differential gene expression analysis.
+#' @details The function is used to export sample group and group level information for differential gene expression analysis.
+#' @return Used for its side effect of writing files. Returns invisibly.
 #' 
 #' @examples 
 #' writeSampleGroups(gl(3,4), stdout(), stdout())
@@ -115,13 +116,14 @@ writeSampleGroups <- function(sampleGroups, sampleGroups.file, sampleGroupLevels
 #' @param header Logical, whether a head line is present
 #' @param ... Passed to \code{\link{readFKtable}}
 #' 
-#' The function can read in eSet object saved by \code{\link{writeEset}} by parsing
+#' @details The function can read in eSet object saved by \code{\link{writeEset}} by parsing
 #' three plain text files: \code{exprs.file}, \code{fData.file}, and \code{pData.file}.
 #' 
 #' Currently both \code{tsv} and \code{gct} formats are supported for expression
 #' file.
 #' 
 #' See \code{writeEset} for limitations of these functions.
+#' @return An \code{ExpressionSet} object.
 #' 
 #' @seealso \code{\link{writeEset}}, \code{\link{readFKtable}}.
 #' 

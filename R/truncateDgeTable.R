@@ -26,35 +26,32 @@ limmaTopTable2dgeTable <- function(limmaTopTable) {
     return(limmaTopTable)
 }
 
-## truncateDgeTable uses logFC
-utils::globalVariables(c("logFC"))
-
 #' Truncate dgeTable into tables of positively and negatively differentially expressed genes according to the pre-defined criteria
 #' 
 #' @param dgeTable dgeTable A DGEtable defined in ribiosExpression. Notice that the column names returned by limma::topTable are remapped (see limmaTopTable2dgeTable).
 #' @return A list of two elements: 'pos' and 'neg'. Each contains a dgeTable of positively/negatively regulated genes
-#' @references The logic is described at http://rochewiki.roche.com/confluence/display/BIOINFO/Substream+Algorithm
 #' 
 #' @export
 truncateDgeTable <- function(dgeTable) {
     dgeTable <- sortByCol(dgeTable, "PValue", decreasing=FALSE)
-    cond1 <- with(dgeTable, abs(logFC)>=1 & FDR<0.10)
-    cond2 <- with(dgeTable, abs(logFC)>=1 & PValue<0.05)
+    cond1 <- abs(dgeTable$logFC)>=1 & dgeTable$FDR<0.10
+    cond2 <- abs(dgeTable$logFC)>=1 & dgeTable$PValue<0.05
     if(sum(cond1)>=200) {
-        posTbl <- subset(dgeTable[cond1,], logFC>0)
-        negTbl <- subset(dgeTable[cond1,], logFC<0)
+        posTbl <- dgeTable[cond1 & dgeTable$logFC>0, , drop=FALSE]
+        negTbl <- dgeTable[cond1 & dgeTable$logFC<0, , drop=FALSE]
     } else if(sum(cond2)>=200) {
-        posTbl <- subset(dgeTable[cond2,], logFC>0)
-        negTbl <- subset(dgeTable[cond2,], logFC<0)
+        posTbl <- dgeTable[cond2 & dgeTable$logFC>0, , drop=FALSE]
+        negTbl <- dgeTable[cond2 & dgeTable$logFC<0, , drop=FALSE]
     } else {
         ntop <- pmin(400,
                      pmin(nrow(dgeTable),
                           pmax(100, as.integer(nrow(dgeTable)*0.05))))
-        posTbl <- subset(dgeTable[1:ntop,], logFC>0)
-        negTbl <- subset(dgeTable[1:ntop,], logFC<0)
+        topTbl <- dgeTable[seq_len(ntop), , drop=FALSE]
+        posTbl <- topTbl[topTbl$logFC>0, , drop=FALSE]
+        negTbl <- topTbl[topTbl$logFC<0, , drop=FALSE]
     }
     maxRow <- 150
-    if(nrow(posTbl)>maxRow) posTbl <- posTbl[1:maxRow,]
-    if(nrow(negTbl)>maxRow) negTbl <- negTbl[1:maxRow,]
+    if(nrow(posTbl)>maxRow) posTbl <- posTbl[seq_len(maxRow), , drop=FALSE]
+    if(nrow(negTbl)>maxRow) negTbl <- negTbl[seq_len(maxRow), , drop=FALSE]
     return(list(pos=posTbl, neg=negTbl))
 }

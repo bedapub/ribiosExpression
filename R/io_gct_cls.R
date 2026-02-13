@@ -31,7 +31,7 @@ setMethod("writeGct",
               feat.name <- getDfCol(fd, feat.name)
             if(!missing(feat.desc))
               feat.desc <- getDfCol(fd, feat.desc)
-            write_gct(exprs(obj), file=file, feat.name=feat.name, feat.desc)
+            write_gct(exprs(obj), file=file, feat.name=feat.name, feat.desc=feat.desc)
           })
 
 
@@ -101,7 +101,7 @@ writeCls <- function(eset, file=stdout(), sample.group.col="group") {
 #' 
 #' See \code{\link{readGctCls}} for importing functions.
 #' @references
-#' \url{http://www.broadinstitute.org/gsea/doc/GSEAUserGuideTEXT.htm}
+#' \url{https://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideTEXT.htm}
 #' @examples
 #' 
 #' data(sample.ExpressionSet, package="Biobase")

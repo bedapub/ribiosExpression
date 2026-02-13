@@ -7,3 +7,5 @@
 ^Makefile$
 ^coverage\.txt$
 ^coverage\.r$
+^\.github$
+^NEWS$

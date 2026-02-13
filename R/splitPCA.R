@@ -4,6 +4,7 @@
 #' @param factor One or more factor vectors, used to split the eSet object
 #' @param func Function to retrieve values from split sub-eset objects
 #' @param ... Passed to \code{pcaScores}
+#' @return A \code{data.frame} of PCA scores combined from all splits.
 #' 
 #' @examples 
 #' data(ribios.ExpressionSet, package="ribiosExpression")
@@ -11,7 +12,7 @@
 #' pcaScore1 <- splitPCA(ribios.ExpressionSet, fac1)
 #' @export
 splitPCA <- function(eset, factor, func=function(e) exprs(e), ...) {
-  resList <- tapply(1:ncol(eset), factor, function(i) {
+  resList <- tapply(seq_len(ncol(eset)), factor, function(i) {
     if(length(i)==0)
       return(NULL)
     if(length(i)==1) {

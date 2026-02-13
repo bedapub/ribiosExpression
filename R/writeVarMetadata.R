@@ -28,10 +28,10 @@ writeVarMetadata.default <- function(x,
   openxlsx::addWorksheet(wb, sheet)
   prependStyle <- openxlsx::createStyle(fgFill="#CCFFCC", fontColour="#003300")
   openxlsx::writeData(wb, sheet, prepend)
-  openxlsx::addStyle(wb, sheet=sheet, prependStyle, rows=1:length(prepend), cols=1)
+  openxlsx::addStyle(wb, sheet=sheet, prependStyle, rows=seq_along(prepend), cols=1)
   colheadStyle <- openxlsx::createStyle(textDecoration = "bold")
   openxlsx::writeData(wb, sheet, df, startRow=length(prepend)+1)
-  openxlsx::addStyle(wb, sheet=sheet, colheadStyle, rows=length(prepend)+1, cols=1:ncol(df))
+  openxlsx::addStyle(wb, sheet=sheet, colheadStyle, rows=length(prepend)+1, cols=seq_len(ncol(df)))
   res <- openxlsx::saveWorkbook(wb, path, overwrite=overwrite, returnValue=TRUE)
   return(invisible(res))
 }
