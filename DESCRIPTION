@@ -45,7 +45,7 @@ BugReports: https://github.com/bedapub/ribiosExpression/issues
 biocViews: GeneExpression, DifferentialExpression, Microarray,
     DataImport, Visualization
 VignetteBuilder: knitr
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'

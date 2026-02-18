@@ -91,7 +91,7 @@ unlink(c(paste(tmpfile, ".cls", sep=""), paste(tmpfile, ".gct", sep="")))
 
 }
 \references{
-\url{http://www.broadinstitute.org/gsea/doc/GSEAUserGuideTEXT.htm}
+\url{https://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideTEXT.htm}
 }
 \seealso{
 See \code{\link{dfFactor}} for possible values of the

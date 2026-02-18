@@ -20,6 +20,9 @@ contrastMatrix(object)
 
 \item{value}{A contrast matrix}
 }
+\value{
+A numeric contrast matrix
+}
 \description{
 Extract the contrast matrix from an object
 }

@@ -15,12 +15,16 @@ eSetToLongTable(
 
 \item{exprsFun}{A function to extract expression values, by default \code{exprs}}
 
-\item{includeOtherAssayData}{Logical, whether other elements in the \code{assayData} environment (if present) should be returned.
-
-The function extracts exprs (and other values in the \code{assayData} environment), and return it in a long data.frame format with phenotypic data}
+\item{includeOtherAssayData}{Logical, whether other elements in the \code{assayData} environment (if present) should be returned.}
+}
+\value{
+A \code{data.frame} in long format.
 }
 \description{
 Transform eSet to long data.frame
+}
+\details{
+The function extracts exprs (and other values in the \code{assayData} environment), and return it in a long data.frame format with phenotypic data
 }
 \examples{
 data(ribios.ExpressionSet, package="ribiosExpression")

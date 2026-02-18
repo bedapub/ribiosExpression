@@ -15,6 +15,9 @@ contrastNames(object)
 \arguments{
 \item{object}{An object, see supported methods below}
 }
+\value{
+A character vector of contrast names
+}
 \description{
 Extract contrastNames from an object
 }

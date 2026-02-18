@@ -6,12 +6,20 @@
 \alias{ribiosExpression-package}
 \title{Data structures and functions for gene expression analysis}
 \description{
-Data structures and functions for expression analysis.
+Provides data structures and utility functions for gene expression analysis. It includes the DesignContrast class for representing study designs and contrasts used in differential expression analysis, functions for importing and exporting expression data in GCT/CLS formats, tools for probeset summarization and filtering, and interfaces to limma-based differential gene expression workflows. The package works with Biobase ExpressionSet objects and integrates with the limma framework.
 
 Provides data structures and functions for gene expression analysis
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/bedapub/ribiosExpression}
+  \item Report bugs at \url{https://github.com/bedapub/ribiosExpression/issues}
+}
+
+}
 \author{
-\strong{Maintainer}: Jitao David Zhang \email{jitao_david.zhang@roche.com} (\href{https://orcid.org/0000-0002-3085-0909}{ORCID}) [contributor]
+\strong{Maintainer}: Jitao David Zhang \email{jitao_david.zhang@roche.com} (\href{https://orcid.org/0000-0002-3085-0909}{ORCID})
 
 }
 \keyword{internal}

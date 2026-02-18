@@ -12,12 +12,15 @@ dispGroups(object)
 \arguments{
 \item{object}{An object, see supported methods below}
 }
+\value{
+A factor of display group labels
+}
 \description{
 Extract displayed group labels from an object
 }
 \section{Methods (by class)}{
 \itemize{
 \item \code{dispGroups(DesignContrast)}: Return the sample groups from a DesignContrast object
-, suing display labels
+, using display labels
 
 }}

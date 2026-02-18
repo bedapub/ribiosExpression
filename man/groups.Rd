@@ -12,6 +12,9 @@ groups(object)
 \arguments{
 \item{object}{An object, see supported methods below}
 }
+\value{
+A factor of sample groups
+}
 \description{
 Extract sample groups from an object
 }

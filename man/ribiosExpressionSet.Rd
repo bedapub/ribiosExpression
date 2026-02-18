@@ -4,8 +4,14 @@
 \name{ribiosExpressionSet}
 \alias{ribiosExpressionSet}
 \title{ribiosExpressionSet: An example of ExpressionSet with artificial expression data}
+\format{
+An \code{ExpressionSet} object.
+}
 \description{
 ribiosExpressionSet: An example of ExpressionSet with artificial expression data
+}
+\examples{
+data(ribiosExpressionSet)
 }
 \author{
 Jitao David Zhang \email{jitao_david.zhang@roche.com}

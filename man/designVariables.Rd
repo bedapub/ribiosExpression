@@ -12,6 +12,9 @@ designVariables(object)
 \arguments{
 \item{object}{An object, see supported methods below}
 }
+\value{
+A character vector of variable names
+}
 \description{
 Extract design variable names from an object
 }

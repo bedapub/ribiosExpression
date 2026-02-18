@@ -13,6 +13,9 @@
 
 \item{scale}{Logical, whether the standard deviations of rows should be normalised to one.}
 }
+\value{
+An ExpressionSet object with row-scaled expression values.
+}
 \description{
 Perform row-wise scaling to an ExpressionSet object
 }

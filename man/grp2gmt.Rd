@@ -62,7 +62,7 @@ grpFiles2gmt(c(up.file, down.file), n=-1L, chiptype="HG_U95AV2")
 
 }
 \references{
-See \url{http://www.broadinstitute.org/cmap/index.jsp} for the
+See \url{https://www.broadinstitute.org/connectivity-map-cmap} for the
 use of GRP files in the Connectivity Map web tool.
 }
 \author{

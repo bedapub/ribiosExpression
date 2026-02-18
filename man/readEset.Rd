@@ -27,18 +27,22 @@ readEset(
 
 \item{header}{Logical, whether a head line is present}
 
-\item{...}{Passed to \code{\link{readFKtable}}
-
+\item{...}{Passed to \code{\link{readFKtable}}}
+}
+\value{
+An \code{ExpressionSet} object.
+}
+\description{
+Read eSet object from plain files
+}
+\details{
 The function can read in eSet object saved by \code{\link{writeEset}} by parsing
 three plain text files: \code{exprs.file}, \code{fData.file}, and \code{pData.file}.
 
 Currently both \code{tsv} and \code{gct} formats are supported for expression
 file.
 
-See \code{writeEset} for limitations of these functions.}
-}
-\description{
-Read eSet object from plain files
+See \code{writeEset} for limitations of these functions.
 }
 \examples{
 data(sample.ExpressionSet, package="Biobase")

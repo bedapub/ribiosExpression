@@ -20,6 +20,9 @@ designMatrix(object)
 
 \item{value}{A design matrix}
 }
+\value{
+A numeric design matrix
+}
 \description{
 Extract the design matrix from an object
 }

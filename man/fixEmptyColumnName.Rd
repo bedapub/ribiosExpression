@@ -9,12 +9,16 @@ fixEmptyColumnName(df, prefix = "X")
 \arguments{
 \item{df}{A \code{data.frame}}
 
-\item{prefix}{A character string, the prefix to be used if an column's name is empty.
-
-If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1}
+\item{prefix}{A character string, the prefix to be used if an column's name is empty.}
+}
+\value{
+A \code{data.frame} with fixed column names.
 }
 \description{
 Detect if any column has an empty string as name and fix
+}
+\details{
+If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1
 }
 \examples{
 testDf <- data.frame("Col1"=LETTERS[1:3], "Col2"=letters[2:4])
