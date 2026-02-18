@@ -74,3 +74,9 @@ Collate:
     'transformations.R'
     'truncateDgeTable.R'
     'writeVarMetadata.R'
+Remotes:
+    github::bedapub/ribiosIO,
+    github::bedapub/ribiosPlot
+    github::bedapub/ribiosArg,
+    github::bedapub/ribiosAnnotation
+
