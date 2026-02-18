@@ -12,12 +12,15 @@ nContrast(object)
 \arguments{
 \item{object}{An object, see supported methods below}
 }
+\value{
+An integer, number of contrasts
+}
 \description{
 Extract the number of contrasts from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{nContrast(DesignContrast)}: Return the number of contrast in a DesignContras
+\item \code{nContrast(DesignContrast)}: Return the number of contrasts in a DesignContrast
 object
 
 }}

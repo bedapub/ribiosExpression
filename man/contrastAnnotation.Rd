@@ -17,6 +17,9 @@ contrastAnnotation(object)
 
 \item{value}{A contrast annotation data.frame}
 }
+\value{
+A data.frame annotating contrasts
+}
 \description{
 Extract the contrast annotation data.frame from an object
 }

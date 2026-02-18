@@ -15,6 +15,9 @@ splitPCA(eset, factor, func = function(e) exprs(e), ...)
 
 \item{...}{Passed to \code{pcaScores}}
 }
+\value{
+A \code{data.frame} of PCA scores combined from all splits.
+}
 \description{
 Split an eSet object and run PCA on each split, return PCA scores as one data.frame
 }

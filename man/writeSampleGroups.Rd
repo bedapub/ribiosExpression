@@ -11,12 +11,16 @@ writeSampleGroups(sampleGroups, sampleGroups.file, sampleGroupLevels.file)
 
 \item{sampleGroups.file}{Character, file name where the information of sample groups is written to.}
 
-\item{sampleGroupLevels.file}{Character, file name where the information of sample group levels is written to.
-
-The function is used to export sample group and group level information for differential gene expression analysis.}
+\item{sampleGroupLevels.file}{Character, file name where the information of sample group levels is written to.}
+}
+\value{
+Used for its side effect of writing files. Returns invisibly.
 }
 \description{
 Write sample groups and group levels into plain text files
+}
+\details{
+The function is used to export sample group and group level information for differential gene expression analysis.
 }
 \examples{
 writeSampleGroups(gl(3,4), stdout(), stdout())

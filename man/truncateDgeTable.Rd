@@ -15,6 +15,3 @@ A list of two elements: 'pos' and 'neg'. Each contains a dgeTable of positively/
 \description{
 Truncate dgeTable into tables of positively and negatively differentially expressed genes according to the pre-defined criteria
 }
-\references{
-The logic is described at http://rochewiki.roche.com/confluence/display/BIOINFO/Substream+Algorithm
-}

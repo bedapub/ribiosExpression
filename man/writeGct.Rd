@@ -6,7 +6,7 @@
 \alias{writeGct,eSet,ANY,ANY,ANY-method}
 \alias{writeGct,matrix-method}
 \alias{writeGct,eSet-method}
-\title{Export matrix or eEset that can be coereced as one into gct/cls files}
+\title{Export matrix or eSet that can be coerced as one into gct/cls files}
 \usage{
 writeGct(obj, file, feat.name, feat.desc)
 
@@ -23,8 +23,11 @@ writeGct(obj, file, feat.name, feat.desc)
 
 \item{feat.desc}{Specifying feature descriptions}
 }
+\value{
+Used for its side effect of writing files; returns invisibly.
+}
 \description{
-Export matrix or eEset that can be coereced as one into gct/cls files
+Export matrix or eSet that can be coerced as one into gct/cls files
 }
 \section{Methods (by class)}{
 \itemize{

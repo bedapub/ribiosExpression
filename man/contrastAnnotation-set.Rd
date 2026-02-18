@@ -2,15 +2,18 @@
 % Please edit documentation in R/AllGenerics.R
 \name{contrastAnnotation<-}
 \alias{contrastAnnotation<-}
-\title{Assign contrast annotaiton to an object}
+\title{Assign contrast annotation to an object}
 \usage{
 contrastAnnotation(object) <- value
 }
 \arguments{
 \item{object}{An object, see supported methods below}
 
-\item{value}{Contrast anaotation data.frame}
+\item{value}{Contrast annotation data.frame}
+}
+\value{
+The modified object
 }
 \description{
-Assign contrast annotaiton to an object
+Assign contrast annotation to an object
 }

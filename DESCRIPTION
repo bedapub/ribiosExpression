@@ -39,12 +39,13 @@ Suggests:
     rmarkdown
 License: GPL-3
 Encoding: UTF-8
+Additional_repositories: https://bedapub.r-universe.dev
 URL: https://github.com/bedapub/ribiosExpression
 BugReports: https://github.com/bedapub/ribiosExpression/issues
 biocViews: GeneExpression, DifferentialExpression, Microarray,
     DataImport, Visualization
 VignetteBuilder: knitr
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
@@ -75,7 +76,7 @@ Collate:
     'writeVarMetadata.R'
 Remotes:
     github::bedapub/ribiosIO,
-    github::bedapub/ribiosUtils,
     github::bedapub/ribiosPlot,
     github::bedapub/ribiosArg,
     github::bedapub/ribiosAnnotation
+
