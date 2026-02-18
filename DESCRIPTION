@@ -60,9 +60,6 @@ Collate:
     'transformations.R'
     'truncateDgeTable.R'
     'writeVarMetadata.R'
-Remotes:
-    github::bedapub/ribiosIO,
-    github::bedapub/ribiosUtils,
-    github::bedapub/ribiosPlot,
-    github::bedapub/ribiosArg,
-    github::bedapub/ribiosAnnotation
+Additional_repositories: https://bedapub.r-universe.dev
+URL: https://github.com/bedapub/ribiosExpression
+BugReports: https://github.com/bedapub/ribiosExpression/issues
