@@ -39,6 +39,7 @@ Suggests:
     rmarkdown
 License: GPL-3
 Encoding: UTF-8
+Additional_repositories: https://bedapub.r-universe.dev
 URL: https://github.com/bedapub/ribiosExpression
 BugReports: https://github.com/bedapub/ribiosExpression/issues
 biocViews: GeneExpression, DifferentialExpression, Microarray,
@@ -73,6 +74,3 @@ Collate:
     'transformations.R'
     'truncateDgeTable.R'
     'writeVarMetadata.R'
-Additional_repositories: https://bedapub.r-universe.dev
-URL: https://github.com/bedapub/ribiosExpression
-BugReports: https://github.com/bedapub/ribiosExpression/issues
