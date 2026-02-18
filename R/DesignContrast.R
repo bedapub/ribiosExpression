@@ -18,7 +18,7 @@ design2group <- function(designMatrix) {
   groups <- apply(designMatrix[,useCol, drop=FALSE],
                   1, paste, collapse="")
   res <- factor(groups)
-  levels(res) <- sprintf("AutoGroup_%02d", 1:nlevels(res))
+  levels(res) <- sprintf("AutoGroup_%02d", seq_len(nlevels(res)))
   return(res)
 }
 
@@ -55,7 +55,7 @@ DesignContrast <- function(designMatrix,
     contrastMatrix <- matrix(nrow=ncol(designMatrix), dimnames=list(colnames(designMatrix), NULL))
   if(is.null(contrastAnnotation)) {
     contrastNames <- colnames(contrastMatrix)
-    if(is.null(contrastNames))  contrastNames <- 1:ncol(contrastMatrix)
+    if(is.null(contrastNames))  contrastNames <- seq_len(ncol(contrastMatrix))
     contrastAnnotation <- data.frame(row.names=contrastNames)
   }
   res <- new("DesignContrast",
@@ -261,7 +261,7 @@ parseDesignContrast <- function(designFile=NULL, contrastFile=NULL,
 .contrastSampleIndices<- function(descon, contrast) {
     contrastMat <- contrastMatrix(descon)
     designMat <- designMatrix(descon)
-    haltifnot(contrast %in% colnames(contrastMat) || contrast %in% 1:ncol(contrastMat),
+    haltifnot(contrast %in% colnames(contrastMat) || contrast %in% seq_len(ncol(contrastMat)),
               msg=sprintf("contrast '%s' not found in the contrast matrix",
                   contrast))
     currContrast <- contrastMat[, contrast]
@@ -292,7 +292,7 @@ setMethod("contrastSampleIndices", c("DesignContrast", "numeric"), function(obje
               .contrastSampleIndices(object, contrast)
           })
 
-assert_is_range <- function(x) stopifnot(length(x)==2 && class(x) %in% c("integer", "numeric"))
+assert_is_range <- function(x) stopifnot(length(x)==2 && is.numeric(x))
   
 #' Plot a DesignContrast object with two heatmaps
 #' 

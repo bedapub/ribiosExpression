@@ -12,7 +12,7 @@ return(object@groups)
 })
 
 #' @describeIn dispGroups Return the sample groups from a DesignContrast object
-#'     , suing display labels
+#'     , using display labels
 #' @export
 setMethod("dispGroups", "DesignContrast", function(object) {
   groups <- object@groups
@@ -68,7 +68,7 @@ setReplaceMethod("contrastAnnotation", "DesignContrast", function(object, value)
   return(object)
 })
 
-#' @describeIn nContrast Return the number of contrast in a DesignContras
+#' @describeIn nContrast Return the number of contrasts in a DesignContrast
 #'     object
 #' @export
 setMethod("nContrast", "DesignContrast", function(object) {
@@ -96,7 +96,7 @@ setMethod("exprsToLong", "matrix", function(x, idvar="illID",timevar="hybridID",
                                             ids=rownames(x), valueType="raw") {
   x <- as.data.frame(x)
   colnames(x) <- paste(valuevar, colnames(x), sep=".")
-  va <- 1:ncol(x)
+  va <- seq_len(ncol(x))
   x[,idvar] <- ids
   xLong <- reshape(x, idvar=idvar, varying=va, timevar=timevar, direction="long")
   rownames(xLong) <- NULL
@@ -115,6 +115,7 @@ setMethod("exprsToLong", "eSet", function(x) {
 #' @param x An ExpressionSet object.
 #' @param center Logical, whether the mean values of rows should be set to zero.
 #' @param scale Logical, whether the standard deviations of rows should be normalised to one.
+#' @return An ExpressionSet object with row-scaled expression values.
 #' 
 #' @importFrom ribiosUtils rowscale
 #' @export
@@ -190,7 +191,7 @@ setMethod("formatGmt",
             if(length(comment)==1)
               comment <- rep(comment, length(title))
             stopifnot(identical(length(title), length(comment)))
-            sapply(1:length(genes),
+            sapply(seq_along(genes),
                    function(x) formatGmt(title[x], comment[x], genes[[x]])
             )
           })

@@ -105,9 +105,9 @@ keepMaxStatProbe <- function(eset, probe.index.name, keepNAprobes=TRUE,
   }
   
   probe.indexed.fac <- factor(fData(eset.indexed)[,probe.index.name])
-  probe.by.index <- split(1:dim(eset.indexed)[1], probe.indexed.fac)
+  probe.by.index <- split(seq_len(dim(eset.indexed)[1]), probe.indexed.fac)
   stat.by.index <- split(eset.indexed.featureStat, probe.indexed.fac)
-  max.probes <- sapply(1:nlevels(probe.indexed.fac),
+  max.probes <- sapply(seq_len(nlevels(probe.indexed.fac)),
                        function(x) probe.by.index[[x]][ which.max(stat.by.index[[x]]) ])
   
   eset.remain <- rep(FALSE, dim(eset)[1])

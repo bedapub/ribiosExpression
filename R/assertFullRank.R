@@ -26,7 +26,7 @@ assertFullRank <- function(matrix) {
 #' removeColRank(myMat)
 #' @export
 removeColRank <- function(matrix) {
-  colind <- 1:ncol(matrix)
+  colind <- seq_len(ncol(matrix))
   nc <- ncol(matrix)
   full <- c(ncol=nc, rank=Matrix::rankMatrix(matrix))
   res <- t(sapply(colind, function(i){

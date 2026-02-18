@@ -53,7 +53,7 @@ summarizeSamples <- function(eset, indSamples=eset$SAMPLEID, removeInvarCols=TRU
                                                 indSamples, fun=fun, ...)
     assign(item, item.pool, envir=assayDataEnv)
   }
-  eset.pd <- do.call(rbind, tapply(1:ncol(eset), indSamples, function(x) {
+  eset.pd <- do.call(rbind, tapply(seq_len(ncol(eset)), indSamples, function(x) {
     pData(eset)[x[1], , drop=FALSE]
   }))
   if(ncol(eset.pd)==1) {

@@ -25,7 +25,8 @@ matrixToLongTable <- function(x, valueLabel="value", rowLabel="row", colLabel="c
 #' @param df A \code{data.frame}
 #' @param prefix A character string, the prefix to be used if an column's name is empty.
 #'
-#' If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1
+#' @details If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1
+#' @return A \code{data.frame} with fixed column names.
 #' @examples 
 #' testDf <- data.frame("Col1"=LETTERS[1:3], "Col2"=letters[2:4])
 #' colnames(testDf) <- c("", "")
@@ -59,7 +60,8 @@ vectorizeExprs <- function(exp) {
 #' @param exprsFun A function to extract expression values, by default \code{exprs}
 #' @param includeOtherAssayData Logical, whether other elements in the \code{assayData} environment (if present) should be returned.
 #' 
-#' The function extracts exprs (and other values in the \code{assayData} environment), and return it in a long data.frame format with phenotypic data
+#' @details The function extracts exprs (and other values in the \code{assayData} environment), and return it in a long data.frame format with phenotypic data
+#' @return A \code{data.frame} in long format.
 #' 
 #' @examples 
 #' data(ribios.ExpressionSet, package="ribiosExpression")
