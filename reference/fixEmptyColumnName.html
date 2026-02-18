@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Detect if any column has an empty string as name and fix</h1>
-    <small class="dont-index">Source: <a href="https://github.com/bedapub/ribiosExpression/blob/master/R/transformations.R" class="external-link"><code>R/transformations.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/bedapub/ribiosExpression/blob/devel/R/transformations.R" class="external-link"><code>R/transformations.R</code></a></small>
     <div class="hidden name"><code>fixEmptyColumnName.Rd</code></div>
     </div>
 
@@ -68,10 +68,17 @@
 
 
 <dt id="arg-prefix">prefix<a class="anchor" aria-label="anchor" href="#arg-prefix"></a></dt>
-<dd><p>A character string, the prefix to be used if an column's name is empty.</p>
-<p>If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1</p></dd>
+<dd><p>A character string, the prefix to be used if an column's name is empty.</p></dd>
 
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p>A <code>data.frame</code> with fixed column names.</p>
+    </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>If any column has an empty string as name, its replaced by the prefix appended by an index starting from 1</p>
+    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>

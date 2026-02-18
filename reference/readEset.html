@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Read eSet object from plain files</h1>
-    <small class="dont-index">Source: <a href="https://github.com/bedapub/ribiosExpression/blob/master/R/io_tab.R" class="external-link"><code>R/io_tab.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/bedapub/ribiosExpression/blob/devel/R/io_tab.R" class="external-link"><code>R/io_tab.R</code></a></small>
     <div class="hidden name"><code>readEset.Rd</code></div>
     </div>
 
@@ -96,14 +96,21 @@
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Passed to <code><a href="readFKtable.html">readFKtable</a></code></p>
-<p>The function can read in eSet object saved by <code><a href="writeEset.html">writeEset</a></code> by parsing
+<dd><p>Passed to <code><a href="readFKtable.html">readFKtable</a></code></p></dd>
+
+</dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p>An <code>ExpressionSet</code> object.</p>
+    </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>The function can read in eSet object saved by <code><a href="writeEset.html">writeEset</a></code> by parsing
 three plain text files: <code>exprs.file</code>, <code>fData.file</code>, and <code>pData.file</code>.</p>
 <p>Currently both <code>tsv</code> and <code>gct</code> formats are supported for expression
 file.</p>
-<p>See <code>writeEset</code> for limitations of these functions.</p></dd>
-
-</dl></div>
+<p>See <code>writeEset</code> for limitations of these functions.</p>
+    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="writeEset.html">writeEset</a></code>, <code><a href="readFKtable.html">readFKtable</a></code>.</p></div>
