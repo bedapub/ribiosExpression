@@ -25,10 +25,10 @@ Extract the contrast annotation data.frame from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{contrastAnnotation(DesignContrast)}: Return the contrast annotation data.frame
+\item \code{DesignContrast}: Return the contrast annotation data.frame
 from a DesignContrast object
 
-\item \code{contrastAnnotation(DesignContrast) <- value}: Assign a contrast annotation data.frame
+\item \code{DesignContrast}: Assign a contrast annotation data.frame
 to a \code{contrastContrast} object
-
 }}
+

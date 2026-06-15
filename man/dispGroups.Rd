@@ -20,7 +20,7 @@ Extract displayed group labels from an object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{dispGroups(DesignContrast)}: Return the sample groups from a DesignContrast object
+\item \code{DesignContrast}: Return the sample groups from a DesignContrast object
 , using display labels
-
 }}
+
