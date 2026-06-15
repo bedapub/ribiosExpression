@@ -15,7 +15,7 @@ Description: Provides data structures and utility functions for gene expression
     probeset summarization and filtering, and interfaces to limma-based
     differential gene expression workflows. The package works with Biobase
     ExpressionSet objects and integrates with the limma framework.
-Depends: R (>= 4.4.0)
+Depends: R (>= 4.1.2)
 Imports:
     methods,
     stats,
