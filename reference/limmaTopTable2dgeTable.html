@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Transform limma::topTable results to a DGEtable</h1>
-    <small class="dont-index">Source: <a href="https://github.com/bedapub/ribiosExpression/blob/master/R/truncateDgeTable.R" class="external-link"><code>R/truncateDgeTable.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/bedapub/ribiosExpression/blob/devel/R/truncateDgeTable.R" class="external-link"><code>R/truncateDgeTable.R</code></a></small>
     <div class="hidden name"><code>limmaTopTable2dgeTable.Rd</code></div>
     </div>
 
@@ -84,20 +84,20 @@
 <span class="r-in"><span><span class="va">example.tt</span> <span class="op">&lt;-</span> <span class="fu">limma</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/limma/man/toptable.html" class="external-link">topTable</a></span><span class="op">(</span><span class="va">example.fit</span>, coef<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">example.dt</span> <span class="op">&lt;-</span> <span class="fu">limmaTopTable2dgeTable</span><span class="op">(</span><span class="va">example.tt</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">example.dt</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         Feature     AveExpr         t      logFC       PValue         FDR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 1   Gene 1  0.92426239 10.617033  1.8519517 1.075215e-05 0.001075215</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 2   Gene 2  1.12622603  5.766414  1.5809339 5.921631e-04 0.029608153</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 78 Gene 78 -0.07461397  3.011208  1.7521306 1.870006e-02 0.413050952</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 68 Gene 68 -0.52914100  2.882684  0.6249377 2.254180e-02 0.413050952</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 47 Gene 47 -0.10754050  2.880890  0.5619844 2.260098e-02 0.413050952</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 64 Gene 64 -0.11442328 -2.744493 -1.1905373 2.761014e-02 0.413050952</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         Feature    AveExpr         t      logFC       PValue         FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 1   Gene 1  0.9029003  9.887747  2.0960155 4.177555e-05 0.004177555</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 2   Gene 2  1.4495037  6.480667  2.6630030 4.977127e-04 0.024885633</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 20 Gene 20  0.1001521 -3.426295 -0.6423616 1.272678e-02 0.370401904</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 68 Gene 68 -0.1178188  3.173587  0.6156964 1.766820e-02 0.370401904</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 89 Gene 89 -0.6258086  3.137886  0.7391062 1.852010e-02 0.370401904</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 93 Gene 93 -0.1532348  2.643623  0.3846761 3.616507e-02 0.463882544</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  B</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 1   4.0356905</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 2  -0.2693261</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 78 -3.9710956</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 68 -4.1657309</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 47 -4.1684545</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 64 -4.3757248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 1   2.8091048</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 2   0.1398482</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 20 -3.3953965</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 68 -3.7468157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 89 -3.7970424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene 93 -4.5034535</span>
 </code></pre></div>
     </div>
   </div>

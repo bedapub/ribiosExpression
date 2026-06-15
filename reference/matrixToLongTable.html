@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Transform a matrix to long table</h1>
-    <small class="dont-index">Source: <a href="https://github.com/bedapub/ribiosExpression/blob/master/R/transformations.R" class="external-link"><code>R/transformations.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/bedapub/ribiosExpression/blob/devel/R/transformations.R" class="external-link"><code>R/transformations.R</code></a></small>
     <div class="hidden name"><code>matrixToLongTable.Rd</code></div>
     </div>
 
@@ -88,31 +88,31 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">myMatrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">24</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">4</span>, dimnames<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">matrixToLongTable</span><span class="op">(</span><span class="va">myMatrix</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    row col        value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1    A   a -0.100362614</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    B   a  1.374677921</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    C   a  0.359881635</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    D   a -0.911636110</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    A   b  0.372154103</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6    B   b  0.824123998</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    C   b -0.277860876</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8    D   b  0.290705252</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9    A   c -1.462234408</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10   B   c -0.936234046</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   C   c -0.005393725</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12   D   c  1.146549255</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   A   d -0.300266206</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   B   d -1.672400721</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   C   d  0.342697385</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16   D   d  0.004421065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17   A   e -1.329155221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18   B   e -0.755702197</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19   C   e -0.401535183</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20   D   e -0.142446497</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21   A   f -0.614792116</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22   B   f -1.294828736</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23   C   f -1.256173491</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24   D   f  0.480847546</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    row col      value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    A   a  0.6837143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    B   a  0.8254797</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    C   a  0.3117092</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    D   a  1.7631987</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    A   b  0.2618348</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6    B   b  0.1386892</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    C   b -0.3450267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    D   b  0.7378051</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9    A   c  0.3309026</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10   B   c  0.1060674</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   C   c -0.8786746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12   D   c  1.4636212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   A   d -1.1218182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   B   d  1.2059099</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   C   d  0.5900224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16   D   d -0.5357414</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17   A   e  1.1877976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18   B   e  0.5516814</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19   C   e -2.1389072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20   D   e -0.7926538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21   A   f -0.6956574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22   B   f  1.0947526</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   C   f -0.1003626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24   D   f  1.3746779</span>
 </code></pre></div>
     </div>
   </div>
